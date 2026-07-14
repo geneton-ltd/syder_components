@@ -1,8 +1,10 @@
 package sydercomponents
 
 import (
+	"fmt"
 	"io"
 	"strconv"
+	"strings"
 
 	g "maragu.dev/gomponents"
 )
@@ -30,7 +32,7 @@ func WithAttributes(value ...g.Node) Option {
 
 func WithClassAppend(value string) Option {
 	return func(c *Component) {
-		c.attrs["class"] += value
+		c.attrs["class"] = strings.Trim(c.attrs["class"], " ") + " " + strings.Trim(value, "")
 	}
 }
 

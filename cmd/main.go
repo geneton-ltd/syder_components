@@ -43,12 +43,28 @@ func main() {
 		),
 	)
 
+	content := sc.Any("div",
+		sc.WithClass("w-full flex justify-center p-4"),
+		sc.WithChildren(
+			sc.Any("div",
+				sc.WithClass("max-w-6xl"),
+				sc.WithChildren(
+					sc.Card(
+						sc.WithClassAppend("min-w-100"),
+						sc.WithAttributes(g.Text("nice")),
+					),
+				),
+			),
+		),
+	)
+
 	p := c.HTML5(c.HTML5Props{
 		Head: []g.Node{
 			h.Link(h.Href("/static/output.css"), h.Rel("stylesheet")),
 		},
 		Body: []g.Node{
 			simpleNavbar,
+			content,
 		},
 	})
 

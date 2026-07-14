@@ -1,13 +1,13 @@
 package sydercomponents_test
 
 import (
+	"fmt"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	g "maragu.dev/gomponents"
-	h "maragu.dev/gomponents/html"
 )
 
 func TestGetters(t *testing.T) {
@@ -28,7 +28,7 @@ func TestGetters(t *testing.T) {
 						sc.WithID("link2"),
 						sc.WithAttributes(
 							g.Text("Page2"),
-							h.Href("/page2"),
+							sc.WithHref("/page2"),
 						),
 					),
 				),
@@ -39,6 +39,8 @@ func TestGetters(t *testing.T) {
 	assert.Equal(t, simpleNavbar.GetID(), "navbarID")
 	assert.Equal(t, simpleNavbar.GetChildren()[0].GetClass(), "flex")
 	h, has := simpleNavbar.GetChildren()[0].GetChildren()[1].GetHref()
+	fmt.Println(simpleNavbar.GetChildren()[0].GetChildren()[1].GetAttrs())
+	fmt.Println(simpleNavbar.GetChildren()[0].GetChildren()[1].GetAttributes())
 	require.True(t, has)
 	assert.Equal(t, h, "/page2")
 }
