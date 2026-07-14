@@ -3,3 +3,6 @@ tw:
 
 dev:
 	air
+
+test:
+	go test ./...

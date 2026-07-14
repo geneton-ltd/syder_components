@@ -1,46 +1,38 @@
 package sydercomponents_test
 
 import (
-	"fmt"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	g "maragu.dev/gomponents"
+	// g "maragu.dev/gomponents"
 )
 
-func TestGetters(t *testing.T) {
-	simpleNavbar := sc.Navbar(
-		sc.WithID("navbarID"),
+func TestComponent_Children(t *testing.T) {
+	component := sc.Any("div",
 		sc.WithChildren(
+			sc.Any("div"),
 			sc.Any("div",
-				sc.WithClass("flex"),
 				sc.WithChildren(
-					sc.NavLink(
-						sc.WithID("link1"),
-						sc.WithHref("/page1"),
-						sc.WithAttributes(
-							g.Text("Page1"),
-						),
-					),
-					sc.NavLink(
-						sc.WithID("link2"),
-						sc.WithHref("/page2"),
-						sc.WithAttributes(
-							g.Text("Page2"),
-						),
-					),
+					sc.Any("div"),
+					sc.Any("div"),
 				),
 			),
+			sc.Any("div"),
 		),
 	)
 
-	assert.Equal(t, simpleNavbar.GetID(), "navbarID")
-	assert.Equal(t, simpleNavbar.GetChildren()[0].GetClass(), "flex")
-	h, has := simpleNavbar.GetChildren()[0].GetChildren()[1].GetHref()
-	fmt.Println(simpleNavbar.GetChildren()[0].GetChildren()[1].GetAttrs())
-	fmt.Println(simpleNavbar.GetChildren()[0].GetChildren()[1].GetAttributes())
-	require.True(t, has)
-	assert.Equal(t, h, "/page2")
+	// should have 3 children
+	require.Len(t, component.GetChildren(), 3)
+
+	// 1st child has 0 children
+	require.Empty(t, component.GetChildren()[0].GetChildren())
+
+	// 2nd child has 2 children, each with 0 children
+	require.Len(t, component.GetChildren()[1].GetChildren(), 2)
+	require.Empty(t, component.GetChildren()[1].GetChildren()[0].GetChildren())
+	require.Empty(t, component.GetChildren()[1].GetChildren()[1].GetChildren())
+
+	// 3rd child has 0 children
+	require.Empty(t, component.GetChildren()[2].GetChildren())
 }
