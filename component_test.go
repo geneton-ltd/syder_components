@@ -191,6 +191,13 @@ func TestComponent_EdgeCaseOptions(t *testing.T) {
 			},
 		},
 		{
+			name: "test WithClass and WithClassAppend",
+			comp: sc.Any("div", sc.WithClass("flex"), sc.WithClassAppend("flex-col")),
+			check: func(t *testing.T, comp sc.Component) {
+				require.Equal(t, "flex flex-col", comp.GetClass())
+			},
+		},
+		{
 			name: "test WithDisabled",
 			comp: sc.Any("div", sc.WithDisabled()),
 			check: func(t *testing.T, comp sc.Component) {
