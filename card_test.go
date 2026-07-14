@@ -20,6 +20,8 @@ func TestCard_Options(t *testing.T) {
 }
 
 func hasCardClasses(t *testing.T, class string) {
+	t.Helper()
+
 	require.Contains(t, class, "w-full")
 	require.Contains(t, class, "rounded-md")
 	require.Contains(t, class, "shadow-xs")
@@ -38,7 +40,8 @@ func TestCard_Output(t *testing.T) {
 	comp := sc.Card()
 
 	var sb strings.Builder
-	comp.Render(&sb)
+	err := comp.Render(&sb)
+	require.NoError(t, err)
 	output := sb.String()
 
 	// check if its a <div>
