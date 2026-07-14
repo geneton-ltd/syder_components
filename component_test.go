@@ -26,9 +26,9 @@ func TestGetters(t *testing.T) {
 					),
 					sc.NavLink(
 						sc.WithID("link2"),
+						sc.WithHref("/page2"),
 						sc.WithAttributes(
 							g.Text("Page2"),
-							sc.WithHref("/page2"),
 						),
 					),
 				),
