@@ -4,7 +4,7 @@ import (
 	"embed"
 	"net/http"
 
-	sydercomponents "github.com/geneton-ltd/syder_components"
+	sc "github.com/geneton-ltd/syder_components"
 	g "maragu.dev/gomponents"
 	c "maragu.dev/gomponents/components"
 	h "maragu.dev/gomponents/html"
@@ -18,23 +18,25 @@ func main() {
 
 	mux.Handle("/static/", http.FileServer(http.FS(static)))
 
-	simpleNavbar := sydercomponents.Navbar(
-		sydercomponents.WithID("navbarID"),
-		sydercomponents.WithChildren(
-			h.Div(
-				h.Class("flex"),
-				sydercomponents.NavLink(
-					sydercomponents.WithID("link1"),
-					sydercomponents.WithChildren(
-						g.Text("Page1"),
-						h.Href("/page1"),
+	simpleNavbar := sc.Navbar(
+		sc.WithID("navbarID"),
+		sc.WithChildren(
+			sc.Any("div",
+				sc.WithClass("flex"),
+				sc.WithChildren(
+					sc.NavLink(
+						sc.WithID("link1"),
+						sc.WithHref("/page1"),
+						sc.WithAttributes(
+							g.Text("Page1"),
+						),
 					),
-				),
-				sydercomponents.NavLink(
-					sydercomponents.WithID("link2"),
-					sydercomponents.WithChildren(
-						g.Text("Page2"),
-						h.Href("/page2"),
+					sc.NavLink(
+						sc.WithID("link2"),
+						sc.WithAttributes(
+							g.Text("Page2"),
+							h.Href("/page2"),
+						),
 					),
 				),
 			),
