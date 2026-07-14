@@ -19,7 +19,7 @@ type Option func(c *Component)
 
 func WithChildren(value ...Component) Option {
 	return func(c *Component) {
-		c.children = value
+		c.children = append(c.children, value...)
 	}
 }
 

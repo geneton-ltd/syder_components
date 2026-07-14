@@ -11,6 +11,6 @@ func Card(opts ...Option) Component {
 }
 
 func SubCard(opts ...Option) Component {
-	options := append(opts, WithClassAppend("border-dashed hover:bg-white"))
+	options := append([]Option{WithClassAppend("border-dashed hover:bg-white")}, opts...)
 	return Card(options...)
 }
