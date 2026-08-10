@@ -17,6 +17,29 @@ func TestComponent_SimpleOptions(t *testing.T) {
 		check func(t *testing.T, comp sc.Component)
 	}{
 		{
+			name: "test WithAttribute",
+			comp: sc.Any("div", sc.WithAttributes(g.Text("text"))),
+			check: func(t *testing.T, comp sc.Component) {
+				require.Equal(t, []g.Node{g.Text("text")}, comp.GetAttributes())
+			},
+		},
+		{
+			name: "test WithAttribute overwrites",
+			comp: sc.Any("div", sc.WithAttributes(g.Text("text")), sc.WithAttributes(g.Text("text2"))),
+			check: func(t *testing.T, comp sc.Component) {
+				require.Contains(t, comp.GetAttributes(), g.Text("text2"))
+				require.NotContains(t, comp.GetAttributes(), g.Text("text"))
+			},
+		},
+		{
+			name: "test WithAttributeAppend",
+			comp: sc.Any("div", sc.WithAttributes(g.Text("text")), sc.WithAttributeAppend(g.Text("text2"))),
+			check: func(t *testing.T, comp sc.Component) {
+				require.Contains(t, comp.GetAttributes(), g.Text("text"))
+				require.Contains(t, comp.GetAttributes(), g.Text("text2"))
+			},
+		},
+		{
 			name: "test WithClass",
 			comp: sc.Any("div", sc.WithClass("flex")),
 			check: func(t *testing.T, comp sc.Component) {

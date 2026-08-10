@@ -1,6 +1,9 @@
 package sydercomponents
 
-import h "maragu.dev/gomponents/html"
+import (
+	g "maragu.dev/gomponents"
+	h "maragu.dev/gomponents/html"
+)
 
 func Button(opts ...Option) Component {
 	n := newComponent("rounded rounded-sm shadow-xs p-1 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed", opts...)
@@ -8,14 +11,14 @@ func Button(opts ...Option) Component {
 	return n
 }
 
-func IconButton(icon Component, opts ...Option) Component {
+func IconButton(icon g.Node, opts ...Option) Component {
 	options := []Option{WithClassAppend("whitespace-nowrap flex gap-1 items-center")}
-	options = append(options, WithChildren(Any("span", WithClass("h-4 w-4 shrink-0"), WithChildren(icon))))
+	options = append(options, WithChildren(Any("span", WithClass("h-4 w-4 shrink-0"), WithAttributeAppend(icon))))
 	options = append(options, opts...)
 	return Button(options...)
 }
 
-func IconOnlyButton(icon Component, opts ...Option) Component {
+func IconOnlyButton(icon g.Node, opts ...Option) Component {
 	options := append([]Option{WithClassAppend("w-fit self-center"), WithType("button")}, opts...)
 	return IconButton(icon, options...)
 }

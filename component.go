@@ -23,6 +23,12 @@ func WithChildren(value ...Component) Option {
 	}
 }
 
+func WithAttributeAppend(value g.Node) Option {
+	return func(c *Component) {
+		c.attributes = append(c.attributes, value)
+	}
+}
+
 func WithAttributes(value ...g.Node) Option {
 	return func(c *Component) {
 		c.attributes = value
