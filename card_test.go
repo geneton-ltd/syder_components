@@ -20,8 +20,6 @@ func TestCard_Options(t *testing.T) {
 }
 
 func hasCardClasses(t *testing.T, class string) {
-	t.Helper()
-
 	require.Contains(t, class, "w-full")
 	require.Contains(t, class, "rounded-md")
 	require.Contains(t, class, "shadow-xs")
