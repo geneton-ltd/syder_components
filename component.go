@@ -37,7 +37,17 @@ func WithAttributes(value ...g.Node) Option {
 
 func WithClassAppend(value string) Option {
 	return func(c *Component) {
-		c.attrs["class"] = strings.Trim(c.attrs["class"], " ") + " " + strings.Trim(value, "")
+		if value == "" {
+			return
+		}
+
+		curClass := c.attrs["class"]
+		trimmedValue := strings.Trim(value, " ")
+		if curClass == "" {
+			c.attrs["class"] = trimmedValue
+		} else {
+			c.attrs["class"] += " " + trimmedValue
+		}
 	}
 }
 
