@@ -94,9 +94,7 @@ func WithData(key, value string) Option {
 }
 
 func WithDialogTrigger(id string) Option {
-	return func(c *Component) {
-		c.attrs["data-modal"] = id
-	}
+	return WithData("modal", id)
 }
 
 func WithAria(key, value string) Option {
