@@ -6,7 +6,7 @@ const modalsAttach = () => {
     }
 
     trigger.addEventListener("click", () => {
-      if (modal.dataset.nonmodal == "true") {
+      if (modal.dataset.nonmodal === "true") {
         modal.show();
       } else {
         modal.showModal();
