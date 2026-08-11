@@ -17,23 +17,23 @@ func TestComponent_SimpleOptions(t *testing.T) {
 		check func(t *testing.T, comp sc.Component)
 	}{
 		{
-			name: "test WithAttribute",
-			comp: sc.Any("div", sc.WithAttributes(g.Text("text"))),
+			name: "test WithNode",
+			comp: sc.Any("div", sc.WithNodes(g.Text("text"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, []g.Node{g.Text("text")}, comp.GetAttributes())
 			},
 		},
 		{
-			name: "test WithAttribute overwrites",
-			comp: sc.Any("div", sc.WithAttributes(g.Text("text")), sc.WithAttributes(g.Text("text2"))),
+			name: "test WithNode overwrites",
+			comp: sc.Any("div", sc.WithNodes(g.Text("text")), sc.WithNodes(g.Text("text2"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Contains(t, comp.GetAttributes(), g.Text("text2"))
 				require.NotContains(t, comp.GetAttributes(), g.Text("text"))
 			},
 		},
 		{
-			name: "test WithAttributeAppend",
-			comp: sc.Any("div", sc.WithAttributes(g.Text("text")), sc.WithAttributeAppend(g.Text("text2"))),
+			name: "test WithNodeAppend",
+			comp: sc.Any("div", sc.WithNodes(g.Text("text")), sc.WithNodeAppend(g.Text("text2"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Contains(t, comp.GetAttributes(), g.Text("text"))
 				require.Contains(t, comp.GetAttributes(), g.Text("text2"))
@@ -311,7 +311,7 @@ func TestComponent_Render(t *testing.T) {
 	comp := sc.Any("span",
 		sc.WithID("id"),
 		sc.WithClass("class"),
-		sc.WithAttributes(g.Text("text")),
+		sc.WithNodes(g.Text("text")),
 	)
 
 	var sb strings.Builder
