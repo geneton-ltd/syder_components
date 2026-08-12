@@ -3,34 +3,57 @@ package sydercomponents
 import (
 	"io"
 	"strconv"
+	"strings"
 
 	g "maragu.dev/gomponents"
 )
 
 type Component struct {
-	children   []Component
-	attributes []g.Node // non-element attributes
-	content    g.Node
-	attrs      map[string]string
+	children []Component
+	nodes    []g.Node // non-component nodes
+	content  g.Node
+	attrs    map[string]string
 }
 
 type Option func(c *Component)
 
 func WithChildren(value ...Component) Option {
 	return func(c *Component) {
-		c.children = value
+		c.children = append(c.children, value...)
 	}
 }
 
-func WithAttributes(value ...g.Node) Option {
+func WithNodeAppend(value g.Node) Option {
 	return func(c *Component) {
-		c.attributes = value
+		c.nodes = append(c.nodes, value)
+	}
+}
+
+func WithNodes(value ...g.Node) Option {
+	return func(c *Component) {
+		c.nodes = value
+	}
+}
+
+func WithAttribute(name, value string) Option {
+	return func(c *Component) {
+		c.attrs[name] = value
 	}
 }
 
 func WithClassAppend(value string) Option {
 	return func(c *Component) {
-		c.attrs["class"] += value
+		if value == "" {
+			return
+		}
+
+		curClass := c.attrs["class"]
+		trimmedValue := strings.Trim(value, " ")
+		if curClass == "" {
+			c.attrs["class"] = trimmedValue
+		} else {
+			c.attrs["class"] += " " + trimmedValue
+		}
 	}
 }
 
@@ -68,6 +91,10 @@ func WithData(key, value string) Option {
 	return func(c *Component) {
 		c.attrs["data-"+key] = value
 	}
+}
+
+func WithDialogTrigger(id string) Option {
+	return WithData("modal", id)
 }
 
 func WithAria(key, value string) Option {
@@ -169,7 +196,7 @@ func (c Component) GetChildren() []Component {
 
 // GetAttributes returns the children nodes
 func (c Component) GetAttributes() []g.Node {
-	return c.attributes
+	return c.nodes
 }
 
 // GetContent returns the rendered content node
@@ -288,6 +315,6 @@ func (c Component) manuallySetAttributes() g.Group {
 	for key, value := range c.attrs {
 		nodes = append(nodes, g.Attr(key, value))
 	}
-	nodes = append(nodes, g.Group(c.attributes), g.Map(c.children, func(child Component) g.Node { return child }))
+	nodes = append(nodes, g.Group(c.nodes), g.Map(c.children, func(child Component) g.Node { return child }))
 	return nodes
 }

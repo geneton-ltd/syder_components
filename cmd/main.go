@@ -27,16 +27,31 @@ func main() {
 					sc.NavLink(
 						sc.WithID("link1"),
 						sc.WithHref("/page1"),
-						sc.WithAttributes(
+						sc.WithNodes(
 							g.Text("Page1"),
 						),
 					),
 					sc.NavLink(
 						sc.WithID("link2"),
-						sc.WithAttributes(
+						sc.WithNodes(
 							g.Text("Page2"),
 							h.Href("/page2"),
 						),
+					),
+				),
+			),
+		),
+	)
+
+	content := sc.Any("div",
+		sc.WithClass("w-full flex justify-center p-4"),
+		sc.WithChildren(
+			sc.Any("div",
+				sc.WithClass("max-w-6xl"),
+				sc.WithChildren(
+					sc.Card(
+						sc.WithClassAppend("min-w-100"),
+						sc.WithNodes(g.Text("nice")),
 					),
 				),
 			),
@@ -49,6 +64,7 @@ func main() {
 		},
 		Body: []g.Node{
 			simpleNavbar,
+			content,
 		},
 	})
 
