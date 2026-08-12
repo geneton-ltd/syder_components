@@ -1,11 +1,13 @@
 package sydercomponents_test
 
 import (
-	"strings"
+	"bytes"
+	"slices"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/net/html"
 )
 
 func TestButton_Options(t *testing.T) {
@@ -35,15 +37,29 @@ func TestButton_DefaultStyle(t *testing.T) {
 }
 
 func TestButton_Output(t *testing.T) {
-	comp := sc.Button()
+	id := "id"
+	comp := sc.Button(sc.WithID(id))
 
-	var sb strings.Builder
-	err := comp.Render(&sb)
+	var buf bytes.Buffer
+	err := comp.Render(&buf)
 	require.NoError(t, err)
-	output := sb.String()
 
-	// check if its a <input>
-	require.Contains(t, output, "<button")
+	var processNode func(*html.Node) bool
+	processNode = func(n *html.Node) bool {
+		if n.Type == html.ElementNode && n.Data == "button" && slices.Contains(n.Attr, html.Attribute{Key: "id", Val: id}) {
+			return true
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			if processNode(c) {
+				return true
+			}
+		}
+		return false
+	}
+
+	node, err := html.Parse(&buf)
+	require.NoError(t, err)
+	require.True(t, processNode(node))
 }
 
 func hasIconButtonClasses(t *testing.T, class string) {
