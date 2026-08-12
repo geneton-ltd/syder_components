@@ -12,13 +12,17 @@ func Button(opts ...Option) Component {
 }
 
 func IconButton(icon g.Node, opts ...Option) Component {
-	options := []Option{WithClassAppend("whitespace-nowrap flex gap-1 items-center")}
-	options = append(options, WithChildren(Any("span", WithClass("h-4 w-4 shrink-0"), WithNodeAppend(icon))))
-	options = append(options, opts...)
-	return Button(options...)
+	opts = append(
+		[]Option{
+			WithClassAppend("whitespace-nowrap flex gap-1 items-center"),
+			WithChildren(Any("span", WithClass("h-4 w-4 shrink-0"), WithNodeAppend(icon))),
+		},
+		opts...,
+	)
+	return Button(opts...)
 }
 
 func IconOnlyButton(icon g.Node, opts ...Option) Component {
-	options := append([]Option{WithClassAppend("w-fit self-center"), WithType("button")}, opts...)
-	return IconButton(icon, options...)
+	opts = append([]Option{WithClassAppend("w-fit self-center"), WithType("button")}, opts...)
+	return IconButton(icon, opts...)
 }
