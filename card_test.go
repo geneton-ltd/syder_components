@@ -34,8 +34,9 @@ func TestCard_DefaultStyle(t *testing.T) {
 }
 
 func TestCard_Output(t *testing.T) {
-	comp := sc.Card(sc.WithID("id"))
-	assertElementWithIDExists(t, comp, "div")
+	id := "id"
+	comp := sc.Card(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "div", id)
 }
 
 func TestSubCard_Merging(t *testing.T) {

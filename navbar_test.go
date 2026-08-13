@@ -29,8 +29,9 @@ func TestNavbar_DefaultStyle(t *testing.T) {
 }
 
 func TestNavbar_Output(t *testing.T) {
-	comp := sc.Navbar(sc.WithID("id"))
-	assertElementWithIDExists(t, comp, "div")
+	id := "id"
+	comp := sc.Navbar(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "div", id)
 }
 
 func TestNavLink_Options(t *testing.T) {
@@ -55,6 +56,7 @@ func TestNavLink_DefaultStyle(t *testing.T) {
 }
 
 func TestNavLink_Output(t *testing.T) {
-	comp := sc.NavLink(sc.WithID("id"))
-	assertElementWithIDExists(t, comp, "a")
+	id := "id"
+	comp := sc.NavLink(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "a", id)
 }

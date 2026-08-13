@@ -10,9 +10,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-func assertElementWithIDExists(t *testing.T, comp sc.Component, elementTag string) {
-	id := comp.GetID()
-
+func assertElementWithIDExists(t *testing.T, comp sc.Component, elementTag string, id string) {
 	var buf bytes.Buffer
 	err := comp.Render(&buf)
 	require.NoError(t, err)

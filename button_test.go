@@ -34,8 +34,9 @@ func TestButton_DefaultStyle(t *testing.T) {
 }
 
 func TestButton_Output(t *testing.T) {
-	comp := sc.Button(sc.WithID("id"))
-	assertElementWithIDExists(t, comp, "button")
+	id := "id"
+	comp := sc.Button(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "button", id)
 }
 
 func hasIconButtonClasses(t *testing.T, class string) {

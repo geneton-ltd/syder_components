@@ -37,8 +37,9 @@ func TestDialog_DefaultStyle(t *testing.T) {
 }
 
 func TestDialog_Output(t *testing.T) {
-	comp := sc.Dialog(sc.WithID("id"))
-	assertElementWithIDExists(t, comp, "dialog")
+	id := "id"
+	comp := sc.Dialog(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "dialog", id)
 }
 
 func TestDialogRelative_Merging(t *testing.T) {
