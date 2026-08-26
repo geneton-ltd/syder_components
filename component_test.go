@@ -20,23 +20,23 @@ func TestComponent_SimpleOptions(t *testing.T) {
 			name: "test WithNode",
 			comp: sc.Any("div", sc.WithNodes(g.Text("text"))),
 			check: func(t *testing.T, comp sc.Component) {
-				require.Equal(t, []g.Node{g.Text("text")}, comp.GetAttributes())
+				require.Equal(t, []g.Node{g.Text("text")}, comp.GetNodes())
 			},
 		},
 		{
 			name: "test WithNode overwrites",
 			comp: sc.Any("div", sc.WithNodes(g.Text("text")), sc.WithNodes(g.Text("text2"))),
 			check: func(t *testing.T, comp sc.Component) {
-				require.Contains(t, comp.GetAttributes(), g.Text("text2"))
-				require.NotContains(t, comp.GetAttributes(), g.Text("text"))
+				require.Contains(t, comp.GetNodes(), g.Text("text2"))
+				require.NotContains(t, comp.GetNodes(), g.Text("text"))
 			},
 		},
 		{
 			name: "test WithNodeAppend",
 			comp: sc.Any("div", sc.WithNodes(g.Text("text")), sc.WithNodeAppend(g.Text("text2"))),
 			check: func(t *testing.T, comp sc.Component) {
-				require.Contains(t, comp.GetAttributes(), g.Text("text"))
-				require.Contains(t, comp.GetAttributes(), g.Text("text2"))
+				require.Contains(t, comp.GetNodes(), g.Text("text"))
+				require.Contains(t, comp.GetNodes(), g.Text("text2"))
 			},
 		},
 		{
@@ -279,32 +279,52 @@ func TestComponent_EdgeCaseOptions(t *testing.T) {
 }
 
 func TestComponent_Children(t *testing.T) {
-	component := sc.Any("div",
-		sc.WithChildren(
-			sc.Any("div"),
-			sc.Any("div",
-				sc.WithChildren(
-					sc.Any("div"),
-					sc.Any("div"),
+	t.Run("GetChildren", func(t *testing.T) {
+		component := sc.Any("div",
+			sc.WithChildren(
+				sc.Any("div"),
+				sc.Any("div",
+					sc.WithChildren(
+						sc.Any("div"),
+						sc.Any("div"),
+					),
 				),
+				sc.Any("div"),
 			),
-			sc.Any("div"),
-		),
-	)
+		)
 
-	// should have 3 children
-	require.Len(t, component.GetChildren(), 3)
+		// should have 3 children
+		require.Len(t, component.GetChildren(), 3)
 
-	// 1st child has 0 children
-	require.Empty(t, component.GetChildren()[0].GetChildren())
+		// 1st child has 0 children
+		require.Empty(t, component.GetChildren()[0].GetChildren())
 
-	// 2nd child has 2 children, each with 0 children
-	require.Len(t, component.GetChildren()[1].GetChildren(), 2)
-	require.Empty(t, component.GetChildren()[1].GetChildren()[0].GetChildren())
-	require.Empty(t, component.GetChildren()[1].GetChildren()[1].GetChildren())
+		// 2nd child has 2 children, each with 0 children
+		require.Len(t, component.GetChildren()[1].GetChildren(), 2)
+		require.Empty(t, component.GetChildren()[1].GetChildren()[0].GetChildren())
+		require.Empty(t, component.GetChildren()[1].GetChildren()[1].GetChildren())
 
-	// 3rd child has 0 children
-	require.Empty(t, component.GetChildren()[2].GetChildren())
+		// 3rd child has 0 children
+		require.Empty(t, component.GetChildren()[2].GetChildren())
+	})
+
+	t.Run("WithChildren overwrite", func(t *testing.T) {
+		component := sc.Any("div",
+			sc.WithChildren(sc.Any("div"), sc.Any("div")),
+			sc.WithChildren(sc.Any("div")),
+		)
+
+		require.Len(t, component.GetChildren(), 1, "should have 1 child on overwrite")
+	})
+
+	t.Run("WithChildren and WithChildrenAppend", func(t *testing.T) {
+		component := sc.Any("div",
+			sc.WithChildren(sc.Any("div"), sc.Any("div")),
+			sc.WithChildrenAppend(sc.Any("div")),
+		)
+
+		require.Len(t, component.GetChildren(), 3, "should have 3 children with append")
+	})
 }
 
 func TestComponent_Render(t *testing.T) {

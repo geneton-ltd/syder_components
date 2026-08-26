@@ -29,8 +29,8 @@ func hasButtonClasses(t *testing.T, class string) {
 }
 
 func TestButton_DefaultStyle(t *testing.T) {
-	comp := sc.Card()
-	hasCardClasses(t, comp.GetClass())
+	comp := sc.Button()
+	hasButtonClasses(t, comp.GetClass())
 }
 
 func TestButton_Output(t *testing.T) {
