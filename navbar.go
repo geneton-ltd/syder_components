@@ -14,7 +14,7 @@ func Navbar(opts ...Option) Component {
 
 // NavLink returns a HTML <a> element, which is supposed to be put into [Navbar].
 func NavLink(opts ...Option) Component {
-	n := newComponent("underline hover:bg-gray-600 flex items-center px-2", opts...)
+	n := newComponent("hover:bg-gray-600 flex items-center px-2", opts...)
 	n.content = h.A(n.manuallySetAttributes())
 	return n
 }
