@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"log"
 	"net/http"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -111,10 +112,20 @@ func main() {
 		sc.WithID(modalID),
 		sc.WithClassAppend("w-full max-w-md p-6"),
 		sc.WithChildren(
-			sc.Any("div", sc.WithClass("flex flex-col gap-4"), sc.WithNodes(
-				h.H3(h.Class("text-lg font-bold border-b pb-2"), g.Text("Create New User")),
-				h.P(h.Class("text-gray-600"), g.Text("Lorem ipsum does not actually mean anything...")),
-			)),
+			sc.Any(
+				"div",
+				sc.WithClass("flex flex-col gap-4"),
+				sc.WithNodes(
+					h.H3(h.Class("text-lg font-bold border-b pb-2"), g.Text("Create New User")),
+					h.P(h.Class("text-gray-600"), g.Text("Lorem ipsum does not actually mean anything...")),
+				),
+				sc.WithChildren(sc.Button(
+					sc.WithClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
+					sc.WithNodes(g.Text("Close")),
+					sc.WithDialogClose(modalID),
+					sc.WithType("button"),
+				)),
+			),
 		),
 	)
 
@@ -135,7 +146,6 @@ func main() {
 		Title: "Syder Components - Example",
 		Head: []g.Node{
 			h.Link(h.Href("/static/output.css"), h.Rel("stylesheet")),
-			h.Script(h.Src("/static/general.js")),
 		},
 		Body: []g.Node{
 			navbar,
@@ -147,5 +157,8 @@ func main() {
 		p.Render(w)
 	})
 
-	http.ListenAndServe(":8000", mux)
+	err := http.ListenAndServe(":8000", mux)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
