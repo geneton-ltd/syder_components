@@ -14,7 +14,7 @@ import (
 //	    sc.WithClassAppend("flex flex-col gap-2")
 //	)
 func Any(tag string, opts ...Option) Component {
-	c := newComponent("", opts...)
-	c.content = g.El(tag, c.manuallySetAttributes())
-	return c
+	n := newComponent("", opts...)
+	n.content = g.El(tag, n.manuallySetAttributes())
+	return n
 }

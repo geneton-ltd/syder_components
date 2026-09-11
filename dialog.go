@@ -2,7 +2,7 @@ package sydercomponents
 
 import h "maragu.dev/gomponents/html"
 
-// Dialog returns a HTML dialog element. For attachment to happen, pass
+// Dialog returns a HTML <dialog> element. For attachment to happen, pass
 // WithID option and then WithDialogTrigger with the same id to the trigger
 // element (e.g. a button). Attachment is performed automatically.
 //
@@ -11,10 +11,9 @@ import h "maragu.dev/gomponents/html"
 //	sc.Dialog(sc.WithID("id"), sc.WithData("name", "john"))
 //	sc.Button(sc.WithDialogTrigger("id"))
 func Dialog(opts ...Option) Component {
-	opts = append([]Option{WithAttribute("closedBy", "any")}, opts...)
-	dialog := newComponent("shadow-xl bg-white backdrop:bg-black/40 rounded-md", opts...)
-	dialog.content = h.Dialog(dialog.manuallySetAttributes())
-	return dialog
+	n := newComponent("shadow-xl bg-white backdrop:bg-black/40 rounded-md", opts...)
+	n.content = h.Dialog(n.manuallySetAttributes())
+	return n
 }
 
 // DialogRelative returns [Dialog] that is relative to its parent. The parent

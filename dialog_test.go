@@ -29,11 +29,6 @@ func TestDialog_DefaultStyle(t *testing.T) {
 	comp := sc.Dialog()
 
 	hasDialogClasses(t, comp.GetClass())
-
-	attrs := comp.GetAttrs()
-	closedBy, ok := attrs["closedBy"]
-	require.True(t, ok)
-	require.Equal(t, "any", closedBy)
 }
 
 func TestDialog_Output(t *testing.T) {
