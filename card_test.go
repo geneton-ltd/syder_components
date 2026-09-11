@@ -1,7 +1,6 @@
 package sydercomponents_test
 
 import (
-	"strings"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -35,15 +34,9 @@ func TestCard_DefaultStyle(t *testing.T) {
 }
 
 func TestCard_Output(t *testing.T) {
-	comp := sc.Card()
-
-	var sb strings.Builder
-	err := comp.Render(&sb)
-	require.NoError(t, err)
-	output := sb.String()
-
-	// check if its a <div>
-	require.Contains(t, output, "<div")
+	id := "id"
+	comp := sc.Card(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "div", id)
 }
 
 func TestSubCard_Merging(t *testing.T) {

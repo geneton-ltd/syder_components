@@ -1,7 +1,6 @@
 package sydercomponents_test
 
 import (
-	"strings"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -30,20 +29,14 @@ func hasButtonClasses(t *testing.T, class string) {
 }
 
 func TestButton_DefaultStyle(t *testing.T) {
-	comp := sc.Card()
-	hasCardClasses(t, comp.GetClass())
+	comp := sc.Button()
+	hasButtonClasses(t, comp.GetClass())
 }
 
 func TestButton_Output(t *testing.T) {
-	comp := sc.Button()
-
-	var sb strings.Builder
-	err := comp.Render(&sb)
-	require.NoError(t, err)
-	output := sb.String()
-
-	// check if its a <input>
-	require.Contains(t, output, "<button")
+	id := "id"
+	comp := sc.Button(sc.WithID(id))
+	assertElementWithIDExists(t, comp, "button", id)
 }
 
 func hasIconButtonClasses(t *testing.T, class string) {
