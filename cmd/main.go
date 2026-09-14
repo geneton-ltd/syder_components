@@ -19,6 +19,29 @@ func main() {
 
 	mux.Handle("/static/", http.FileServer(http.FS(static)))
 
+	settingsModalID := "settingsMenu"
+	settingsModal := sc.Popover(
+		sc.WithID(settingsModalID),
+		sc.WithClassAppend("!p-0 top-[50px] left-[150px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
+		sc.WithChildren(
+			sc.Any("div",
+				sc.WithClass("flex flex-col h-full"),
+				sc.WithChildren(
+					sc.NavLink(
+						sc.WithClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
+						sc.WithHref("/settings/general"),
+						sc.WithNodes(g.Text("General")),
+					),
+					sc.NavLink(
+						sc.WithClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
+						sc.WithHref("/settings/passwords"),
+						sc.WithNodes(g.Text("Passwords")),
+					),
+				),
+			),
+		),
+	)
+
 	navbar := sc.Navbar(
 		sc.WithID("main-nav"),
 		sc.WithChildren(
@@ -32,10 +55,10 @@ func main() {
 							g.Text("Dashboard"),
 						),
 					),
-					sc.NavLink(
-						sc.WithClassAppend("h-full no-underline transition-colors px-4"),
-						sc.WithHref("/settings"),
+					sc.Button(
+						sc.WithClassAppend("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
 						sc.WithNodes(g.Text("Settings")),
+						sc.WithPopoverTrigger(settingsModalID),
 					),
 				),
 			),
@@ -149,6 +172,7 @@ func main() {
 		},
 		Body: []g.Node{
 			navbar,
+			settingsModal,
 			content,
 		},
 	})
