@@ -9,7 +9,7 @@ Add the library to your project with:
 go get github.com/geneton-ltd/syder_components
 ```
 
-> [!note] gomponents installation
+> [!NOTE] gomponents installation
 > This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
 > `go get maragu.dev/gomponents`
 
