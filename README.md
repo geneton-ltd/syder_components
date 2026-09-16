@@ -6,8 +6,11 @@ Reusable, composable and testable frontend components to be used alongside the [
 
 Add the library to your project with:
 ```shell
-go get github.com/geneton-ltd/syder_components
+GOPRIVATE=github.com/geneton-ltd/* go get github.com/geneton-ltd/syder_components
 ```
+
+> [!WARNING]
+> If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
 
 > [!NOTE] 
 > This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
@@ -21,6 +24,7 @@ import (
 	"net/http"
 
     sc "github.com/geneton-ltd/syder_components"
+	g "maragu.dev/gomponents"
 )
 
 func main() {
