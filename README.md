@@ -1,4 +1,4 @@
-# Components
+# Syder Components
 
 [![CI](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yml/badge.svg)
 
