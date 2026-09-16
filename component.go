@@ -51,7 +51,7 @@ func WithNodes(value ...g.Node) Option {
 	}
 }
 
-// WithAttribute sets a custom HTML attribute..
+// WithAttribute sets a custom HTML attribute.
 func WithAttribute(name, value string) Option {
 	return func(c *Component) {
 		c.attrs[name] = value
