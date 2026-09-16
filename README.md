@@ -2,7 +2,7 @@
 
 Reusable, composable and testable frontend components to be used alongside the [gomponents](https://github.com/maragudk/gomponents) library.
 
-## 1. Quickstart / Installation
+## 1. Installation
 
 Add the library to your project with:
 ```shell
@@ -11,7 +11,16 @@ GOPRIVATE=github.com/geneton-ltd/* go get github.com/geneton-ltd/syder_component
 
 Copy the library's `static/output.css` file into your project's `static/css/syder_components.css`.
 
-Finally, get started with this simple `main.go` file (most of it is just boilerplate to get you started):
+> [!WARNING]
+> If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to tell git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
+
+> [!NOTE] 
+> This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
+> `go get maragu.dev/gomponents`
+
+## 2. Quickstart
+
+You can get started with this simple `main.go` file (most of it is just boilerplate to get you started):
 ```go
 package main
 
@@ -56,14 +65,7 @@ func main() {
 }
 ```
 
-> [!WARNING]
-> If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to tell git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
-
-> [!NOTE] 
-> This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
-> `go get maragu.dev/gomponents`
-
-## 2. Components overview
+## 3. Components overview
 The following is the list of all available components:
 | Component | Description |
 | --------- | ----------- |
@@ -88,7 +90,7 @@ The following is the list of all available components:
 | Td | HTML5 `<td>` element with default spacing. |
 
 
-## 3. Development
+## 4. Development
 To start example code on port 8000 with live-reloading install [air](https://github.com/air-verse/air) and run:
 ```shell
 make dev
@@ -104,16 +106,20 @@ Finally, to rebuild Tailwind CSS install the [Tailwind CLI](https://tailwindcss.
 make tw
 ```
 
-## 4. Core concepts
+## 5. Core concepts
 The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous `With*` options to set various HTML attributes. If some attribute is missing, simply use the `WithAttribute` option. Child content can be added with `WithNodes` (for *gomponents* nodes) or with `WithChildren` (for our `Component` nodes). Both of those options together with the `WithClass` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `WithNodeAppend`, `WithChildrenAppend` and `WithClassAppend` options are provided. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 
-## 5. Customizing styles
-TODO
+## 6. Customizing styles
+Each component internally uses Tailwind CSS classes. Therefore, to actually apply these styles, copy `static/output.css` into your project directory and import the stylesheet in your website's `<head>`.
 
-## 6. Edge cases
-TODO
+## 7. Edge cases
+Here is the list of some things to have in mind when using some of the components:
+
+- `DialogRelative` requires using `relative` class on its parent element.
+- `Dialog` (and `Popover` component for closing) requires passing the element id to the trigger element with the `WithDialogTrigger` (or `WithPopoverTrigger`) options.
+- `Dialog` and `Popover` elements rely on the `With*Trigger` options, which add the `command/commandfor/popovertarget/popovertargetaction` attributes, which rely on the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API). This API is supported in all modern browsers, but it is quite new and therefore might not be supported in all old browsers.
 
 ## License
 Syder Components is available under the MIT license. See the LICENSE file for more info.
