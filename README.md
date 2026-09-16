@@ -10,7 +10,7 @@ GOPRIVATE=github.com/geneton-ltd/* go get github.com/geneton-ltd/syder_component
 ```
 
 > [!WARNING]
-> If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
+> If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to tell git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
 
 > [!NOTE] 
 > This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
