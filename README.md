@@ -1,6 +1,6 @@
 # Syder Components
 
-[![CI](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yml/badge.svg)
+[![CI](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg)
 
 Reusable, composable and testable frontend components to be used alongside the [gomponents](https://github.com/maragudk/gomponents) library.
 
