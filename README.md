@@ -80,6 +80,7 @@ The following is the list of all available components:
 | Dialog | HTML5 `<dialog>` element. For attachment to happen, pass `WithID` option and then `WithDialogTrigger` with the same id to the trigger element (e.g. a button). Attachment is performed automatically. |
 | DialogRelative | *Dialog* that is relative to its parent. The parent must have the "relative" class. |
 | DialogFixedCentered | *Dialog* fixed at the center of the screen (horizontally and vertically). |
+| Empty | Component that renders absolutely nothing. It is useful for conditional rendering. |
 | Navbar | HTML5 `<div>` element with simple styles acting as a container for navigation elements. |
 | NavLink | HTML5 `<a>` element, which is supposed to be put into *Navbar*. |
 | Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass WithID option and then WithPopoverTrigger with the same id to the trigger element (e.g. a button). |
@@ -122,6 +123,7 @@ Here is the list of some things to have in mind when using some of the component
 - `DialogRelative` requires using `relative` class on its parent element.
 - `Dialog` (and `Popover` component for closing) requires passing the element id to the trigger element with the `WithDialogTrigger` (or `WithPopoverTrigger`) options.
 - `Dialog` and `Popover` elements rely on the `With*Trigger` options, which add the `command/commandfor/popovertarget/popovertargetaction` attributes, which rely on the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API). This API is supported in all modern browsers, but it is quite new and therefore might not be supported in all old browsers.
+- `Empty` is supposed to be used as a replacement for `gomponents.If`, if you want to achieve 100% testability.
 
 ## License
 Syder Components is available under the MIT license. See the LICENSE file for more info.

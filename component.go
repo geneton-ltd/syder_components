@@ -225,6 +225,9 @@ func WithTabIndex(value int) Option {
 
 // Render renders the underlying gomponent into the io.Writer.
 func (c Component) Render(w io.Writer) error {
+	if c.content == nil {
+		return nil
+	}
 	return c.content.Render(w)
 }
 
