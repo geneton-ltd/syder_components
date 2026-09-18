@@ -51,7 +51,7 @@ func WithNodes(value ...g.Node) Option {
 	}
 }
 
-// WithAttribute sets a custom HTML attribute..
+// WithAttribute sets a custom HTML attribute.
 func WithAttribute(name, value string) Option {
 	return func(c *Component) {
 		c.attrs[name] = value
@@ -117,9 +117,33 @@ func WithData(key, value string) Option {
 	}
 }
 
-// WithDialogTrigger sets the required data attribute to the trigger element.
-func WithDialogTrigger(id string) Option {
-	return WithData("modal", id)
+// WithDialogTrigger sets the required attributes to the trigger element.
+func WithDialogTrigger(dialogID string) Option {
+	return func(c *Component) {
+		WithAttribute("commandfor", dialogID)(c)
+		WithAttribute("command", "show-modal")(c)
+	}
+}
+
+// WithDialogClose sets the required attributes to the closing element.
+func WithDialogClose(dialogID string) Option {
+	return func(c *Component) {
+		WithAttribute("commandfor", dialogID)(c)
+		WithAttribute("command", "close")(c)
+	}
+}
+
+// WithPopoverTrigger sets the required attribute for non-modal dialog trigger element.
+func WithPopoverTrigger(dialogID string) Option {
+	return WithAttribute("popovertarget", dialogID)
+}
+
+// WithPopoverClose sets the required attributes for non-modal dialog closing element.
+func WithPopoverClose(dialogID string) Option {
+	return func(c *Component) {
+		WithAttribute("popovertarget", dialogID)(c)
+		WithAttribute("popovertargetaction", "hide")(c)
+	}
 }
 
 // WithAria sets the HTML aria-* attribute.
@@ -201,6 +225,9 @@ func WithTabIndex(value int) Option {
 
 // Render renders the underlying gomponent into the io.Writer.
 func (c Component) Render(w io.Writer) error {
+	if c.content == nil {
+		return nil
+	}
 	return c.content.Render(w)
 }
 

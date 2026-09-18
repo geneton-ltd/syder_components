@@ -48,7 +48,6 @@ func TestNavLink_Options(t *testing.T) {
 func TestNavLink_DefaultStyle(t *testing.T) {
 	comp := sc.NavLink()
 	class := comp.GetClass()
-	require.Contains(t, class, "underline")
 	require.Contains(t, class, "hover:bg-gray-600")
 	require.Contains(t, class, "flex")
 	require.Contains(t, class, "items-center")

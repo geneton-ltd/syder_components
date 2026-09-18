@@ -32,7 +32,7 @@ func IconButton(icon g.Node, opts ...Option) Component {
 	return Button(opts...)
 }
 
-// IconOnlyButton returns an [IconButton] with special styles to make sure the
+// IconOnlyButton returns a [IconButton] with special styles to make sure the
 // icon placement is accurate.
 //
 // Example:
