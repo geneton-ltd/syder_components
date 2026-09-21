@@ -92,6 +92,7 @@ The following is the list of all available components:
 | Th | HTML5 `<th>` element with bold font and default spacing. |
 | Td | HTML5 `<td>` element with default spacing. |
 
+Almost all other non-deprecated HTML5 elements (except `<caption>`, `<col>`, `<colgroup>`, `<option>` and `<tfoot>`) are available with no default style. Components for the missing elements can still be created with `sc.Any("tag", ...)`.
 
 ## 4. Development
 To start example code on port 8000 with live-reloading install [air](https://github.com/air-verse/air) and run:
