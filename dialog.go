@@ -19,12 +19,12 @@ func Dialog(opts ...Option) Component {
 // DialogRelative returns [Dialog] that is relative to its parent. The parent
 // must have the "relative" class.
 func DialogRelative(opts ...Option) Component {
-	opts = append([]Option{WithClassAppend("absolute m-0")}, opts...)
+	opts = append([]Option{ClassAppend("absolute m-0")}, opts...)
 	return Dialog(opts...)
 }
 
 // DialogFixedCentered returns [Dialog] fixed at the center of the screen (horizontally and vertically).
 func DialogFixedCentered(opts ...Option) Component {
-	opts = append([]Option{WithClassAppend("fixed inset-0 m-auto")}, opts...)
+	opts = append([]Option{ClassAppend("fixed inset-0 m-auto")}, opts...)
 	return Dialog(opts...)
 }

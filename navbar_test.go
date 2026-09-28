@@ -9,7 +9,7 @@ import (
 
 func TestNavbar_Options(t *testing.T) {
 	// create navbar component with options
-	comp := sc.Navbar(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Navbar(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -30,13 +30,13 @@ func TestNavbar_DefaultStyle(t *testing.T) {
 
 func TestNavbar_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Navbar(sc.WithID(id))
+	comp := sc.Navbar(sc.ID(id))
 	assertElementWithIDExists(t, comp, "div", id)
 }
 
 func TestNavLink_Options(t *testing.T) {
 	// create navlink component with options
-	comp := sc.NavLink(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.NavLink(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -56,6 +56,6 @@ func TestNavLink_DefaultStyle(t *testing.T) {
 
 func TestNavLink_Output(t *testing.T) {
 	id := "id"
-	comp := sc.NavLink(sc.WithID(id))
+	comp := sc.NavLink(sc.ID(id))
 	assertElementWithIDExists(t, comp, "a", id)
 }

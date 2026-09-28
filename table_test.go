@@ -9,7 +9,7 @@ import (
 
 // TableContainer
 func TestTableContainer_Options(t *testing.T) {
-	comp := sc.TableContainer(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.TableContainer(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -32,13 +32,13 @@ func TestTableContainer_DefaultStyle(t *testing.T) {
 
 func TestTableContainer_Output(t *testing.T) {
 	id := "id"
-	comp := sc.TableContainer(sc.WithID(id))
+	comp := sc.TableContainer(sc.ID(id))
 	assertElementWithIDExists(t, comp, "div", id)
 }
 
 // Table
 func TestTable_Options(t *testing.T) {
-	comp := sc.Table(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Table(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -59,13 +59,13 @@ func TestTable_DefaultStyle(t *testing.T) {
 
 func TestTable_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Table(sc.WithID(id))
+	comp := sc.Table(sc.ID(id))
 	assertElementWithIDExists(t, comp, "table", id)
 }
 
 // THead
 func TestTHead_Options(t *testing.T) {
-	comp := sc.THead(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.THead(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -81,14 +81,14 @@ func TestTHead_DefaultStyle(t *testing.T) {
 
 func TestTHead_Output(t *testing.T) {
 	id := "id"
-	comp := sc.THead(sc.WithID(id))
-	wrapper := sc.Table(sc.WithChildren(comp))
+	comp := sc.THead(sc.ID(id))
+	wrapper := sc.Table(sc.Children(comp))
 	assertElementWithIDExists(t, wrapper, "thead", id)
 }
 
 // TBody
 func TestTBody_Options(t *testing.T) {
-	comp := sc.TBody(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.TBody(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -108,14 +108,14 @@ func TestTBody_DefaultStyle(t *testing.T) {
 
 func TestTBody_Output(t *testing.T) {
 	id := "id"
-	comp := sc.TBody(sc.WithID(id))
-	wrapper := sc.Table(sc.WithChildren(comp))
+	comp := sc.TBody(sc.ID(id))
+	wrapper := sc.Table(sc.Children(comp))
 	assertElementWithIDExists(t, wrapper, "tbody", id)
 }
 
 // Tr
 func TestTr_Options(t *testing.T) {
-	comp := sc.Tr(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Tr(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -134,14 +134,14 @@ func TestTr_DefaultStyle(t *testing.T) {
 
 func TestTr_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Tr(sc.WithID(id))
-	wrapper := sc.Table(sc.WithChildren(comp))
+	comp := sc.Tr(sc.ID(id))
+	wrapper := sc.Table(sc.Children(comp))
 	assertElementWithIDExists(t, wrapper, "tr", id)
 }
 
 // Th
 func TestTh_Options(t *testing.T) {
-	comp := sc.Th(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Th(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -164,14 +164,14 @@ func TestTh_DefaultStyle(t *testing.T) {
 
 func TestTh_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Th(sc.WithID(id))
-	wrapper := sc.Table(sc.WithChildren(comp))
+	comp := sc.Th(sc.ID(id))
+	wrapper := sc.Table(sc.Children(comp))
 	assertElementWithIDExists(t, wrapper, "th", id)
 }
 
 // Td
 func TestTd_Options(t *testing.T) {
-	comp := sc.Td(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Td(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -193,7 +193,7 @@ func TestTd_DefaultStyle(t *testing.T) {
 
 func TestTd_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Td(sc.WithID(id))
-	wrapper := sc.Table(sc.WithChildren(comp))
+	comp := sc.Td(sc.ID(id))
+	wrapper := sc.Table(sc.Children(comp))
 	assertElementWithIDExists(t, wrapper, "td", id)
 }

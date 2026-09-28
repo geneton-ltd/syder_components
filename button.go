@@ -24,8 +24,8 @@ func Button(opts ...Option) Component {
 func IconButton(icon g.Node, opts ...Option) Component {
 	opts = append(
 		[]Option{
-			WithClassAppend("whitespace-nowrap flex gap-1 items-center"),
-			WithChildren(Any("span", WithClass("h-4 w-4 shrink-0"), WithNodeAppend(icon))),
+			ClassAppend("whitespace-nowrap flex gap-1 items-center"),
+			Children(Any("span", Class("h-4 w-4 shrink-0"), NodeAppend(icon))),
 		},
 		opts...,
 	)
@@ -41,6 +41,6 @@ func IconButton(icon g.Node, opts ...Option) Component {
 //	    solid.Trash(),
 //	)
 func IconOnlyButton(icon g.Node, opts ...Option) Component {
-	opts = append([]Option{WithClassAppend("w-fit self-center"), WithType("button")}, opts...)
+	opts = append([]Option{ClassAppend("w-fit self-center"), Type("button")}, opts...)
 	return IconButton(icon, opts...)
 }

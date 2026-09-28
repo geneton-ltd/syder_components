@@ -9,7 +9,7 @@ import (
 
 func TestAny_Options(t *testing.T) {
 	// create any component with options
-	comp := sc.Any("div", sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Any("div", sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -23,7 +23,7 @@ func TestAny_Output(t *testing.T) {
 
 	tags := []string{"button", "a", "div", "input", "p"}
 	for _, tag := range tags {
-		comp := sc.Any(tag, sc.WithID(id))
+		comp := sc.Any(tag, sc.ID(id))
 		assertElementWithIDExists(t, comp, tag, id)
 	}
 }

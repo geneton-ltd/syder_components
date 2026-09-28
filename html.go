@@ -85,11 +85,6 @@ func Code(opts ...Option) Component {
 	return Any("code", opts...)
 }
 
-// Data returns a HTML5 <data> element with no default style.
-func Data(opts ...Option) Component {
-	return Any("data", opts...)
-}
-
 // Datalist returns a HTML5 <datalist> element with no default style.
 func Datalist(opts ...Option) Component {
 	return Any("datalist", opts...)
@@ -428,11 +423,6 @@ func Span(opts ...Option) Component {
 // Strong returns a HTML5 <strong> element with no default style.
 func Strong(opts ...Option) Component {
 	return Any("strong", opts...)
-}
-
-// Style returns a HTML5 <style> element with no default style.
-func Style(opts ...Option) Component {
-	return Any("style", opts...)
 }
 
 // Sub returns a HTML5 <sub> element with no default style.

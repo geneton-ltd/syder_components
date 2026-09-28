@@ -9,7 +9,7 @@ import (
 
 func TestButton_Options(t *testing.T) {
 	// create button component with options
-	comp := sc.Button(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Button(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -35,7 +35,7 @@ func TestButton_DefaultStyle(t *testing.T) {
 
 func TestButton_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Button(sc.WithID(id))
+	comp := sc.Button(sc.ID(id))
 	assertElementWithIDExists(t, comp, "button", id)
 }
 
@@ -47,7 +47,7 @@ func hasIconButtonClasses(t *testing.T, class string) {
 }
 
 func TestIconButton_Merging(t *testing.T) {
-	comp := sc.IconButton(sc.Any("div"), sc.WithClassAppend("custom-class"))
+	comp := sc.IconButton(sc.Any("div"), sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Button style
@@ -68,7 +68,7 @@ func TestIconButton_Merging(t *testing.T) {
 }
 
 func TestIconOnlyButton_Merging(t *testing.T) {
-	comp := sc.IconOnlyButton(sc.Any("div"), sc.WithClassAppend("custom-class"))
+	comp := sc.IconOnlyButton(sc.Any("div"), sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Button style

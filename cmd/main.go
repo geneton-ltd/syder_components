@@ -21,21 +21,21 @@ func main() {
 
 	settingsModalID := "settingsMenu"
 	settingsModal := sc.Popover(
-		sc.WithID(settingsModalID),
-		sc.WithClassAppend("!p-0 top-[50px] left-[150px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
-		sc.WithChildren(
+		sc.ID(settingsModalID),
+		sc.ClassAppend("!p-0 top-[50px] left-[150px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
+		sc.Children(
 			sc.Any("div",
-				sc.WithClass("flex flex-col h-full"),
-				sc.WithChildren(
+				sc.Class("flex flex-col h-full"),
+				sc.Children(
 					sc.NavLink(
-						sc.WithClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
-						sc.WithHref("/settings/general"),
-						sc.WithNodes(g.Text("General")),
+						sc.ClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
+						sc.Href("/settings/general"),
+						sc.Nodes(g.Text("General")),
 					),
 					sc.NavLink(
-						sc.WithClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
-						sc.WithHref("/settings/passwords"),
-						sc.WithNodes(g.Text("Passwords")),
+						sc.ClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
+						sc.Href("/settings/passwords"),
+						sc.Nodes(g.Text("Passwords")),
 					),
 				),
 			),
@@ -43,22 +43,22 @@ func main() {
 	)
 
 	navbar := sc.Navbar(
-		sc.WithID("main-nav"),
-		sc.WithChildren(
+		sc.ID("main-nav"),
+		sc.Children(
 			sc.Any("div",
-				sc.WithClass("flex h-full"),
-				sc.WithChildren(
+				sc.Class("flex h-full"),
+				sc.Children(
 					sc.NavLink(
-						sc.WithClassAppend("h-full no-underline transition-colors px-4"),
-						sc.WithHref("/"),
-						sc.WithNodes(
+						sc.ClassAppend("h-full no-underline transition-colors px-4"),
+						sc.Href("/"),
+						sc.Nodes(
 							g.Text("Dashboard"),
 						),
 					),
 					sc.Button(
-						sc.WithClassAppend("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
-						sc.WithNodes(g.Text("Settings")),
-						sc.WithPopoverTrigger(settingsModalID),
+						sc.ClassAppend("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
+						sc.Nodes(g.Text("Settings")),
+						sc.PopoverTrigger(settingsModalID),
 					),
 				),
 			),
@@ -85,13 +85,13 @@ func main() {
 
 	var rows []sc.Component
 	for _, u := range users {
-		rows = append(rows, sc.Tr(sc.WithChildren(
-			sc.Td(sc.WithNodes(g.Text(u.name))),
-			sc.Td(sc.WithNodes(g.Text(u.role))),
-			sc.Td(sc.WithClassAppend("text-right"), sc.WithChildren(
+		rows = append(rows, sc.Tr(sc.Children(
+			sc.Td(sc.Nodes(g.Text(u.name))),
+			sc.Td(sc.Nodes(g.Text(u.role))),
+			sc.Td(sc.ClassAppend("text-right"), sc.Children(
 				sc.Button(
-					sc.WithClassAppend("bg-green-600 text-white hover:bg-green-700 px-2"),
-					sc.WithNodes(g.Text("Edit")),
+					sc.ClassAppend("bg-green-600 text-white hover:bg-green-700 px-2"),
+					sc.Nodes(g.Text("Edit")),
 				),
 			),
 			))))
@@ -99,32 +99,32 @@ func main() {
 
 	modalID := "modal-id"
 	dashboardCard := sc.Card(
-		sc.WithClassAppend("bg-white p-3"),
-		sc.WithChildren(
+		sc.ClassAppend("bg-white p-3"),
+		sc.Children(
 			sc.Any("div",
-				sc.WithClass("flex justify-between items-center mb-4"),
-				sc.WithNodes(
+				sc.Class("flex justify-between items-center mb-4"),
+				sc.Nodes(
 					h.H2(h.Class("text-xl font-bold"), g.Text("Team Members")),
 				),
-				sc.WithChildren(
+				sc.Children(
 					sc.Button(
-						sc.WithClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
-						sc.WithDialogTrigger(modalID),
-						sc.WithNodes(g.Text("+ Add User")),
+						sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
+						sc.DialogTrigger(modalID),
+						sc.Nodes(g.Text("+ Add User")),
 					),
 				),
 			),
-			sc.SubCard(sc.WithChildren(
-				sc.TableContainer(sc.WithChildren(
-					sc.Table(sc.WithChildren(
-						sc.THead(sc.WithChildren(
-							sc.Tr(sc.WithChildren(
-								sc.Th(sc.WithNodes(g.Text("Name"))),
-								sc.Th(sc.WithNodes(g.Text("Role"))),
-								sc.Th(sc.WithClassAppend("text-right"), sc.WithNodes(g.Text("Actions"))),
+			sc.SubCard(sc.Children(
+				sc.TableContainer(sc.Children(
+					sc.Table(sc.Children(
+						sc.THead(sc.Children(
+							sc.Tr(sc.Children(
+								sc.Th(sc.Nodes(g.Text("Name"))),
+								sc.Th(sc.Nodes(g.Text("Role"))),
+								sc.Th(sc.ClassAppend("text-right"), sc.Nodes(g.Text("Actions"))),
 							)),
 						)),
-						sc.TBody(sc.WithChildren(rows...)),
+						sc.TBody(sc.Children(rows...)),
 					)),
 				)),
 			)),
@@ -132,32 +132,32 @@ func main() {
 	)
 
 	addUserModal := sc.DialogFixedCentered(
-		sc.WithID(modalID),
-		sc.WithClassAppend("w-full max-w-md p-6"),
-		sc.WithChildren(
+		sc.ID(modalID),
+		sc.ClassAppend("w-full max-w-md p-6"),
+		sc.Children(
 			sc.Any(
 				"div",
-				sc.WithClass("flex flex-col gap-4"),
-				sc.WithNodes(
+				sc.Class("flex flex-col gap-4"),
+				sc.Nodes(
 					h.H3(h.Class("text-lg font-bold border-b pb-2"), g.Text("Create New User")),
 					h.P(h.Class("text-gray-600"), g.Text("Lorem ipsum does not actually mean anything...")),
 				),
-				sc.WithChildren(sc.Button(
-					sc.WithClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
-					sc.WithNodes(g.Text("Close")),
-					sc.WithDialogClose(modalID),
-					sc.WithType("button"),
+				sc.Children(sc.Button(
+					sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
+					sc.Nodes(g.Text("Close")),
+					sc.DialogClose(modalID),
+					sc.Type("button"),
 				)),
 			),
 		),
 	)
 
 	content := sc.Any("div",
-		sc.WithClass("w-full flex justify-center p-8 bg-gray-50 min-h-screen"),
-		sc.WithChildren(
+		sc.Class("w-full flex justify-center p-8 bg-gray-50 min-h-screen"),
+		sc.Children(
 			sc.Any("div",
-				sc.WithClass("w-full max-w-5xl flex flex-col gap-4"),
-				sc.WithChildren(
+				sc.Class("w-full max-w-5xl flex flex-col gap-4"),
+				sc.Children(
 					dashboardCard,
 					addUserModal,
 				),
