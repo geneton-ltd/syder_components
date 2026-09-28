@@ -3,13 +3,13 @@ package sydercomponents
 import h "maragu.dev/gomponents/html"
 
 // Dialog returns a HTML5 <dialog> element. For attachment to happen, pass
-// WithID option and then WithDialogTrigger with the same id to the trigger
+// ID option and then DialogTrigger with the same id to the trigger
 // element (e.g. a button). Attachment is performed automatically.
 //
 // Example:
 //
-//	sc.Dialog(sc.WithID("id"), sc.WithData("name", "john"))
-//	sc.Button(sc.WithDialogTrigger("id"))
+//	sc.Dialog(sc.ID("id"), sc.Data("name", "john"))
+//	sc.Button(sc.DialogTrigger("id"))
 func Dialog(opts ...Option) Component {
 	n := newComponent("shadow-xl bg-white backdrop:bg-black/40 rounded-md", opts...)
 	n.content = h.Dialog(n.manuallySetAttributes())

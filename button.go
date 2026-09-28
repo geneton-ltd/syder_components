@@ -19,7 +19,7 @@ func Button(opts ...Option) Component {
 //
 //	sc.IconButton(
 //	    solid.ArrowLeft(),
-//	    sc.WithNodes(g.Text("Previous")),
+//	    sc.Nodes(g.Text("Previous")),
 //	)
 func IconButton(icon g.Node, opts ...Option) Component {
 	opts = append(

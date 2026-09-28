@@ -46,8 +46,8 @@ func main() {
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		btn := sc.Button(
-			sc.WithID("helloWorldBtnID"),
-			sc.WithNodes(g.Text("Hello, world!")),
+			sc.ID("helloWorldBtnID"),
+			sc.Nodes(g.Text("Hello, world!")),
 		)
 
 		page := co.HTML5(
@@ -77,13 +77,13 @@ The following is the list of all available components:
 | IconOnlyButton | *IconButton* with special styles to make sure the icon placement is accurate. |
 | Card | A styled `<div>` for grouping content. |
 | SubCard | A *Card* designed for grouping nested content. It applies a dashed border to visually separate it from primary cards. |
-| Dialog | HTML5 `<dialog>` element. For attachment to happen, pass `WithID` option and then `WithDialogTrigger` with the same id to the trigger element (e.g. a button). Attachment is performed automatically. |
+| Dialog | HTML5 `<dialog>` element. For attachment to happen, pass `ID` option and then `DialogTrigger` with the same id to the trigger element (e.g. a button). Attachment is performed automatically. |
 | DialogRelative | *Dialog* that is relative to its parent. The parent must have the "relative" class. |
 | DialogFixedCentered | *Dialog* fixed at the center of the screen (horizontally and vertically). |
 | Empty | Component that renders absolutely nothing. It is useful for conditional rendering. |
 | Navbar | HTML5 `<div>` element with simple styles acting as a container for navigation elements. |
 | NavLink | HTML5 `<a>` element, which is supposed to be put into *Navbar*. |
-| Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass WithID option and then WithPopoverTrigger with the same id to the trigger element (e.g. a button). |
+| Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass `ID` option and then `PopoverTrigger` with the same id to the trigger element (e.g. a button). |
 | TableContainer | HTML5 `<div>` element meant to function as a container for the *Table* component, while adding horizontal scroll. |
 | Table | HTML5 `<table>` element with head and body separator. |
 | THead | HTML5 `<thead>` element with no default style. |
@@ -111,7 +111,7 @@ make tw
 ```
 
 ## 5. Core concepts
-The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous `With*` options to set various HTML attributes. If some attribute is missing, simply use the `WithAttribute` option. Child content can be added with `WithNodes` (for *gomponents* nodes) or with `WithChildren` (for our `Component` nodes). Both of those options together with the `WithClass` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `WithNodeAppend`, `WithChildrenAppend` and `WithClassAppend` options are provided. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
+The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous `*` options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Nodes` (for *gomponents* nodes) or with `Children` (for our `Component` nodes). Both of those options together with the `Class` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `NodeAppend`, `ChildrenAppend` and `ClassAppend` options are provided. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 
@@ -122,8 +122,8 @@ Each component internally uses Tailwind CSS classes. Therefore, to actually appl
 Here is the list of some things to have in mind when using some of the components:
 
 - `DialogRelative` requires using `relative` class on its parent element.
-- `Dialog` (and `Popover` component for closing) requires passing the element id to the trigger element with the `WithDialogTrigger` (or `WithPopoverTrigger`) options.
-- `Dialog` and `Popover` elements rely on the `With*Trigger` options, which add the `command/commandfor/popovertarget/popovertargetaction` attributes, which rely on the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API). This API is supported in all modern browsers, but it is quite new and therefore might not be supported in all old browsers.
+- `Dialog` (and `Popover` component for closing) requires passing the element id to the trigger element with the `DialogTrigger` (or `PopoverTrigger`) options.
+- `Dialog` and `Popover` elements rely on the `*Trigger` options, which add the `command/commandfor/popovertarget/popovertargetaction` attributes, which rely on the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API). This API is supported in all modern browsers, but it is quite new and therefore might not be supported in all old browsers.
 - `Empty` is supposed to be used as a replacement for `gomponents.If`, if you want to achieve 100% testability.
 
 ## License

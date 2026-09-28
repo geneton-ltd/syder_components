@@ -17,14 +17,14 @@ func TestComponent_SimpleOptions(t *testing.T) {
 		check func(t *testing.T, comp sc.Component)
 	}{
 		{
-			name: "test WithNode",
+			name: "test Node",
 			comp: sc.Any("div", sc.Nodes(g.Text("text"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, []g.Node{g.Text("text")}, comp.GetNodes())
 			},
 		},
 		{
-			name: "test WithNode overwrites",
+			name: "test Node overwrites",
 			comp: sc.Any("div", sc.Nodes(g.Text("text")), sc.Nodes(g.Text("text2"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Contains(t, comp.GetNodes(), g.Text("text2"))
@@ -32,7 +32,7 @@ func TestComponent_SimpleOptions(t *testing.T) {
 			},
 		},
 		{
-			name: "test WithNodeAppend",
+			name: "test NodeAppend",
 			comp: sc.Any("div", sc.Nodes(g.Text("text")), sc.NodeAppend(g.Text("text2"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Contains(t, comp.GetNodes(), g.Text("text"))
@@ -40,14 +40,14 @@ func TestComponent_SimpleOptions(t *testing.T) {
 			},
 		},
 		{
-			name: "test WithClass",
+			name: "test Class",
 			comp: sc.Any("div", sc.Class("flex")),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, "flex", comp.GetClass())
 			},
 		},
 		{
-			name: "test WithClass overwrites",
+			name: "test Class overwrites",
 			comp: sc.Any("div", sc.Class("flex"), sc.Class("none")),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, "none", comp.GetClass())
@@ -55,14 +55,14 @@ func TestComponent_SimpleOptions(t *testing.T) {
 			},
 		},
 		{
-			name: "test WithId",
+			name: "test Id",
 			comp: sc.Any("div", sc.ID("id")),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, "id", comp.GetID())
 			},
 		},
 		{
-			name: "test WithData",
+			name: "test Data",
 			comp: sc.Any("div", sc.Data("apple", "1"), sc.Data("token", "secret")),
 			check: func(t *testing.T, comp sc.Component) {
 				v, has := comp.GetData("apple")
@@ -79,7 +79,7 @@ func TestComponent_SimpleOptions(t *testing.T) {
 			},
 		},
 		{
-			name: "test WithAria",
+			name: "test Aria",
 			comp: sc.Any("div", sc.Aria("apple", "1"), sc.Aria("token", "secret")),
 			check: func(t *testing.T, comp sc.Component) {
 				v, has := comp.GetAria("apple")
@@ -189,7 +189,7 @@ func TestComponent_EdgeCaseOptions(t *testing.T) {
 		check func(t *testing.T, comp sc.Component)
 	}{
 		{
-			name: "test WithTabIndex",
+			name: "test TabIndex",
 			comp: sc.Any("div", sc.TabIndex(-1)),
 			check: func(t *testing.T, comp sc.Component) {
 				v, has := comp.GetTabIndex()
@@ -198,7 +198,7 @@ func TestComponent_EdgeCaseOptions(t *testing.T) {
 			},
 		},
 		{
-			name: "test WithTabIndex missing",
+			name: "test TabIndex missing",
 			comp: sc.Any("div"),
 			check: func(t *testing.T, comp sc.Component) {
 				v, has := comp.GetTabIndex()
@@ -207,63 +207,63 @@ func TestComponent_EdgeCaseOptions(t *testing.T) {
 			},
 		},
 		{
-			name: "test WithClassAppend",
+			name: "test ClassAppend",
 			comp: sc.Any("div", sc.ClassAppend("flex"), sc.ClassAppend("flex-col")),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, "flex flex-col", comp.GetClass())
 			},
 		},
 		{
-			name: "test WithClass and WithClassAppend",
+			name: "test Class and ClassAppend",
 			comp: sc.Any("div", sc.Class("flex"), sc.ClassAppend("flex-col")),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, "flex flex-col", comp.GetClass())
 			},
 		},
 		{
-			name: "test WithClassAppend on empty class",
+			name: "test ClassAppend on empty class",
 			comp: sc.Any("div", sc.ClassAppend("  flex "), sc.ClassAppend(" flex-col")),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, "flex flex-col", comp.GetClass())
 			},
 		},
 		{
-			name: "test WithDisabled",
+			name: "test Disabled",
 			comp: sc.Any("div", sc.Disabled()),
 			check: func(t *testing.T, comp sc.Component) {
 				require.True(t, comp.HasDisabled())
 			},
 		},
 		{
-			name: "test WithDisabled missing",
+			name: "test Disabled missing",
 			comp: sc.Any("div"),
 			check: func(t *testing.T, comp sc.Component) {
 				require.False(t, comp.HasDisabled())
 			},
 		},
 		{
-			name: "test WithRequired",
+			name: "test Required",
 			comp: sc.Any("div", sc.Required()),
 			check: func(t *testing.T, comp sc.Component) {
 				require.True(t, comp.HasRequired())
 			},
 		},
 		{
-			name: "test WithRequired missing",
+			name: "test Required missing",
 			comp: sc.Any("div"),
 			check: func(t *testing.T, comp sc.Component) {
 				require.False(t, comp.HasRequired())
 			},
 		},
 		{
-			name: "test WithHidden",
+			name: "test Hidden",
 			comp: sc.Any("div", sc.Hidden()),
 			check: func(t *testing.T, comp sc.Component) {
 				require.True(t, comp.HasHidden())
 			},
 		},
 		{
-			name: "test WithHidden missing",
+			name: "test Hidden missing",
 			comp: sc.Any("div"),
 			check: func(t *testing.T, comp sc.Component) {
 				require.False(t, comp.HasHidden())
@@ -308,7 +308,7 @@ func TestComponent_Children(t *testing.T) {
 		require.Empty(t, component.GetChildren()[2].GetChildren())
 	})
 
-	t.Run("WithChildren overwrite", func(t *testing.T) {
+	t.Run("Children overwrite", func(t *testing.T) {
 		component := sc.Any("div",
 			sc.Children(sc.Any("div"), sc.Any("div")),
 			sc.Children(sc.Any("div")),
@@ -317,7 +317,7 @@ func TestComponent_Children(t *testing.T) {
 		require.Len(t, component.GetChildren(), 1, "should have 1 child on overwrite")
 	})
 
-	t.Run("WithChildren and WithChildrenAppend", func(t *testing.T) {
+	t.Run("Children and ChildrenAppend", func(t *testing.T) {
 		component := sc.Any("div",
 			sc.Children(sc.Any("div"), sc.Any("div")),
 			sc.ChildrenAppend(sc.Any("div")),
