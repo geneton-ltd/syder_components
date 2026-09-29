@@ -47,7 +47,7 @@ func hasIconButtonClasses(t *testing.T, class string) {
 }
 
 func TestIconButton_Merging(t *testing.T) {
-	comp := sc.IconButton(sc.Any("div"), sc.ClassAppend("custom-class"))
+	comp := sc.IconButton(sc.Div(), sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Button style
@@ -68,7 +68,7 @@ func TestIconButton_Merging(t *testing.T) {
 }
 
 func TestIconOnlyButton_Merging(t *testing.T) {
-	comp := sc.IconOnlyButton(sc.Any("div"), sc.ClassAppend("custom-class"))
+	comp := sc.IconOnlyButton(sc.Div(), sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Button style
