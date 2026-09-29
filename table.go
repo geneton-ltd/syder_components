@@ -62,7 +62,7 @@ func Th(opts ...Option) Component {
 	return n
 }
 
-// Td returns a HTML5 <td> element with defaut spacing.
+// Td returns a HTML5 <td> element with default spacing.
 func Td(opts ...Option) Component {
 	n := newComponent("px-3 py-2 whitespace-nowrap text-gray-900", opts...)
 	n.content = h.Td(n.manuallySetAttributes())

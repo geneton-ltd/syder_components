@@ -3,7 +3,7 @@ package sydercomponents
 import h "maragu.dev/gomponents/html"
 
 // Dialog returns a HTML5 <dialog> element. For attachment to happen, pass
-// ID option and then DialogTrigger with the same id to the trigger
+// [ID] option and then [DialogTrigger] with the same id to the trigger
 // element (e.g. a button). Attachment is performed automatically.
 //
 // Example:

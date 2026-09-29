@@ -3,7 +3,7 @@ package sydercomponents
 import h "maragu.dev/gomponents/html"
 
 // Popover returns a HTML5 <div> element that floats natively using the Popover API.
-// For attachment to happen, pass ID option and then PopoverTrigger with
+// For attachment to happen, pass [ID] option and then [PopoverTrigger] with
 // the same id to the trigger element (e.g. a button).
 //
 // Example:
