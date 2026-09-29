@@ -24,7 +24,7 @@ func main() {
 		sc.ID(settingsModalID),
 		sc.ClassAppend("!p-0 top-[50px] left-[150px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
 		sc.Children(
-			sc.Any("div",
+			sc.Div(
 				sc.Class("flex flex-col h-full"),
 				sc.Children(
 					sc.NavLink(
@@ -45,7 +45,7 @@ func main() {
 	navbar := sc.Navbar(
 		sc.ID("main-nav"),
 		sc.Children(
-			sc.Any("div",
+			sc.Div(
 				sc.Class("flex h-full"),
 				sc.Children(
 					sc.NavLink(
@@ -101,7 +101,7 @@ func main() {
 	dashboardCard := sc.Card(
 		sc.ClassAppend("bg-white p-3"),
 		sc.Children(
-			sc.Any("div",
+			sc.Div(
 				sc.Class("flex justify-between items-center mb-4"),
 				sc.Nodes(
 					h.H2(h.Class("text-xl font-bold"), g.Text("Team Members")),
@@ -135,8 +135,7 @@ func main() {
 		sc.ID(modalID),
 		sc.ClassAppend("w-full max-w-md p-6"),
 		sc.Children(
-			sc.Any(
-				"div",
+			sc.Div(
 				sc.Class("flex flex-col gap-4"),
 				sc.Nodes(
 					h.H3(h.Class("text-lg font-bold border-b pb-2"), g.Text("Create New User")),
@@ -152,10 +151,10 @@ func main() {
 		),
 	)
 
-	content := sc.Any("div",
+	content := sc.Div(
 		sc.Class("w-full flex justify-center p-8 bg-gray-50 min-h-screen"),
 		sc.Children(
-			sc.Any("div",
+			sc.Div(
 				sc.Class("w-full max-w-5xl flex flex-col gap-4"),
 				sc.Children(
 					dashboardCard,
