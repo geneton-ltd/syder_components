@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg)
 
-Reusable, composable and testable frontend components to be used alongside the [gomponents](https://github.com/maragudk/gomponents) library.
+Reusable, composable and testable frontend components built on top of the [gomponents](https://github.com/maragudk/gomponents) library.
 
 ## 1. Installation
 
@@ -112,7 +112,7 @@ make tw
 ```
 
 ## 5. Core concepts
-The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Nodes` (for *gomponents* nodes) or with `Children` (for our `Component` nodes). Both of those options together with the `Class` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `NodeAppend`, `ChildrenAppend` and `ClassAppend` options are provided. Raw text nodes can be create with the `Text(val string)` component, which can be tested with the `GetText` method. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
+The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Children` (for our `Component` nodes). Thhe `Children` option together with the `Class` option overwrite the children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `ChildrenAppend` and `ClassAppend` options are provided. Escaped text nodes can be created with the `Text(val string)` component, which can be tested with the `GetText` method. For unescaped texts the `Raw` component is available. To add `gomponents.Node` to children, wrap it inside the `Wrap` component. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 
@@ -125,7 +125,6 @@ Here is the list of some things to have in mind when using some of the component
 - `DialogRelative` requires using `relative` class on its parent element.
 - `Dialog` (and `Popover` component for closing) requires passing the element id to the trigger element with the `DialogTrigger` (or `PopoverTrigger`) options.
 - `Dialog` and `Popover` elements rely on the `DialogTrigger/PopoverTrigger/DialogClose/PopoverClose` options, which add the `command/commandfor/popovertarget/popovertargetaction` attributes, which rely on the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API). This API is supported in all modern browsers, but it is quite new and therefore might not be supported in all old browsers.
-- `Empty` is supposed to be used as a replacement for `gomponents.If`, if you want to achieve 100% testability.
 
 ## License
 Syder Components is available under the MIT license. See the LICENSE file for more info.
