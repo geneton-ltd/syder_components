@@ -14,6 +14,6 @@ func Card(opts ...Option) Component {
 // Subcard returns a [Card] designed for grouping nested content.
 // It applies a dashed border to visually separate it from primary cards.
 func SubCard(opts ...Option) Component {
-	options := append([]Option{WithClassAppend("border-dashed hover:bg-white")}, opts...)
+	options := append([]Option{ClassAppend("border-dashed hover:bg-white")}, opts...)
 	return Card(options...)
 }

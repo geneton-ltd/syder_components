@@ -9,7 +9,7 @@ import (
 
 func TestCard_Options(t *testing.T) {
 	// create card component with options
-	comp := sc.Card(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Card(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -35,12 +35,12 @@ func TestCard_DefaultStyle(t *testing.T) {
 
 func TestCard_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Card(sc.WithID(id))
+	comp := sc.Card(sc.ID(id))
 	assertElementWithIDExists(t, comp, "div", id)
 }
 
 func TestSubCard_Merging(t *testing.T) {
-	comp := sc.SubCard(sc.WithClassAppend("custom-class"))
+	comp := sc.SubCard(sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Card style

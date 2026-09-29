@@ -9,7 +9,7 @@ import (
 
 func TestDialog_Options(t *testing.T) {
 	// create dialog component with options
-	comp := sc.Dialog(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Dialog(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -33,12 +33,12 @@ func TestDialog_DefaultStyle(t *testing.T) {
 
 func TestDialog_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dialog(sc.WithID(id))
+	comp := sc.Dialog(sc.ID(id))
 	assertElementWithIDExists(t, comp, "dialog", id)
 }
 
 func TestDialogRelative_Merging(t *testing.T) {
-	comp := sc.DialogRelative(sc.WithClassAppend("custom-class"))
+	comp := sc.DialogRelative(sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Dialog style
@@ -53,7 +53,7 @@ func TestDialogRelative_Merging(t *testing.T) {
 }
 
 func TestDialogFixedCentered_Merging(t *testing.T) {
-	comp := sc.DialogFixedCentered(sc.WithClassAppend("custom-class"))
+	comp := sc.DialogFixedCentered(sc.ClassAppend("custom-class"))
 	class := comp.GetClass()
 
 	// has the default Dialog style

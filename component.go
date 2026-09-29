@@ -23,43 +23,43 @@ type Component struct {
 // or children before the component is rendered.
 type Option func(c *Component)
 
-// WithChildrenAppend appends nested Component elements to the component.
-func WithChildrenAppend(value ...Component) Option {
+// ChildrenAppend appends nested Component elements to the component.
+func ChildrenAppend(value ...Component) Option {
 	return func(c *Component) {
 		c.children = append(c.children, value...)
 	}
 }
 
-// WithChildren overwrites nested Component elements of the component.
-func WithChildren(value ...Component) Option {
+// Children overwrites nested Component elements of the component.
+func Children(value ...Component) Option {
 	return func(c *Component) {
 		c.children = value
 	}
 }
 
-// WithNodeAppend appends nested gomponents nodes to the component.
-func WithNodeAppend(value g.Node) Option {
+// NodeAppend appends nested gomponents nodes to the component.
+func NodeAppend(value g.Node) Option {
 	return func(c *Component) {
 		c.nodes = append(c.nodes, value)
 	}
 }
 
-// WithNodes overwrites nested gomponents nodes of the component.
-func WithNodes(value ...g.Node) Option {
+// Nodes overwrites nested gomponents nodes of the component.
+func Nodes(value ...g.Node) Option {
 	return func(c *Component) {
 		c.nodes = value
 	}
 }
 
-// WithAttribute sets a custom HTML attribute.
-func WithAttribute(name, value string) Option {
+// Attribute sets a custom HTML attribute.
+func Attribute(name, value string) Option {
 	return func(c *Component) {
 		c.attrs[name] = value
 	}
 }
 
-// WithClassAppend safely adds a new CSS class to the component without overwriting existing classes.
-func WithClassAppend(value string) Option {
+// ClassAppend safely adds a new CSS class to the component without overwriting existing classes.
+func ClassAppend(value string) Option {
 	return func(c *Component) {
 		if value == "" {
 			return
@@ -75,149 +75,149 @@ func WithClassAppend(value string) Option {
 	}
 }
 
-// WithClass sets the exact CSS class string, overwrites any existing classes.
-func WithClass(value string) Option {
+// Class sets the exact CSS class string, overwrites any existing classes.
+func Class(value string) Option {
 	return func(c *Component) {
 		c.attrs["class"] = value
 	}
 }
 
-// WithID sets the HTML id attribute.
-func WithID(value string) Option {
+// ID sets the HTML id attribute.
+func ID(value string) Option {
 	return func(c *Component) {
 		c.attrs["id"] = value
 	}
 }
 
-// WithHidden sets the HTML hidden attribute.
-func WithHidden() Option {
+// Hidden sets the HTML hidden attribute.
+func Hidden() Option {
 	return func(c *Component) {
 		c.attrs["hidden"] = ""
 	}
 }
 
-// WithDisabled sets the HTML disabled attribute.
-func WithDisabled() Option {
+// Disabled sets the HTML disabled attribute.
+func Disabled() Option {
 	return func(c *Component) {
 		c.attrs["disabled"] = ""
 	}
 }
 
-// WithRequired sets the HTML required attribute.
-func WithRequired() Option {
+// Required sets the HTML required attribute.
+func Required() Option {
 	return func(c *Component) {
 		c.attrs["required"] = ""
 	}
 }
 
-// WithData sets the HTML data-* attribute.
-func WithData(key, value string) Option {
+// Data sets the HTML data-* attribute.
+func Data(key, value string) Option {
 	return func(c *Component) {
 		c.attrs["data-"+key] = value
 	}
 }
 
-// WithDialogTrigger sets the required attributes to the trigger element.
-func WithDialogTrigger(dialogID string) Option {
+// DialogTrigger sets the required attributes to the trigger element.
+func DialogTrigger(dialogID string) Option {
 	return func(c *Component) {
-		WithAttribute("commandfor", dialogID)(c)
-		WithAttribute("command", "show-modal")(c)
+		Attribute("commandfor", dialogID)(c)
+		Attribute("command", "show-modal")(c)
 	}
 }
 
-// WithDialogClose sets the required attributes to the closing element.
-func WithDialogClose(dialogID string) Option {
+// DialogClose sets the required attributes to the closing element.
+func DialogClose(dialogID string) Option {
 	return func(c *Component) {
-		WithAttribute("commandfor", dialogID)(c)
-		WithAttribute("command", "close")(c)
+		Attribute("commandfor", dialogID)(c)
+		Attribute("command", "close")(c)
 	}
 }
 
-// WithPopoverTrigger sets the required attribute for non-modal dialog trigger element.
-func WithPopoverTrigger(dialogID string) Option {
-	return WithAttribute("popovertarget", dialogID)
+// PopoverTrigger sets the required attribute for non-modal dialog trigger element.
+func PopoverTrigger(dialogID string) Option {
+	return Attribute("popovertarget", dialogID)
 }
 
-// WithPopoverClose sets the required attributes for non-modal dialog closing element.
-func WithPopoverClose(dialogID string) Option {
+// PopoverClose sets the required attributes for non-modal dialog closing element.
+func PopoverClose(dialogID string) Option {
 	return func(c *Component) {
-		WithAttribute("popovertarget", dialogID)(c)
-		WithAttribute("popovertargetaction", "hide")(c)
+		Attribute("popovertarget", dialogID)(c)
+		Attribute("popovertargetaction", "hide")(c)
 	}
 }
 
-// WithAria sets the HTML aria-* attribute.
-func WithAria(key, value string) Option {
+// Aria sets the HTML aria-* attribute.
+func Aria(key, value string) Option {
 	return func(c *Component) {
 		c.attrs["aria-"+key] = value
 	}
 }
 
-// WithStyle sets the HTML style attribute.
-func WithStyle(value string) Option {
+// Style sets the HTML style attribute.
+func Style(value string) Option {
 	return func(c *Component) {
 		c.attrs["style"] = value
 	}
 }
 
-// WithName sets the HTML name attribute.
-func WithName(value string) Option {
+// Name sets the HTML name attribute.
+func Name(value string) Option {
 	return func(c *Component) {
 		c.attrs["name"] = value
 	}
 }
 
-// WithType sets the HTML type attribute.
-func WithType(value string) Option {
+// Type sets the HTML type attribute.
+func Type(value string) Option {
 	return func(c *Component) {
 		c.attrs["type"] = value
 	}
 }
 
-// WithPlaceholder sets the HTML placeholder attribute.
-func WithPlaceholder(value string) Option {
+// Placeholder sets the HTML placeholder attribute.
+func Placeholder(value string) Option {
 	return func(c *Component) {
 		c.attrs["placeholder"] = value
 	}
 }
 
-// WithValue sets the HTML value attribute.
-func WithValue(value string) Option {
+// Value sets the HTML value attribute.
+func Value(value string) Option {
 	return func(c *Component) {
 		c.attrs["value"] = value
 	}
 }
 
-// WithSrc sets the HTML src attribute.
-func WithSrc(value string) Option {
+// Src sets the HTML src attribute.
+func Src(value string) Option {
 	return func(c *Component) {
 		c.attrs["src"] = value
 	}
 }
 
-// WithAlt sets the HTML alt attribute.
-func WithAlt(value string) Option {
+// Alt sets the HTML alt attribute.
+func Alt(value string) Option {
 	return func(c *Component) {
 		c.attrs["alt"] = value
 	}
 }
 
-// WithHref sets the HTML href attribute.
-func WithHref(value string) Option {
+// Href sets the HTML href attribute.
+func Href(value string) Option {
 	return func(c *Component) {
 		c.attrs["href"] = value
 	}
 }
 
-// WithTarget sets the HTML target attribute.
-func WithTarget(value string) Option {
+// Target sets the HTML target attribute.
+func Target(value string) Option {
 	return func(c *Component) {
 		c.attrs["target"] = value
 	}
 }
 
-// WithTabIndex sets the HTML tabindex attribute.
-func WithTabIndex(value int) Option {
+// TabIndex sets the HTML tabindex attribute.
+func TabIndex(value int) Option {
 	return func(c *Component) {
 		c.attrs["tabindex"] = strconv.Itoa(value)
 	}
@@ -249,7 +249,7 @@ func (c Component) GetClass() string {
 	return c.attrs["class"]
 }
 
-// GetID returns the element id, but only if WithID was called.
+// GetID returns the element id, but only if ID was called.
 func (c Component) GetID() string {
 	return c.attrs["id"]
 }
@@ -373,8 +373,8 @@ func (c Component) HasRequired() bool {
 
 // manuallySetAttributes is supposed to be called for every
 // new component. It injects all manually set attributes, such as
-// class (via the WithClass hook), ID (via the WithID hook)
-// children (via the WithChildren hook) and others.
+// class (via the [Class] hook), ID (via the [ID] hook)
+// children (via the [Children] hook) and others.
 func (c Component) manuallySetAttributes() g.Group {
 	nodes := make([]g.Node, 0, len(c.attrs)+1)
 	for key, value := range c.attrs {

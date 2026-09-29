@@ -9,7 +9,7 @@ import (
 
 func TestPopover_Options(t *testing.T) {
 	// create popover component with options
-	comp := sc.Popover(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Popover(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	require.Equal(t, "id", comp.GetID())
@@ -37,6 +37,6 @@ func TestPopover_DefaultStyle(t *testing.T) {
 
 func TestPopover_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Popover(sc.WithID(id))
+	comp := sc.Popover(sc.ID(id))
 	assertElementWithIDExists(t, comp, "div", id)
 }

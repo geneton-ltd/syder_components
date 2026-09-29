@@ -9,7 +9,7 @@ import (
 
 // <a>
 func TestA_Options(t *testing.T) {
-	comp := sc.A(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.A(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -19,13 +19,13 @@ func TestA_Options(t *testing.T) {
 
 func TestA_Output(t *testing.T) {
 	id := "id"
-	comp := sc.A(sc.WithID(id))
+	comp := sc.A(sc.ID(id))
 	assertElementWithIDExists(t, comp, "a", id)
 }
 
 // <abbr>
 func TestAbbr_Options(t *testing.T) {
-	comp := sc.Abbr(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Abbr(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -35,13 +35,13 @@ func TestAbbr_Options(t *testing.T) {
 
 func TestAbbr_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Abbr(sc.WithID(id))
+	comp := sc.Abbr(sc.ID(id))
 	assertElementWithIDExists(t, comp, "abbr", id)
 }
 
 // <address>
 func TestAddress_Options(t *testing.T) {
-	comp := sc.Address(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Address(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -51,13 +51,13 @@ func TestAddress_Options(t *testing.T) {
 
 func TestAddress_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Address(sc.WithID(id))
+	comp := sc.Address(sc.ID(id))
 	assertElementWithIDExists(t, comp, "address", id)
 }
 
 // <area>
 func TestArea_Options(t *testing.T) {
-	comp := sc.Area(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Area(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -67,13 +67,13 @@ func TestArea_Options(t *testing.T) {
 
 func TestArea_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Area(sc.WithID(id))
+	comp := sc.Area(sc.ID(id))
 	assertElementWithIDExists(t, comp, "area", id)
 }
 
 // <article>
 func TestArticle_Options(t *testing.T) {
-	comp := sc.Article(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Article(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -83,13 +83,13 @@ func TestArticle_Options(t *testing.T) {
 
 func TestArticle_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Article(sc.WithID(id))
+	comp := sc.Article(sc.ID(id))
 	assertElementWithIDExists(t, comp, "article", id)
 }
 
 // <aside>
 func TestAside_Options(t *testing.T) {
-	comp := sc.Aside(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Aside(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -99,13 +99,13 @@ func TestAside_Options(t *testing.T) {
 
 func TestAside_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Aside(sc.WithID(id))
+	comp := sc.Aside(sc.ID(id))
 	assertElementWithIDExists(t, comp, "aside", id)
 }
 
 // <audio>
 func TestAudio_Options(t *testing.T) {
-	comp := sc.Audio(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Audio(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -115,13 +115,13 @@ func TestAudio_Options(t *testing.T) {
 
 func TestAudio_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Audio(sc.WithID(id))
+	comp := sc.Audio(sc.ID(id))
 	assertElementWithIDExists(t, comp, "audio", id)
 }
 
 // <b>
 func TestB_Options(t *testing.T) {
-	comp := sc.B(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.B(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -131,13 +131,13 @@ func TestB_Options(t *testing.T) {
 
 func TestB_Output(t *testing.T) {
 	id := "id"
-	comp := sc.B(sc.WithID(id))
+	comp := sc.B(sc.ID(id))
 	assertElementWithIDExists(t, comp, "b", id)
 }
 
 // <base>
 func TestBase_Options(t *testing.T) {
-	comp := sc.Base(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Base(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -147,13 +147,13 @@ func TestBase_Options(t *testing.T) {
 
 func TestBase_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Base(sc.WithID(id))
+	comp := sc.Base(sc.ID(id))
 	assertElementWithIDExists(t, comp, "base", id)
 }
 
 // <bdi>
 func TestBdi_Options(t *testing.T) {
-	comp := sc.Bdi(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Bdi(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -163,13 +163,13 @@ func TestBdi_Options(t *testing.T) {
 
 func TestBdi_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Bdi(sc.WithID(id))
+	comp := sc.Bdi(sc.ID(id))
 	assertElementWithIDExists(t, comp, "bdi", id)
 }
 
 // <bdo>
 func TestBdo_Options(t *testing.T) {
-	comp := sc.Bdo(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Bdo(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -179,13 +179,13 @@ func TestBdo_Options(t *testing.T) {
 
 func TestBdo_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Bdo(sc.WithID(id))
+	comp := sc.Bdo(sc.ID(id))
 	assertElementWithIDExists(t, comp, "bdo", id)
 }
 
 // <blockquote>
 func TestBlockquote_Options(t *testing.T) {
-	comp := sc.Blockquote(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Blockquote(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -195,13 +195,13 @@ func TestBlockquote_Options(t *testing.T) {
 
 func TestBlockquote_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Blockquote(sc.WithID(id))
+	comp := sc.Blockquote(sc.ID(id))
 	assertElementWithIDExists(t, comp, "blockquote", id)
 }
 
 // <body>
 func TestBody_Options(t *testing.T) {
-	comp := sc.Body(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Body(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -211,13 +211,13 @@ func TestBody_Options(t *testing.T) {
 
 func TestBody_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Body(sc.WithID(id))
+	comp := sc.Body(sc.ID(id))
 	assertElementWithIDExists(t, comp, "body", id)
 }
 
 // <br>
 func TestBr_Options(t *testing.T) {
-	comp := sc.Br(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Br(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -227,13 +227,13 @@ func TestBr_Options(t *testing.T) {
 
 func TestBr_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Br(sc.WithID(id))
+	comp := sc.Br(sc.ID(id))
 	assertElementWithIDExists(t, comp, "br", id)
 }
 
 // <canvas>
 func TestCanvas_Options(t *testing.T) {
-	comp := sc.Canvas(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Canvas(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -243,13 +243,13 @@ func TestCanvas_Options(t *testing.T) {
 
 func TestCanvas_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Canvas(sc.WithID(id))
+	comp := sc.Canvas(sc.ID(id))
 	assertElementWithIDExists(t, comp, "canvas", id)
 }
 
 // <cite>
 func TestCite_Options(t *testing.T) {
-	comp := sc.Cite(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Cite(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -259,13 +259,13 @@ func TestCite_Options(t *testing.T) {
 
 func TestCite_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Cite(sc.WithID(id))
+	comp := sc.Cite(sc.ID(id))
 	assertElementWithIDExists(t, comp, "cite", id)
 }
 
 // <code>
 func TestCode_Options(t *testing.T) {
-	comp := sc.Code(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Code(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -275,29 +275,13 @@ func TestCode_Options(t *testing.T) {
 
 func TestCode_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Code(sc.WithID(id))
+	comp := sc.Code(sc.ID(id))
 	assertElementWithIDExists(t, comp, "code", id)
-}
-
-// <data>
-func TestData_Options(t *testing.T) {
-	comp := sc.Data(sc.WithID("id"), sc.WithData("name", "john"))
-
-	require.Equal(t, "id", comp.GetID())
-	v, has := comp.GetData("name")
-	require.Equal(t, "john", v)
-	require.True(t, has)
-}
-
-func TestData_Output(t *testing.T) {
-	id := "id"
-	comp := sc.Data(sc.WithID(id))
-	assertElementWithIDExists(t, comp, "data", id)
 }
 
 // <datalist>
 func TestDatalist_Options(t *testing.T) {
-	comp := sc.Datalist(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Datalist(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -307,13 +291,13 @@ func TestDatalist_Options(t *testing.T) {
 
 func TestDatalist_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Datalist(sc.WithID(id))
+	comp := sc.Datalist(sc.ID(id))
 	assertElementWithIDExists(t, comp, "datalist", id)
 }
 
 // <dd>
 func TestDd_Options(t *testing.T) {
-	comp := sc.Dd(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Dd(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -323,13 +307,13 @@ func TestDd_Options(t *testing.T) {
 
 func TestDd_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dd(sc.WithID(id))
+	comp := sc.Dd(sc.ID(id))
 	assertElementWithIDExists(t, comp, "dd", id)
 }
 
 // <del>
 func TestDel_Options(t *testing.T) {
-	comp := sc.Del(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Del(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -339,13 +323,13 @@ func TestDel_Options(t *testing.T) {
 
 func TestDel_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Del(sc.WithID(id))
+	comp := sc.Del(sc.ID(id))
 	assertElementWithIDExists(t, comp, "del", id)
 }
 
 // <details>
 func TestDetails_Options(t *testing.T) {
-	comp := sc.Details(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Details(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -355,13 +339,13 @@ func TestDetails_Options(t *testing.T) {
 
 func TestDetails_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Details(sc.WithID(id))
+	comp := sc.Details(sc.ID(id))
 	assertElementWithIDExists(t, comp, "details", id)
 }
 
 // <dfn>
 func TestDfn_Options(t *testing.T) {
-	comp := sc.Dfn(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Dfn(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -371,13 +355,13 @@ func TestDfn_Options(t *testing.T) {
 
 func TestDfn_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dfn(sc.WithID(id))
+	comp := sc.Dfn(sc.ID(id))
 	assertElementWithIDExists(t, comp, "dfn", id)
 }
 
 // <div>
 func TestDiv_Options(t *testing.T) {
-	comp := sc.Div(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Div(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -387,13 +371,13 @@ func TestDiv_Options(t *testing.T) {
 
 func TestDiv_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Div(sc.WithID(id))
+	comp := sc.Div(sc.ID(id))
 	assertElementWithIDExists(t, comp, "div", id)
 }
 
 // <dl>
 func TestDl_Options(t *testing.T) {
-	comp := sc.Dl(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Dl(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -403,13 +387,13 @@ func TestDl_Options(t *testing.T) {
 
 func TestDl_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dl(sc.WithID(id))
+	comp := sc.Dl(sc.ID(id))
 	assertElementWithIDExists(t, comp, "dl", id)
 }
 
 // <dt>
 func TestDt_Options(t *testing.T) {
-	comp := sc.Dt(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Dt(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -419,13 +403,13 @@ func TestDt_Options(t *testing.T) {
 
 func TestDt_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dt(sc.WithID(id))
+	comp := sc.Dt(sc.ID(id))
 	assertElementWithIDExists(t, comp, "dt", id)
 }
 
 // <em>
 func TestEm_Options(t *testing.T) {
-	comp := sc.Em(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Em(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -435,13 +419,13 @@ func TestEm_Options(t *testing.T) {
 
 func TestEm_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Em(sc.WithID(id))
+	comp := sc.Em(sc.ID(id))
 	assertElementWithIDExists(t, comp, "em", id)
 }
 
 // <embed>
 func TestEmbed_Options(t *testing.T) {
-	comp := sc.Embed(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Embed(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -451,13 +435,13 @@ func TestEmbed_Options(t *testing.T) {
 
 func TestEmbed_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Embed(sc.WithID(id))
+	comp := sc.Embed(sc.ID(id))
 	assertElementWithIDExists(t, comp, "embed", id)
 }
 
 // <fieldset>
 func TestFieldset_Options(t *testing.T) {
-	comp := sc.Fieldset(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Fieldset(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -467,13 +451,13 @@ func TestFieldset_Options(t *testing.T) {
 
 func TestFieldset_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Fieldset(sc.WithID(id))
+	comp := sc.Fieldset(sc.ID(id))
 	assertElementWithIDExists(t, comp, "fieldset", id)
 }
 
 // <figcaption>
 func TestFigcaption_Options(t *testing.T) {
-	comp := sc.Figcaption(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Figcaption(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -483,13 +467,13 @@ func TestFigcaption_Options(t *testing.T) {
 
 func TestFigcaption_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Figcaption(sc.WithID(id))
+	comp := sc.Figcaption(sc.ID(id))
 	assertElementWithIDExists(t, comp, "figcaption", id)
 }
 
 // <figure>
 func TestFigure_Options(t *testing.T) {
-	comp := sc.Figure(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Figure(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -499,13 +483,13 @@ func TestFigure_Options(t *testing.T) {
 
 func TestFigure_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Figure(sc.WithID(id))
+	comp := sc.Figure(sc.ID(id))
 	assertElementWithIDExists(t, comp, "figure", id)
 }
 
 // <footer>
 func TestFooter_Options(t *testing.T) {
-	comp := sc.Footer(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Footer(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -515,13 +499,13 @@ func TestFooter_Options(t *testing.T) {
 
 func TestFooter_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Footer(sc.WithID(id))
+	comp := sc.Footer(sc.ID(id))
 	assertElementWithIDExists(t, comp, "footer", id)
 }
 
 // <form>
 func TestForm_Options(t *testing.T) {
-	comp := sc.Form(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Form(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -531,13 +515,13 @@ func TestForm_Options(t *testing.T) {
 
 func TestForm_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Form(sc.WithID(id))
+	comp := sc.Form(sc.ID(id))
 	assertElementWithIDExists(t, comp, "form", id)
 }
 
 // <h1>
 func TestH1_Options(t *testing.T) {
-	comp := sc.H1(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.H1(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -547,13 +531,13 @@ func TestH1_Options(t *testing.T) {
 
 func TestH1_Output(t *testing.T) {
 	id := "id"
-	comp := sc.H1(sc.WithID(id))
+	comp := sc.H1(sc.ID(id))
 	assertElementWithIDExists(t, comp, "h1", id)
 }
 
 // <h2>
 func TestH2_Options(t *testing.T) {
-	comp := sc.H2(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.H2(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -563,13 +547,13 @@ func TestH2_Options(t *testing.T) {
 
 func TestH2_Output(t *testing.T) {
 	id := "id"
-	comp := sc.H2(sc.WithID(id))
+	comp := sc.H2(sc.ID(id))
 	assertElementWithIDExists(t, comp, "h2", id)
 }
 
 // <h3>
 func TestH3_Options(t *testing.T) {
-	comp := sc.H3(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.H3(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -579,13 +563,13 @@ func TestH3_Options(t *testing.T) {
 
 func TestH3_Output(t *testing.T) {
 	id := "id"
-	comp := sc.H3(sc.WithID(id))
+	comp := sc.H3(sc.ID(id))
 	assertElementWithIDExists(t, comp, "h3", id)
 }
 
 // <h4>
 func TestH4_Options(t *testing.T) {
-	comp := sc.H4(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.H4(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -595,13 +579,13 @@ func TestH4_Options(t *testing.T) {
 
 func TestH4_Output(t *testing.T) {
 	id := "id"
-	comp := sc.H4(sc.WithID(id))
+	comp := sc.H4(sc.ID(id))
 	assertElementWithIDExists(t, comp, "h4", id)
 }
 
 // <h5>
 func TestH5_Options(t *testing.T) {
-	comp := sc.H5(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.H5(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -611,13 +595,13 @@ func TestH5_Options(t *testing.T) {
 
 func TestH5_Output(t *testing.T) {
 	id := "id"
-	comp := sc.H5(sc.WithID(id))
+	comp := sc.H5(sc.ID(id))
 	assertElementWithIDExists(t, comp, "h5", id)
 }
 
 // <h6>
 func TestH6_Options(t *testing.T) {
-	comp := sc.H6(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.H6(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -627,13 +611,13 @@ func TestH6_Options(t *testing.T) {
 
 func TestH6_Output(t *testing.T) {
 	id := "id"
-	comp := sc.H6(sc.WithID(id))
+	comp := sc.H6(sc.ID(id))
 	assertElementWithIDExists(t, comp, "h6", id)
 }
 
 // <head>
 func TestHead_Options(t *testing.T) {
-	comp := sc.Head(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Head(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -643,13 +627,13 @@ func TestHead_Options(t *testing.T) {
 
 func TestHead_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Head(sc.WithID(id))
+	comp := sc.Head(sc.ID(id))
 	assertElementWithIDExists(t, comp, "head", id)
 }
 
 // <header>
 func TestHeader_Options(t *testing.T) {
-	comp := sc.Header(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Header(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -659,13 +643,13 @@ func TestHeader_Options(t *testing.T) {
 
 func TestHeader_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Header(sc.WithID(id))
+	comp := sc.Header(sc.ID(id))
 	assertElementWithIDExists(t, comp, "header", id)
 }
 
 // <hgroup>
 func TestHgroup_Options(t *testing.T) {
-	comp := sc.Hgroup(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Hgroup(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -675,13 +659,13 @@ func TestHgroup_Options(t *testing.T) {
 
 func TestHgroup_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Hgroup(sc.WithID(id))
+	comp := sc.Hgroup(sc.ID(id))
 	assertElementWithIDExists(t, comp, "hgroup", id)
 }
 
 // <hr>
 func TestHr_Options(t *testing.T) {
-	comp := sc.Hr(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Hr(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -691,13 +675,13 @@ func TestHr_Options(t *testing.T) {
 
 func TestHr_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Hr(sc.WithID(id))
+	comp := sc.Hr(sc.ID(id))
 	assertElementWithIDExists(t, comp, "hr", id)
 }
 
 // <html>
 func TestHtml_Options(t *testing.T) {
-	comp := sc.Html(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Html(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -707,13 +691,13 @@ func TestHtml_Options(t *testing.T) {
 
 func TestHtml_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Html(sc.WithID(id))
+	comp := sc.Html(sc.ID(id))
 	assertElementWithIDExists(t, comp, "html", id)
 }
 
 // <i>
 func TestI_Options(t *testing.T) {
-	comp := sc.I(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.I(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -723,13 +707,13 @@ func TestI_Options(t *testing.T) {
 
 func TestI_Output(t *testing.T) {
 	id := "id"
-	comp := sc.I(sc.WithID(id))
+	comp := sc.I(sc.ID(id))
 	assertElementWithIDExists(t, comp, "i", id)
 }
 
 // <iframe>
 func TestIframe_Options(t *testing.T) {
-	comp := sc.Iframe(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Iframe(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -739,13 +723,13 @@ func TestIframe_Options(t *testing.T) {
 
 func TestIframe_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Iframe(sc.WithID(id))
+	comp := sc.Iframe(sc.ID(id))
 	assertElementWithIDExists(t, comp, "iframe", id)
 }
 
 // <img>
 func TestImg_Options(t *testing.T) {
-	comp := sc.Img(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Img(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -755,13 +739,13 @@ func TestImg_Options(t *testing.T) {
 
 func TestImg_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Img(sc.WithID(id))
+	comp := sc.Img(sc.ID(id))
 	assertElementWithIDExists(t, comp, "img", id)
 }
 
 // <input>
 func TestInput_Options(t *testing.T) {
-	comp := sc.Input(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Input(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -771,13 +755,13 @@ func TestInput_Options(t *testing.T) {
 
 func TestInput_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Input(sc.WithID(id))
+	comp := sc.Input(sc.ID(id))
 	assertElementWithIDExists(t, comp, "input", id)
 }
 
 // <ins>
 func TestIns_Options(t *testing.T) {
-	comp := sc.Ins(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Ins(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -787,13 +771,13 @@ func TestIns_Options(t *testing.T) {
 
 func TestIns_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Ins(sc.WithID(id))
+	comp := sc.Ins(sc.ID(id))
 	assertElementWithIDExists(t, comp, "ins", id)
 }
 
 // <kbd>
 func TestKbd_Options(t *testing.T) {
-	comp := sc.Kbd(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Kbd(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -803,13 +787,13 @@ func TestKbd_Options(t *testing.T) {
 
 func TestKbd_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Kbd(sc.WithID(id))
+	comp := sc.Kbd(sc.ID(id))
 	assertElementWithIDExists(t, comp, "kbd", id)
 }
 
 // <label>
 func TestLabel_Options(t *testing.T) {
-	comp := sc.Label(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Label(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -819,13 +803,13 @@ func TestLabel_Options(t *testing.T) {
 
 func TestLabel_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Label(sc.WithID(id))
+	comp := sc.Label(sc.ID(id))
 	assertElementWithIDExists(t, comp, "label", id)
 }
 
 // <legend>
 func TestLegend_Options(t *testing.T) {
-	comp := sc.Legend(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Legend(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -835,13 +819,13 @@ func TestLegend_Options(t *testing.T) {
 
 func TestLegend_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Legend(sc.WithID(id))
+	comp := sc.Legend(sc.ID(id))
 	assertElementWithIDExists(t, comp, "legend", id)
 }
 
 // <li>
 func TestLi_Options(t *testing.T) {
-	comp := sc.Li(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Li(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -851,13 +835,13 @@ func TestLi_Options(t *testing.T) {
 
 func TestLi_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Li(sc.WithID(id))
+	comp := sc.Li(sc.ID(id))
 	assertElementWithIDExists(t, comp, "li", id)
 }
 
 // <link>
 func TestLink_Options(t *testing.T) {
-	comp := sc.Link(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Link(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -867,13 +851,13 @@ func TestLink_Options(t *testing.T) {
 
 func TestLink_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Link(sc.WithID(id))
+	comp := sc.Link(sc.ID(id))
 	assertElementWithIDExists(t, comp, "link", id)
 }
 
 // <main>
 func TestMain_Options(t *testing.T) {
-	comp := sc.Main(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Main(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -883,13 +867,13 @@ func TestMain_Options(t *testing.T) {
 
 func TestMain_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Main(sc.WithID(id))
+	comp := sc.Main(sc.ID(id))
 	assertElementWithIDExists(t, comp, "main", id)
 }
 
 // <map>
 func TestMap_Options(t *testing.T) {
-	comp := sc.Map(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Map(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -899,13 +883,13 @@ func TestMap_Options(t *testing.T) {
 
 func TestMap_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Map(sc.WithID(id))
+	comp := sc.Map(sc.ID(id))
 	assertElementWithIDExists(t, comp, "map", id)
 }
 
 // <mark>
 func TestMark_Options(t *testing.T) {
-	comp := sc.Mark(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Mark(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -915,13 +899,13 @@ func TestMark_Options(t *testing.T) {
 
 func TestMark_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Mark(sc.WithID(id))
+	comp := sc.Mark(sc.ID(id))
 	assertElementWithIDExists(t, comp, "mark", id)
 }
 
 // <menu>
 func TestMenu_Options(t *testing.T) {
-	comp := sc.Menu(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Menu(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -931,13 +915,13 @@ func TestMenu_Options(t *testing.T) {
 
 func TestMenu_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Menu(sc.WithID(id))
+	comp := sc.Menu(sc.ID(id))
 	assertElementWithIDExists(t, comp, "menu", id)
 }
 
 // <meta>
 func TestMeta_Options(t *testing.T) {
-	comp := sc.Meta(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Meta(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -947,13 +931,13 @@ func TestMeta_Options(t *testing.T) {
 
 func TestMeta_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Meta(sc.WithID(id))
+	comp := sc.Meta(sc.ID(id))
 	assertElementWithIDExists(t, comp, "meta", id)
 }
 
 // <meter>
 func TestMeter_Options(t *testing.T) {
-	comp := sc.Meter(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Meter(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -963,13 +947,13 @@ func TestMeter_Options(t *testing.T) {
 
 func TestMeter_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Meter(sc.WithID(id))
+	comp := sc.Meter(sc.ID(id))
 	assertElementWithIDExists(t, comp, "meter", id)
 }
 
 // <nav>
 func TestNav_Options(t *testing.T) {
-	comp := sc.Nav(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Nav(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -979,13 +963,13 @@ func TestNav_Options(t *testing.T) {
 
 func TestNav_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Nav(sc.WithID(id))
+	comp := sc.Nav(sc.ID(id))
 	assertElementWithIDExists(t, comp, "nav", id)
 }
 
 // <noscript>
 func TestNoscript_Options(t *testing.T) {
-	comp := sc.Noscript(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Noscript(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -995,13 +979,13 @@ func TestNoscript_Options(t *testing.T) {
 
 func TestNoscript_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Noscript(sc.WithID(id))
+	comp := sc.Noscript(sc.ID(id))
 	assertElementWithIDExists(t, comp, "noscript", id)
 }
 
 // <object>
 func TestObject_Options(t *testing.T) {
-	comp := sc.Object(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Object(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1011,13 +995,13 @@ func TestObject_Options(t *testing.T) {
 
 func TestObject_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Object(sc.WithID(id))
+	comp := sc.Object(sc.ID(id))
 	assertElementWithIDExists(t, comp, "object", id)
 }
 
 // <ol>
 func TestOl_Options(t *testing.T) {
-	comp := sc.Ol(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Ol(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1027,13 +1011,13 @@ func TestOl_Options(t *testing.T) {
 
 func TestOl_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Ol(sc.WithID(id))
+	comp := sc.Ol(sc.ID(id))
 	assertElementWithIDExists(t, comp, "ol", id)
 }
 
 // <optgroup>
 func TestOptgroup_Options(t *testing.T) {
-	comp := sc.Optgroup(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Optgroup(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1043,13 +1027,13 @@ func TestOptgroup_Options(t *testing.T) {
 
 func TestOptgroup_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Optgroup(sc.WithID(id))
+	comp := sc.Optgroup(sc.ID(id))
 	assertElementWithIDExists(t, comp, "optgroup", id)
 }
 
 // <output>
 func TestOutput_Options(t *testing.T) {
-	comp := sc.Output(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Output(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1059,13 +1043,13 @@ func TestOutput_Options(t *testing.T) {
 
 func TestOutput_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Output(sc.WithID(id))
+	comp := sc.Output(sc.ID(id))
 	assertElementWithIDExists(t, comp, "output", id)
 }
 
 // <p>
 func TestP_Options(t *testing.T) {
-	comp := sc.P(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.P(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1075,13 +1059,13 @@ func TestP_Options(t *testing.T) {
 
 func TestP_Output(t *testing.T) {
 	id := "id"
-	comp := sc.P(sc.WithID(id))
+	comp := sc.P(sc.ID(id))
 	assertElementWithIDExists(t, comp, "p", id)
 }
 
 // <picture>
 func TestPicture_Options(t *testing.T) {
-	comp := sc.Picture(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Picture(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1091,13 +1075,13 @@ func TestPicture_Options(t *testing.T) {
 
 func TestPicture_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Picture(sc.WithID(id))
+	comp := sc.Picture(sc.ID(id))
 	assertElementWithIDExists(t, comp, "picture", id)
 }
 
 // <pre>
 func TestPre_Options(t *testing.T) {
-	comp := sc.Pre(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Pre(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1107,13 +1091,13 @@ func TestPre_Options(t *testing.T) {
 
 func TestPre_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Pre(sc.WithID(id))
+	comp := sc.Pre(sc.ID(id))
 	assertElementWithIDExists(t, comp, "pre", id)
 }
 
 // <progress>
 func TestProgress_Options(t *testing.T) {
-	comp := sc.Progress(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Progress(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1123,13 +1107,13 @@ func TestProgress_Options(t *testing.T) {
 
 func TestProgress_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Progress(sc.WithID(id))
+	comp := sc.Progress(sc.ID(id))
 	assertElementWithIDExists(t, comp, "progress", id)
 }
 
 // <q>
 func TestQ_Options(t *testing.T) {
-	comp := sc.Q(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Q(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1139,13 +1123,13 @@ func TestQ_Options(t *testing.T) {
 
 func TestQ_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Q(sc.WithID(id))
+	comp := sc.Q(sc.ID(id))
 	assertElementWithIDExists(t, comp, "q", id)
 }
 
 // <rp>
 func TestRp_Options(t *testing.T) {
-	comp := sc.Rp(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Rp(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1155,13 +1139,13 @@ func TestRp_Options(t *testing.T) {
 
 func TestRp_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Rp(sc.WithID(id))
+	comp := sc.Rp(sc.ID(id))
 	assertElementWithIDExists(t, comp, "rp", id)
 }
 
 // <rt>
 func TestRt_Options(t *testing.T) {
-	comp := sc.Rt(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Rt(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1171,13 +1155,13 @@ func TestRt_Options(t *testing.T) {
 
 func TestRt_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Rt(sc.WithID(id))
+	comp := sc.Rt(sc.ID(id))
 	assertElementWithIDExists(t, comp, "rt", id)
 }
 
 // <ruby>
 func TestRuby_Options(t *testing.T) {
-	comp := sc.Ruby(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Ruby(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1187,13 +1171,13 @@ func TestRuby_Options(t *testing.T) {
 
 func TestRuby_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Ruby(sc.WithID(id))
+	comp := sc.Ruby(sc.ID(id))
 	assertElementWithIDExists(t, comp, "ruby", id)
 }
 
 // <s>
 func TestS_Options(t *testing.T) {
-	comp := sc.S(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.S(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1203,13 +1187,13 @@ func TestS_Options(t *testing.T) {
 
 func TestS_Output(t *testing.T) {
 	id := "id"
-	comp := sc.S(sc.WithID(id))
+	comp := sc.S(sc.ID(id))
 	assertElementWithIDExists(t, comp, "s", id)
 }
 
 // <samp>
 func TestSamp_Options(t *testing.T) {
-	comp := sc.Samp(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Samp(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1219,13 +1203,13 @@ func TestSamp_Options(t *testing.T) {
 
 func TestSamp_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Samp(sc.WithID(id))
+	comp := sc.Samp(sc.ID(id))
 	assertElementWithIDExists(t, comp, "samp", id)
 }
 
 // <script>
 func TestScript_Options(t *testing.T) {
-	comp := sc.Script(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Script(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1235,13 +1219,13 @@ func TestScript_Options(t *testing.T) {
 
 func TestScript_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Script(sc.WithID(id))
+	comp := sc.Script(sc.ID(id))
 	assertElementWithIDExists(t, comp, "script", id)
 }
 
 // <search>
 func TestSearch_Options(t *testing.T) {
-	comp := sc.Search(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Search(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1251,13 +1235,13 @@ func TestSearch_Options(t *testing.T) {
 
 func TestSearch_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Search(sc.WithID(id))
+	comp := sc.Search(sc.ID(id))
 	assertElementWithIDExists(t, comp, "search", id)
 }
 
 // <section>
 func TestSection_Options(t *testing.T) {
-	comp := sc.Section(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Section(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1267,13 +1251,13 @@ func TestSection_Options(t *testing.T) {
 
 func TestSection_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Section(sc.WithID(id))
+	comp := sc.Section(sc.ID(id))
 	assertElementWithIDExists(t, comp, "section", id)
 }
 
 // <select>
 func TestSelect_Options(t *testing.T) {
-	comp := sc.Select(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Select(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1283,13 +1267,13 @@ func TestSelect_Options(t *testing.T) {
 
 func TestSelect_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Select(sc.WithID(id))
+	comp := sc.Select(sc.ID(id))
 	assertElementWithIDExists(t, comp, "select", id)
 }
 
 // <selectedcontent>
 func TestSelectedcontent_Options(t *testing.T) {
-	comp := sc.Selectedcontent(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Selectedcontent(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1299,13 +1283,13 @@ func TestSelectedcontent_Options(t *testing.T) {
 
 func TestSelectedcontent_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Selectedcontent(sc.WithID(id))
+	comp := sc.Selectedcontent(sc.ID(id))
 	assertElementWithIDExists(t, comp, "selectedcontent", id)
 }
 
 // <slot>
 func TestSlot_Options(t *testing.T) {
-	comp := sc.Slot(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Slot(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1315,13 +1299,13 @@ func TestSlot_Options(t *testing.T) {
 
 func TestSlot_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Slot(sc.WithID(id))
+	comp := sc.Slot(sc.ID(id))
 	assertElementWithIDExists(t, comp, "slot", id)
 }
 
 // <small>
 func TestSmall_Options(t *testing.T) {
-	comp := sc.Small(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Small(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1331,13 +1315,13 @@ func TestSmall_Options(t *testing.T) {
 
 func TestSmall_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Small(sc.WithID(id))
+	comp := sc.Small(sc.ID(id))
 	assertElementWithIDExists(t, comp, "small", id)
 }
 
 // <source>
 func TestSource_Options(t *testing.T) {
-	comp := sc.Source(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Source(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1347,13 +1331,13 @@ func TestSource_Options(t *testing.T) {
 
 func TestSource_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Source(sc.WithID(id))
+	comp := sc.Source(sc.ID(id))
 	assertElementWithIDExists(t, comp, "source", id)
 }
 
 // <span>
 func TestSpan_Options(t *testing.T) {
-	comp := sc.Span(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Span(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1363,13 +1347,13 @@ func TestSpan_Options(t *testing.T) {
 
 func TestSpan_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Span(sc.WithID(id))
+	comp := sc.Span(sc.ID(id))
 	assertElementWithIDExists(t, comp, "span", id)
 }
 
 // <strong>
 func TestStrong_Options(t *testing.T) {
-	comp := sc.Strong(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Strong(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1379,29 +1363,13 @@ func TestStrong_Options(t *testing.T) {
 
 func TestStrong_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Strong(sc.WithID(id))
+	comp := sc.Strong(sc.ID(id))
 	assertElementWithIDExists(t, comp, "strong", id)
-}
-
-// <style>
-func TestStyle_Options(t *testing.T) {
-	comp := sc.Style(sc.WithID("id"), sc.WithData("name", "john"))
-
-	require.Equal(t, "id", comp.GetID())
-	v, has := comp.GetData("name")
-	require.Equal(t, "john", v)
-	require.True(t, has)
-}
-
-func TestStyle_Output(t *testing.T) {
-	id := "id"
-	comp := sc.Style(sc.WithID(id))
-	assertElementWithIDExists(t, comp, "style", id)
 }
 
 // <sub>
 func TestSub_Options(t *testing.T) {
-	comp := sc.Sub(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Sub(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1411,13 +1379,13 @@ func TestSub_Options(t *testing.T) {
 
 func TestSub_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Sub(sc.WithID(id))
+	comp := sc.Sub(sc.ID(id))
 	assertElementWithIDExists(t, comp, "sub", id)
 }
 
 // <summary>
 func TestSummary_Options(t *testing.T) {
-	comp := sc.Summary(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Summary(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1427,13 +1395,13 @@ func TestSummary_Options(t *testing.T) {
 
 func TestSummary_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Summary(sc.WithID(id))
+	comp := sc.Summary(sc.ID(id))
 	assertElementWithIDExists(t, comp, "summary", id)
 }
 
 // <sup>
 func TestSup_Options(t *testing.T) {
-	comp := sc.Sup(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Sup(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1443,13 +1411,13 @@ func TestSup_Options(t *testing.T) {
 
 func TestSup_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Sup(sc.WithID(id))
+	comp := sc.Sup(sc.ID(id))
 	assertElementWithIDExists(t, comp, "sup", id)
 }
 
 // <template>
 func TestTemplate_Options(t *testing.T) {
-	comp := sc.Template(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Template(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1459,13 +1427,13 @@ func TestTemplate_Options(t *testing.T) {
 
 func TestTemplate_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Template(sc.WithID(id))
+	comp := sc.Template(sc.ID(id))
 	assertElementWithIDExists(t, comp, "template", id)
 }
 
 // <textarea>
 func TestTextarea_Options(t *testing.T) {
-	comp := sc.Textarea(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Textarea(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1475,13 +1443,13 @@ func TestTextarea_Options(t *testing.T) {
 
 func TestTextarea_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Textarea(sc.WithID(id))
+	comp := sc.Textarea(sc.ID(id))
 	assertElementWithIDExists(t, comp, "textarea", id)
 }
 
 // <time>
 func TestTime_Options(t *testing.T) {
-	comp := sc.Time(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Time(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1491,13 +1459,13 @@ func TestTime_Options(t *testing.T) {
 
 func TestTime_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Time(sc.WithID(id))
+	comp := sc.Time(sc.ID(id))
 	assertElementWithIDExists(t, comp, "time", id)
 }
 
 // <title>
 func TestTitle_Options(t *testing.T) {
-	comp := sc.Title(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Title(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1507,13 +1475,13 @@ func TestTitle_Options(t *testing.T) {
 
 func TestTitle_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Title(sc.WithID(id))
+	comp := sc.Title(sc.ID(id))
 	assertElementWithIDExists(t, comp, "title", id)
 }
 
 // <track>
 func TestTrack_Options(t *testing.T) {
-	comp := sc.Track(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Track(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1523,13 +1491,13 @@ func TestTrack_Options(t *testing.T) {
 
 func TestTrack_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Track(sc.WithID(id))
+	comp := sc.Track(sc.ID(id))
 	assertElementWithIDExists(t, comp, "track", id)
 }
 
 // <u>
 func TestU_Options(t *testing.T) {
-	comp := sc.U(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.U(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1539,13 +1507,13 @@ func TestU_Options(t *testing.T) {
 
 func TestU_Output(t *testing.T) {
 	id := "id"
-	comp := sc.U(sc.WithID(id))
+	comp := sc.U(sc.ID(id))
 	assertElementWithIDExists(t, comp, "u", id)
 }
 
 // <ul>
 func TestUl_Options(t *testing.T) {
-	comp := sc.Ul(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Ul(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1555,13 +1523,13 @@ func TestUl_Options(t *testing.T) {
 
 func TestUl_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Ul(sc.WithID(id))
+	comp := sc.Ul(sc.ID(id))
 	assertElementWithIDExists(t, comp, "ul", id)
 }
 
 // <var>
 func TestVar_Options(t *testing.T) {
-	comp := sc.Var(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Var(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1571,13 +1539,13 @@ func TestVar_Options(t *testing.T) {
 
 func TestVar_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Var(sc.WithID(id))
+	comp := sc.Var(sc.ID(id))
 	assertElementWithIDExists(t, comp, "var", id)
 }
 
 // <video>
 func TestVideo_Options(t *testing.T) {
-	comp := sc.Video(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Video(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1587,13 +1555,13 @@ func TestVideo_Options(t *testing.T) {
 
 func TestVideo_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Video(sc.WithID(id))
+	comp := sc.Video(sc.ID(id))
 	assertElementWithIDExists(t, comp, "video", id)
 }
 
 // <wbr>
 func TestWbr_Options(t *testing.T) {
-	comp := sc.Wbr(sc.WithID("id"), sc.WithData("name", "john"))
+	comp := sc.Wbr(sc.ID("id"), sc.Data("name", "john"))
 
 	require.Equal(t, "id", comp.GetID())
 	v, has := comp.GetData("name")
@@ -1603,6 +1571,6 @@ func TestWbr_Options(t *testing.T) {
 
 func TestWbr_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Wbr(sc.WithID(id))
+	comp := sc.Wbr(sc.ID(id))
 	assertElementWithIDExists(t, comp, "wbr", id)
 }
