@@ -47,7 +47,7 @@ func main() {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		btn := sc.Button(
 			sc.ID("helloWorldBtnID"),
-			sc.Nodes(g.Text("Hello, world!")),
+			sc.Children(sc.Text("Hello, world!")),
 		)
 
 		page := co.HTML5(
@@ -86,6 +86,7 @@ The following is the list of all available components:
 | Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass `ID` option and then `PopoverTrigger` with the same id to the trigger element (e.g. a button). |
 | TableContainer | HTML5 `<div>` element meant to function as a container for the *Table* component, while adding horizontal scroll. |
 | Table | HTML5 `<table>` element with head and body separator. |
+| Text | Text returns a raw text node. It is full testable via the `GetText()` method. |
 | THead | HTML5 `<thead>` element with no default style. |
 | TBody | HTML5 `<tbody>` element with a thin row separator. |
 | Tr | HTML5 `<tr>` element with simple hover style. |
@@ -111,7 +112,7 @@ make tw
 ```
 
 ## 5. Core concepts
-The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Nodes` (for *gomponents* nodes) or with `Children` (for our `Component` nodes). Both of those options together with the `Class` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `NodeAppend`, `ChildrenAppend` and `ClassAppend` options are provided. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
+The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Nodes` (for *gomponents* nodes) or with `Children` (for our `Component` nodes). Both of those options together with the `Class` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `NodeAppend`, `ChildrenAppend` and `ClassAppend` options are provided. Raw text nodes can be create with the `Text(val string)` component, which can be tested with the `GetText` method. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 

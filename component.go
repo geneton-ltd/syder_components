@@ -16,6 +16,7 @@ type Component struct {
 	nodes    []g.Node // non-component nodes
 	content  g.Node
 	attrs    map[string]string
+	text     string
 }
 
 // Option defines a functional configuration pattern.
@@ -272,6 +273,11 @@ func (c Component) GetContent() g.Node {
 // GetAttrs returns all attributes as a map.
 func (c Component) GetAttrs() map[string]string {
 	return c.attrs
+}
+
+// GetText returns the text of a [Text] component.
+func (c Component) GetText() string {
+	return c.text
 }
 
 // GetData returns a data attribute value.

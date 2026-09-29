@@ -30,12 +30,12 @@ func main() {
 					sc.NavLink(
 						sc.ClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
 						sc.Href("/settings/general"),
-						sc.Nodes(g.Text("General")),
+						sc.Children(sc.Text("General")),
 					),
 					sc.NavLink(
 						sc.ClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
 						sc.Href("/settings/passwords"),
-						sc.Nodes(g.Text("Passwords")),
+						sc.Children(sc.Text("Passwords")),
 					),
 				),
 			),
@@ -57,7 +57,7 @@ func main() {
 					),
 					sc.Button(
 						sc.ClassAppend("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
-						sc.Nodes(g.Text("Settings")),
+						sc.Children(sc.Text("Settings")),
 						sc.PopoverTrigger(settingsModalID),
 					),
 				),
@@ -86,12 +86,12 @@ func main() {
 	var rows []sc.Component
 	for _, u := range users {
 		rows = append(rows, sc.Tr(sc.Children(
-			sc.Td(sc.Nodes(g.Text(u.name))),
-			sc.Td(sc.Nodes(g.Text(u.role))),
+			sc.Td(sc.Children(sc.Text(u.name))),
+			sc.Td(sc.Children(sc.Text(u.role))),
 			sc.Td(sc.ClassAppend("text-right"), sc.Children(
 				sc.Button(
 					sc.ClassAppend("bg-green-600 text-white hover:bg-green-700 px-2"),
-					sc.Nodes(g.Text("Edit")),
+					sc.Children(sc.Text("Edit")),
 				),
 			),
 			))))
@@ -110,7 +110,7 @@ func main() {
 					sc.Button(
 						sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
 						sc.DialogTrigger(modalID),
-						sc.Nodes(g.Text("+ Add User")),
+						sc.Children(sc.Text("+ Add User")),
 					),
 				),
 			),
@@ -119,9 +119,9 @@ func main() {
 					sc.Table(sc.Children(
 						sc.THead(sc.Children(
 							sc.Tr(sc.Children(
-								sc.Th(sc.Nodes(g.Text("Name"))),
-								sc.Th(sc.Nodes(g.Text("Role"))),
-								sc.Th(sc.ClassAppend("text-right"), sc.Nodes(g.Text("Actions"))),
+								sc.Th(sc.Children(sc.Text("Name"))),
+								sc.Th(sc.Children(sc.Text("Role"))),
+								sc.Th(sc.ClassAppend("text-right"), sc.Children(sc.Text("Actions"))),
 							)),
 						)),
 						sc.TBody(sc.Children(rows...)),
@@ -143,7 +143,7 @@ func main() {
 				),
 				sc.Children(sc.Button(
 					sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
-					sc.Nodes(g.Text("Close")),
+					sc.Children(sc.Text("Close")),
 					sc.DialogClose(modalID),
 					sc.Type("button"),
 				)),

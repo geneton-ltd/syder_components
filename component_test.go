@@ -18,7 +18,7 @@ func TestComponent_SimpleOptions(t *testing.T) {
 	}{
 		{
 			name: "test Node",
-			comp: sc.Div(sc.Nodes(g.Text("text"))),
+			comp: sc.Div(sc.Children(sc.Text("text"))),
 			check: func(t *testing.T, comp sc.Component) {
 				require.Equal(t, []g.Node{g.Text("text")}, comp.GetNodes())
 			},
@@ -331,7 +331,7 @@ func TestComponent_Render(t *testing.T) {
 	comp := sc.Span(
 		sc.ID("id"),
 		sc.Class("class"),
-		sc.Nodes(g.Text("text")),
+		sc.Children(sc.Text("text")),
 	)
 
 	var sb strings.Builder
