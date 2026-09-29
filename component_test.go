@@ -7,7 +7,6 @@ import (
 	sc "github.com/geneton-ltd/syder_components"
 	sydercomponents "github.com/geneton-ltd/syder_components"
 	"github.com/stretchr/testify/require"
-	g "maragu.dev/gomponents"
 )
 
 func TestComponent_SimpleOptions(t *testing.T) {
@@ -16,29 +15,6 @@ func TestComponent_SimpleOptions(t *testing.T) {
 		comp  sc.Component
 		check func(t *testing.T, comp sc.Component)
 	}{
-		{
-			name: "test Node",
-			comp: sc.Div(sc.Children(sc.Text("text"))),
-			check: func(t *testing.T, comp sc.Component) {
-				require.Equal(t, []g.Node{g.Text("text")}, comp.GetNodes())
-			},
-		},
-		{
-			name: "test Node overwrites",
-			comp: sc.Div(sc.Nodes(g.Text("text")), sc.Nodes(g.Text("text2"))),
-			check: func(t *testing.T, comp sc.Component) {
-				require.Contains(t, comp.GetNodes(), g.Text("text2"))
-				require.NotContains(t, comp.GetNodes(), g.Text("text"))
-			},
-		},
-		{
-			name: "test NodeAppend",
-			comp: sc.Div(sc.Nodes(g.Text("text")), sc.NodeAppend(g.Text("text2"))),
-			check: func(t *testing.T, comp sc.Component) {
-				require.Contains(t, comp.GetNodes(), g.Text("text"))
-				require.Contains(t, comp.GetNodes(), g.Text("text2"))
-			},
-		},
 		{
 			name: "test Class",
 			comp: sc.Div(sc.Class("flex")),

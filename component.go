@@ -13,9 +13,9 @@ import (
 // evaluated and converted into standard gomponents when Render is called.
 type Component struct {
 	children []Component
-	nodes    []g.Node // non-component nodes
 	content  g.Node
 	attrs    map[string]string
+	tag      string
 	text     string
 }
 
@@ -35,20 +35,6 @@ func ChildrenAppend(value ...Component) Option {
 func Children(value ...Component) Option {
 	return func(c *Component) {
 		c.children = value
-	}
-}
-
-// NodeAppend appends nested gomponents nodes to the component.
-func NodeAppend(value g.Node) Option {
-	return func(c *Component) {
-		c.nodes = append(c.nodes, value)
-	}
-}
-
-// Nodes overwrites nested gomponents nodes of the component.
-func Nodes(value ...g.Node) Option {
-	return func(c *Component) {
-		c.nodes = value
 	}
 }
 
@@ -233,11 +219,12 @@ func (c Component) Render(w io.Writer) error {
 }
 
 // newComponent creates a new component with the class attribute set and given options.
-func newComponent(cls string, opts ...Option) Component {
+func newComponent(tag, cls string, opts ...Option) Component {
 	c := Component{
 		attrs: map[string]string{
 			"class": cls,
 		},
+		tag: tag,
 	}
 	for _, o := range opts {
 		o(&c)
@@ -260,11 +247,6 @@ func (c Component) GetChildren() []Component {
 	return c.children
 }
 
-// GetNodes returns the children gomponents nodes.
-func (c Component) GetNodes() []g.Node {
-	return c.nodes
-}
-
 // GetContent returns the rendered content node.
 func (c Component) GetContent() g.Node {
 	return c.content
@@ -275,7 +257,12 @@ func (c Component) GetAttrs() map[string]string {
 	return c.attrs
 }
 
-// GetText returns the text of a [Text] component.
+// GetTag returns the tag of the component.
+func (c Component) GetTag() string {
+	return c.tag
+}
+
+// GetText returns the content of a raw/text node.
 func (c Component) GetText() string {
 	return c.text
 }
@@ -386,6 +373,6 @@ func (c Component) manuallySetAttributes() g.Group {
 	for key, value := range c.attrs {
 		nodes = append(nodes, g.Attr(key, value))
 	}
-	nodes = append(nodes, g.Group(c.nodes), g.Map(c.children, func(child Component) g.Node { return child }))
+	nodes = append(nodes, g.Map(c.children, func(child Component) g.Node { return child }))
 	return nodes
 }

@@ -51,8 +51,8 @@ func main() {
 					sc.NavLink(
 						sc.ClassAppend("h-full no-underline transition-colors px-4"),
 						sc.Href("/"),
-						sc.Nodes(
-							g.Text("Dashboard"),
+						sc.Children(
+							sc.Text("Dashboard"),
 						),
 					),
 					sc.Button(
@@ -103,8 +103,8 @@ func main() {
 		sc.Children(
 			sc.Div(
 				sc.Class("flex justify-between items-center mb-4"),
-				sc.Nodes(
-					h.H2(h.Class("text-xl font-bold"), g.Text("Team Members")),
+				sc.Children(
+					sc.H2(sc.Class("text-xl font-bold"), sc.Children(sc.Text("Team Members"))),
 				),
 				sc.Children(
 					sc.Button(
@@ -137,9 +137,9 @@ func main() {
 		sc.Children(
 			sc.Div(
 				sc.Class("flex flex-col gap-4"),
-				sc.Nodes(
-					h.H3(h.Class("text-lg font-bold border-b pb-2"), g.Text("Create New User")),
-					h.P(h.Class("text-gray-600"), g.Text("Lorem ipsum does not actually mean anything...")),
+				sc.Children(
+					sc.H3(sc.Class("text-lg font-bold border-b pb-2"), sc.Children(sc.Text("Create New User"))),
+					sc.P(sc.Class("text-gray-600"), sc.Children(sc.Text("Lorem ipsum does not actually mean anything..."))),
 				),
 				sc.Children(sc.Button(
 					sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
