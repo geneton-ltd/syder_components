@@ -373,8 +373,8 @@ func (c Component) HasRequired() bool {
 
 // manuallySetAttributes is supposed to be called for every
 // new component. It injects all manually set attributes, such as
-// class (via the Class hook), ID (via the ID hook)
-// children (via the Children hook) and others.
+// class (via the [Class] hook), ID (via the [ID] hook)
+// children (via the [Children] hook) and others.
 func (c Component) manuallySetAttributes() g.Group {
 	nodes := make([]g.Node, 0, len(c.attrs)+1)
 	for key, value := range c.attrs {
