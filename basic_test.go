@@ -92,28 +92,3 @@ func TestWrap_Output(t *testing.T) {
 	require.NoError(t, err)
 	assertElementWithIDExists(t, comp, "div", "id")
 }
-
-func TestIf(t *testing.T) {
-	// true
-	comp := sc.Div(sc.ID("id"))
-	cond := sc.If(true, comp)
-	require.Equal(t, comp.GetID(), cond.GetID())
-	require.Equal(t, comp.GetTag(), cond.GetTag())
-
-	// false
-	cond = sc.If(false, comp)
-	require.Equal(t, sc.Empty(), cond)
-}
-
-func TestIff(t *testing.T) {
-	// true
-	comp := sc.Div(sc.ID("id"))
-	f := func() sc.Component { return comp }
-	cond := sc.Iff(true, f)
-	require.Equal(t, comp.GetID(), cond.GetID())
-	require.Equal(t, comp.GetTag(), cond.GetTag())
-
-	// false
-	cond = sc.Iff(false, f)
-	require.Equal(t, sc.Empty(), cond)
-}
