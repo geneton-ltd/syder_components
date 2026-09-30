@@ -8,14 +8,23 @@ import (
 	g "maragu.dev/gomponents"
 )
 
+type Kind string
+
+const (
+	KindNone    = ""
+	KindText    = "text"
+	KindNode    = "node"
+	KindElement = "element"
+)
+
 // Component represents a HTML element in the UI library.
-// It stores attributes, nested children, and raw nodes, which are
-// evaluated and converted into standard gomponents when Render is called.
+// It stores attributes, nested children, kind and, in case of Text components, text,
+// which are evaluated and converted into standard gomponents when Render is called.
 type Component struct {
 	children []Component
 	content  g.Node
 	attrs    map[string]string
-	tag      string
+	kind     Kind
 	text     string
 }
 
@@ -219,12 +228,13 @@ func (c Component) Render(w io.Writer) error {
 }
 
 // newComponent creates a new component with the class attribute set and given options.
-func newComponent(tag, cls string, opts ...Option) Component {
+// The default kind is Element, which can be changed manually.
+func newComponent(cls string, opts ...Option) Component {
 	c := Component{
 		attrs: map[string]string{
 			"class": cls,
 		},
-		tag: tag,
+		kind: KindElement,
 	}
 	for _, o := range opts {
 		o(&c)
@@ -257,14 +267,14 @@ func (c Component) GetAttrs() map[string]string {
 	return c.attrs
 }
 
-// GetTag returns the tag of the component.
-func (c Component) GetTag() string {
-	return c.tag
-}
-
 // GetText returns the content of a raw/text node.
 func (c Component) GetText() string {
 	return c.text
+}
+
+// GetKind returns the kind of the component.
+func (c Component) GetKind() Kind {
+	return c.kind
 }
 
 // GetData returns a data attribute value.

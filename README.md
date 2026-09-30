@@ -74,17 +74,21 @@ The following is the list of all available components:
 | Any | Renders given HTML5 tag. It does not apply any styles. |
 | Button | HTML5 `<button>` element with default style without colors. | 
 | IconButton | HTML5 `<button>` element containing an icon wrapped in a `<span>` element. | 
-| IconOnlyButton | *IconButton* with special styles to make sure the icon placement is accurate. |
+| IconOnlyButton | `IconButton` with special styles to make sure the icon placement is accurate. |
 | Card | A styled `<div>` for grouping content. |
-| SubCard | A *Card* designed for grouping nested content. It applies a dashed border to visually separate it from primary cards. |
+| SubCard | A `Card` designed for grouping nested content. It applies a dashed border to visually separate it from primary cards. |
 | Dialog | HTML5 `<dialog>` element. For attachment to happen, pass `ID` option and then `DialogTrigger` with the same id to the trigger element (e.g. a button). Attachment is performed automatically. |
-| DialogRelative | *Dialog* that is relative to its parent. The parent must have the "relative" class. |
-| DialogFixedCentered | *Dialog* fixed at the center of the screen (horizontally and vertically). |
+| DialogRelative | `Dialog` that is relative to its parent. The parent must have the "relative" class. |
+| DialogFixedCentered | `Dialog` fixed at the center of the screen (horizontally and vertically). |
 | Empty | Component that renders absolutely nothing. It is useful for conditional rendering. |
+| If | If returns the given [Component], if condition is true. Otherwise, returns [Empty]. This helper function is good for inlining elements conditionally. |
+| Iff | Iff calls the given function and returns it's result, if condition is true. Otherwise, returns [Empty]. This helper function is good for inlining elements conditionally when the node depends on nilable data, or some other code that could potentially panic. |
 | Navbar | HTML5 `<div>` element with simple styles acting as a container for navigation elements. |
-| NavLink | HTML5 `<a>` element, which is supposed to be put into *Navbar*. |
+| NavLink | HTML5 `<a>` element, which is supposed to be put into `Navbar`. |
+| Node | Node allows injecting raw `gomponents.Node` into the tree. It cannot be inspected using the `GetClass` or `GetChildren`. It is meant for foreign nodes that are not present in this library, not `h.X` from gomponents. |
 | Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass `ID` option and then `PopoverTrigger` with the same id to the trigger element (e.g. a button). |
-| TableContainer | HTML5 `<div>` element meant to function as a container for the *Table* component, while adding horizontal scroll. |
+| Raw | Raw creates a text Component that renders the unescaped string t. |
+| TableContainer | HTML5 `<div>` element meant to function as a container for the `Table` component, while adding horizontal scroll. |
 | Table | HTML5 `<table>` element with head and body separator. |
 | Text | Text returns a raw text node. It is full testable via the `GetText()` method. |
 | THead | HTML5 `<thead>` element with no default style. |
@@ -112,7 +116,11 @@ make tw
 ```
 
 ## 5. Core concepts
-The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Children` (for our `Component` nodes). Thhe `Children` option together with the `Class` option overwrite the children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `ChildrenAppend` and `ClassAppend` options are provided. Escaped text nodes can be created with the `Text(val string)` component, which can be tested with the `GetText` method. For unescaped texts the `Raw` component is available. To add `gomponents.Node` to children, wrap it inside the `Wrap` component. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
+- The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option.
+- Child content can be added with the `Children` option. The `Children` option together with the `Class` option overwrite the children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `ChildrenAppend` and `ClassAppend` options are provided.
+- Escaped text nodes can be created with the `Text(val string)` component, which can be tested with the `GetText` method. For unescaped texts, the `Raw` component is available.
+- To add `gomponents.Node` to children, wrap it inside the `Node` component. Note that this does not mean that it will be testable, it's just in place to allow adding `gomponents.Node` as children to our `Component`.
+- To track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 

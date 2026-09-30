@@ -71,6 +71,13 @@ func TestComponent_SimpleOptions(t *testing.T) {
 				require.False(t, has)
 			},
 		},
+		{
+			name: "test Kind",
+			comp: sc.Div(),
+			check: func(t *testing.T, comp sc.Component) {
+				require.Equal(t, sc.KindElement, comp.GetKind())
+			},
+		},
 	}
 
 	for _, testcase := range testcases {
