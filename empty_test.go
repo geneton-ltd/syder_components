@@ -9,7 +9,7 @@ import (
 
 func TestEmpty(t *testing.T) {
 	comp := sc.Empty()
-	require.Empty(t, comp.GetTag())
+	require.Equal(t, sc.KindNone, string(comp.GetKind()))
 
 	var buf bytes.Buffer
 	err := comp.Render(&buf)

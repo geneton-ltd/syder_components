@@ -7,7 +7,7 @@ import (
 
 // Button returns an HTML5 <button> element with default style without colors.
 func Button(opts ...Option) Component {
-	n := newComponent("button", "rounded rounded-sm shadow-xs p-1 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed", opts...)
+	n := newComponent("rounded rounded-sm shadow-xs p-1 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed", opts...)
 	n.content = h.Button(n.manuallySetAttributes())
 	return n
 }
@@ -25,7 +25,7 @@ func IconButton(icon g.Node, opts ...Option) Component {
 	opts = append(
 		[]Option{
 			ClassAppend("whitespace-nowrap flex gap-1 items-center"),
-			Children(Span(Class("h-4 w-4 shrink-0"), Children(Wrap(icon)))),
+			Children(Span(Class("h-4 w-4 shrink-0"), Children(Node(icon)))),
 		},
 		opts...,
 	)

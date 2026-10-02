@@ -16,7 +16,7 @@ func TestAny_Options(t *testing.T) {
 	v, has := comp.GetData("name")
 	require.Equal(t, "john", v)
 	require.True(t, has)
-	require.Equal(t, "div", comp.GetTag())
+	require.Equal(t, sc.KindElement, string(comp.GetKind()))
 }
 
 func TestAny_Output(t *testing.T) {
@@ -26,6 +26,6 @@ func TestAny_Output(t *testing.T) {
 	for _, tag := range tags {
 		comp := sc.Any(tag, sc.ID(id))
 		assertElementWithIDExists(t, comp, tag, id)
-		require.Equal(t, tag, comp.GetTag())
+		require.Equal(t, sc.KindElement, string(comp.GetKind()))
 	}
 }

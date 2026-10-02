@@ -11,7 +11,7 @@ import h "maragu.dev/gomponents/html"
 //	sc.Dialog(sc.ID("id"), sc.Data("name", "john"))
 //	sc.Button(sc.DialogTrigger("id"))
 func Dialog(opts ...Option) Component {
-	n := newComponent("dialog", "shadow-xl bg-white backdrop:bg-black/40 rounded-md", opts...)
+	n := newComponent("shadow-xl bg-white backdrop:bg-black/40 rounded-md", opts...)
 	n.content = h.Dialog(n.manuallySetAttributes())
 	return n
 }

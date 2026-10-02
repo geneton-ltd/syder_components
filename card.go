@@ -6,7 +6,7 @@ import (
 
 // Card returns a styled <div> for grouping content.
 func Card(opts ...Option) Component {
-	n := newComponent("div", "w-full rounded-md shadow-xs p-2 border border-1 border-gray-600", opts...)
+	n := newComponent("w-full rounded-md shadow-xs p-2 border border-1 border-gray-600", opts...)
 	n.content = h.Div(n.manuallySetAttributes())
 	return n
 }

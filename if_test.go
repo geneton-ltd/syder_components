@@ -12,8 +12,7 @@ func TestIf(t *testing.T) {
 	comp := sc.Div(sc.ID("id"))
 
 	cond := sc.If(true, comp)
-	require.Equal(t, "id", cond.GetID())
-	require.Equal(t, "div", cond.GetTag())
+	assertElementWithIDExists(t, cond, "div", "id")
 
 	// false
 	cond = sc.If(false, comp)
@@ -30,8 +29,7 @@ func TestIff(t *testing.T) {
 	}
 
 	cond := sc.Iff(true, f)
-	require.Equal(t, "id", cond.GetID())
-	require.Equal(t, "div", cond.GetTag())
+	assertElementWithIDExists(t, cond, "div", "id")
 	require.True(t, called)
 
 	// false

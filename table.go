@@ -22,49 +22,49 @@ import (
 //	  )
 //	)
 func TableContainer(opts ...Option) Component {
-	n := newComponent("div", "overflow-x-auto rounded border border-gray-300 shadow-sm", opts...)
+	n := newComponent("overflow-x-auto rounded border border-gray-300 shadow-sm", opts...)
 	n.content = h.Div(n.manuallySetAttributes())
 	return n
 }
 
 // Table returns a HTML5 <table> element with head and body separator.
 func Table(opts ...Option) Component {
-	n := newComponent("table", "min-w-full divide-y-2 divide-gray-200", opts...)
+	n := newComponent("min-w-full divide-y-2 divide-gray-200", opts...)
 	n.content = h.Table(n.manuallySetAttributes())
 	return n
 }
 
 // THead returns a HTML5 <thead> element with no default style.
 func THead(opts ...Option) Component {
-	n := newComponent("thead", "", opts...)
+	n := newComponent("", opts...)
 	n.content = h.THead(n.manuallySetAttributes())
 	return n
 }
 
 // TBody returns a HTML5 <tbody> element with a thin row separator.
 func TBody(opts ...Option) Component {
-	n := newComponent("tbody", "divide-y divide-gray-200", opts...)
+	n := newComponent("divide-y divide-gray-200", opts...)
 	n.content = h.TBody(n.manuallySetAttributes())
 	return n
 }
 
 // Tr returns a HTML5 <tr> element with simple hover style.
 func Tr(opts ...Option) Component {
-	n := newComponent("tr", "hover:bg-gray-100", opts...)
+	n := newComponent("hover:bg-gray-100", opts...)
 	n.content = h.Tr(n.manuallySetAttributes())
 	return n
 }
 
 // Th returns a HTML5 <th> element with bold font and default spacing.
 func Th(opts ...Option) Component {
-	n := newComponent("th", "px-3 py-2 whitespace-nowrap font-medium text-gray-900", opts...)
+	n := newComponent("px-3 py-2 whitespace-nowrap font-medium text-gray-900", opts...)
 	n.content = h.Th(n.manuallySetAttributes())
 	return n
 }
 
 // Td returns a HTML5 <td> element with default spacing.
 func Td(opts ...Option) Component {
-	n := newComponent("td", "px-3 py-2 whitespace-nowrap text-gray-900", opts...)
+	n := newComponent("px-3 py-2 whitespace-nowrap text-gray-900", opts...)
 	n.content = h.Td(n.manuallySetAttributes())
 	return n
 }
