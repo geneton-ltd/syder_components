@@ -17,8 +17,7 @@ Copy the library's `static/output.css` file into your project's `static/css/syde
 > If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to tell git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
 
 > [!NOTE] 
-> This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
-> `go get maragu.dev/gomponents`
+> Some top level components are yet to be added to the library. For that you will sometimes import the `gomponents` library. 
 
 ## 2. Quickstart
 
@@ -55,7 +54,7 @@ func main() {
 				Title:    "Syder Components - Example",
 				Language: "en",
 				Head: []g.Node{
-					h.Link(h.Rel("stylesheet"), h.Href("/static/css/output.css")),
+					h.Link(h.Rel("stylesheet"), h.Href("/static/css/syder_components.css")),
 				},
 				Body: []g.Node{btn},
 			},
@@ -67,7 +66,7 @@ func main() {
 }
 ```
 
-## 3. Components overview
+## 3. Components Overview
 The following is the list of all available components:
 | Component | Description |
 | --------- | ----------- |
@@ -113,7 +112,7 @@ Finally, to rebuild Tailwind CSS install the [Tailwind CLI](https://tailwindcss.
 make tw
 ```
 
-## 5. Core concepts
+## 5. Core Concepts
 - The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option.
 - Child content can be added with the `Children` option. The `Children` option together with the `Class` option overwrite the children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `ChildrenAppend` and `ClassAppend` options are provided.
 - Escaped text nodes can be created with the `Text` component, which can be tested with the `GetText` method. For unescaped text, use the `Raw` component.
@@ -123,10 +122,13 @@ make tw
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 
-## 6. Customizing styles
-Each component internally uses Tailwind CSS classes. Therefore, to actually apply these styles, copy `static/output.css` into your project directory and import the stylesheet in your website's `<head>`.
+## 6. Tailwind CSS Setup
+Each component internally uses Tailwind CSS classes. Therefore, to actually apply these styles:
 
-## 7. Edge cases
+1. Copy `static/output.css` into your project directory, for example to `static/css/syder_components.css`.
+2. Import the stylesheet in your website's `<head>`.
+
+## 7. Edge Cases
 Here is the list of some things to have in mind when using some of the components:
 
 - `DialogRelative` requires using `relative` class on its parent element.

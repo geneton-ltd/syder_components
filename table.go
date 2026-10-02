@@ -28,7 +28,7 @@ import (
 //	          sc.Td(sc.Children(sc.Text("mat.pat@youtube.com"))),
 //	        ),
 //		    ),
-//		  )
+//		  ),
 //		)
 func TableContainer(opts ...Option) Component {
 	n := newComponent("overflow-x-auto rounded border border-gray-300 shadow-sm", opts...)

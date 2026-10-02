@@ -19,7 +19,7 @@ const (
 	KindNone ComponentKind = ""
 
 	// KindText is used by [Text] and [Raw] text components.
-	// Its content is readable with [Components.GetText].
+	// Its content is readable with [Component.GetText].
 	KindText ComponentKind = "text"
 
 	// KindNode is used by [Node] components wrapping gomponents.Node.
@@ -32,7 +32,7 @@ const (
 )
 
 // Component represents a single node in the UI library's rendering tree.
-// Depending on its ComponentKind, it stores attributes, children, or text,
+// Depending on its [ComponentKind], it stores attributes, children, or text,
 // which are evaluated and converted into standard gomponents when Render is called.
 type Component struct {
 	children []Component
