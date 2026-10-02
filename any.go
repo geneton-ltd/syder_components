@@ -10,8 +10,8 @@ import (
 // Example:
 //
 //	sc.Any(
-//	    "div",
-//	    sc.ClassAppend("flex flex-col gap-2")
+//		"div",
+//		sc.ClassAppend("flex flex-col gap-2")
 //	)
 func Any(tag string, opts ...Option) Component {
 	n := newComponent("", opts...)

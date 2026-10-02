@@ -18,8 +18,8 @@ func Button(opts ...Option) Component {
 // Example:
 //
 //	sc.IconButton(
-//	    solid.ArrowLeft(),
-//	    sc.Children(sc.Text("Previous")),
+//		solid.ArrowLeft(),
+//		sc.Children(sc.Text("Previous")),
 //	)
 func IconButton(icon g.Node, opts ...Option) Component {
 	opts = append(
@@ -38,7 +38,7 @@ func IconButton(icon g.Node, opts ...Option) Component {
 // Example:
 //
 //	sc.IconOnlyButton(
-//	    solid.Trash(),
+//		solid.Trash(),
 //	)
 func IconOnlyButton(icon g.Node, opts ...Option) Component {
 	opts = append([]Option{ClassAppend("w-fit self-center"), Type("button")}, opts...)

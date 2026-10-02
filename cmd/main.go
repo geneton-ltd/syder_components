@@ -51,9 +51,7 @@ func main() {
 					sc.NavLink(
 						sc.ClassAppend("h-full no-underline transition-colors px-4"),
 						sc.Href("/"),
-						sc.Children(
-							sc.Text("Dashboard"),
-						),
+						sc.Children(sc.Text("Dashboard")),
 					),
 					sc.Button(
 						sc.ClassAppend("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
