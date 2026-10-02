@@ -8,14 +8,27 @@ import (
 	g "maragu.dev/gomponents"
 )
 
-// Kind ...
-type Kind string
+// ComponentKind describes what kind of [Component] it is.
+// This is useful for testing to determine the [Component] kind.
+// The [newComponent] constructor defaults to being [KindElement].
+type ComponentKind string
 
 const (
-	KindNone    Kind = ""
-	KindText    Kind = "text"
-	KindNode    Kind = "node"
-	KindElement Kind = "element"
+	// KindNone is used by [Empty] component.
+	// It renders nothing and has no attributes and children.
+	KindNone ComponentKind = ""
+
+	// KindText is used by [Text] and [Raw] text components.
+	// Its content is readable with [Components.GetText].
+	KindText ComponentKind = "text"
+
+	// KindNode is used by [Node] components wrapping gomponents.Node.
+	// No getters work for this kind (except [GetKind]).
+	KindNode ComponentKind = "node"
+
+	// KindElement is used by all HTML components.
+	// Its attributes can be accessed with Get* methods.
+	KindElement ComponentKind = "element"
 )
 
 // Component represents a HTML element in the UI library.
@@ -25,7 +38,7 @@ type Component struct {
 	children []Component
 	content  g.Node
 	attrs    map[string]string
-	kind     Kind
+	kind     ComponentKind
 	text     string
 }
 
@@ -277,7 +290,7 @@ func (c Component) GetText() string {
 }
 
 // GetKind returns the kind of the component.
-func (c Component) GetKind() Kind {
+func (c Component) GetKind() ComponentKind {
 	return c.kind
 }
 
