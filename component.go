@@ -8,6 +8,7 @@ import (
 	g "maragu.dev/gomponents"
 )
 
+// Kind ...
 type Kind string
 
 const (

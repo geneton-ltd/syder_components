@@ -80,8 +80,8 @@ The following is the list of all available components:
 | DialogFixedCentered | `Dialog` fixed at the center of the screen (horizontally and vertically). |
 | DialogRelative | `Dialog` that is relative to its parent. The parent must have the "relative" class. |
 | Empty | Component that renders absolutely nothing. It is useful for conditional rendering. |
-| If | If returns the given [Component], if condition is true. Otherwise, returns [Empty]. This helper function is good for inlining elements conditionally. |
-| Iff | Iff calls the given function and returns it's result, if condition is true. Otherwise, returns [Empty]. This helper function is good for inlining elements conditionally when the node depends on nilable data, or some other code that could potentially panic. |
+| If | If returns the given `Component`, if condition is true. Otherwise, returns `Empty`. This helper function is good for inlining elements conditionally. |
+| Iff | Iff calls the given function and returns its result, if condition is true. Otherwise, returns `Empty`. This helper function is good for inlining elements conditionally when the node depends on nilable data, or some other code that could potentially panic. |
 | Navbar | HTML5 `<div>` element with simple styles acting as a container for navigation elements. |
 | NavLink | HTML5 `<a>` element, which is supposed to be put into `Navbar`. |
 | Node | Node allows injecting raw `gomponents.Node` into the tree. It cannot be inspected using the `GetClass` or `GetChildren`. It is meant for foreign nodes that are not present in this library, not `h.X` from gomponents. |
@@ -90,7 +90,7 @@ The following is the list of all available components:
 | SubCard | A `Card` designed for grouping nested content. It applies a dashed border to visually separate it from primary cards. |
 | TableContainer | HTML5 `<div>` element meant to function as a container for the `Table` component, while adding horizontal scroll. |
 | Table | HTML5 `<table>` element with head and body separator. |
-| Text | Text returns a raw text node. It is full testable via the `GetText()` method. |
+| Text | Text creates a text Component that renders the escaped string t. |
 | THead | HTML5 `<thead>` element with no default style. |
 | TBody | HTML5 `<tbody>` element with a thin row separator. |
 | Tr | HTML5 `<tr>` element with simple hover style. |
@@ -120,7 +120,7 @@ make tw
 - Child content can be added with the `Children` option. The `Children` option together with the `Class` option overwrite the children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `ChildrenAppend` and `ClassAppend` options are provided.
 - Escaped text nodes can be created with the `Text` component, which can be tested with the `GetText` method. For unescaped texts, the `Raw` component is available.
 - To add `gomponents.Node` to children, wrap it inside the `Node` component. Note that this does not mean that it will be testable, it's just in place to allow adding `gomponents.Node` as children to our `Component`.
-- To track attributes of raw HTML5 use can use the `Any` component. 
+- To track attributes of raw HTML5 you can use the `Any` component. 
 
 The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
 
