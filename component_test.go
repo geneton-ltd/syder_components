@@ -7,6 +7,7 @@ import (
 	sc "github.com/geneton-ltd/syder_components"
 	sydercomponents "github.com/geneton-ltd/syder_components"
 	"github.com/stretchr/testify/require"
+	h "maragu.dev/gomponents/html"
 )
 
 func TestComponent_SimpleOptions(t *testing.T) {
@@ -307,6 +308,29 @@ func TestComponent_Children(t *testing.T) {
 		)
 
 		require.Len(t, component.GetChildren(), 3, "should have 3 children with append")
+	})
+
+	t.Run("Children with Nodes interleaving", func(t *testing.T) {
+		component := sc.Div(
+			sc.Children(
+				sc.Div(sc.ID("child1")),
+				sc.Node(h.Div(h.ID("child2"))),
+				sc.Div(sc.ID("child3")),
+			),
+		)
+
+		require.Len(t, component.GetChildren(), 3)
+
+		// 1st child is Element Component
+		require.Equal(t, "child1", component.GetChildren()[0].GetID())
+		require.Equal(t, sc.KindElement, component.GetChildren()[0].GetKind())
+
+		// 2nd child is Node Component
+		require.Equal(t, sc.KindNode, component.GetChildren()[1].GetKind())
+
+		// 3rd child is Element Component
+		require.Equal(t, "child3", component.GetChildren()[2].GetID())
+		require.Equal(t, sc.KindElement, component.GetChildren()[2].GetKind())
 	})
 }
 
