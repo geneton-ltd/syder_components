@@ -13,12 +13,12 @@ func TestNode_Properties(t *testing.T) {
 	comp := sc.Node(h.Div(h.ID("id")))
 
 	require.Equal(t, sc.KindNode, comp.GetKind())
-	require.Empty(t, comp.GetText(), "wrap should have no text")
-	require.Empty(t, comp.GetChildren(), "wrap should have no children")
-	require.Empty(t, comp.GetAttrs(), "wrap should have not attributes")
+	require.Empty(t, comp.GetText(), "node should have no text")
+	require.Empty(t, comp.GetChildren(), "node should have no children")
+	require.Empty(t, comp.GetAttrs(), "node should have not attributes")
 }
 
-func TestWrap_Output(t *testing.T) {
+func TestNode_Output(t *testing.T) {
 	rawNode := h.Div(h.ID("id"))
 	comp := sc.Node(rawNode)
 

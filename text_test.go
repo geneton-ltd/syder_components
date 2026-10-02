@@ -22,7 +22,7 @@ func TestText(t *testing.T) {
 	var buf bytes.Buffer
 	err := comp.Render(&buf)
 	require.NoError(t, err)
-	require.Equal(t, buf.String(), escapedText)
+	require.Equal(t, escapedText, buf.String())
 }
 
 func TestRaw(t *testing.T) {
@@ -37,5 +37,5 @@ func TestRaw(t *testing.T) {
 	var buf bytes.Buffer
 	err := comp.Render(&buf)
 	require.NoError(t, err)
-	require.Equal(t, buf.String(), text)
+	require.Equal(t, text, buf.String())
 }
