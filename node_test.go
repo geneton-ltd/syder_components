@@ -12,7 +12,7 @@ import (
 func TestNode_Properties(t *testing.T) {
 	comp := sc.Node(h.Div(h.ID("id")))
 
-	require.Equal(t, sc.KindNode, string(comp.GetKind()))
+	require.Equal(t, sc.KindNode, comp.GetKind())
 	require.Empty(t, comp.GetText(), "wrap should have no text")
 	require.Empty(t, comp.GetChildren(), "wrap should have no children")
 	require.Empty(t, comp.GetAttrs(), "wrap should have not attributes")

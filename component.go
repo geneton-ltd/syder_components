@@ -11,10 +11,10 @@ import (
 type Kind string
 
 const (
-	KindNone    = ""
-	KindText    = "text"
-	KindNode    = "node"
-	KindElement = "element"
+	KindNone    Kind = ""
+	KindText    Kind = "text"
+	KindNode    Kind = "node"
+	KindElement Kind = "element"
 )
 
 // Component represents a HTML element in the UI library.

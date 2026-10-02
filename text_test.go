@@ -16,7 +16,7 @@ func TestText(t *testing.T) {
 
 	// properties
 	require.Equal(t, text, comp.GetText())
-	require.Equal(t, sc.KindText, string(comp.GetKind()))
+	require.Equal(t, sc.KindText, comp.GetKind())
 
 	// content
 	var buf bytes.Buffer
@@ -31,7 +31,7 @@ func TestRaw(t *testing.T) {
 
 	// properties
 	require.Equal(t, text, comp.GetText())
-	require.Equal(t, sc.KindText, string(comp.GetKind()))
+	require.Equal(t, sc.KindText, comp.GetKind())
 
 	// content
 	var buf bytes.Buffer
