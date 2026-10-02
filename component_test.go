@@ -1,6 +1,7 @@
 package sydercomponents_test
 
 import (
+	"bytes"
 	"strings"
 	"testing"
 
@@ -331,6 +332,14 @@ func TestComponent_Children(t *testing.T) {
 		// 3rd child is Element Component
 		require.Equal(t, "child3", component.GetChildren()[2].GetID())
 		require.Equal(t, sc.KindElement, component.GetChildren()[2].GetKind())
+
+		// interleaving in final output
+		var buf bytes.Buffer
+		err := component.Render(&buf)
+		require.NoError(t, err)
+
+		content := `<div><div id="child1"></div><div id="child2"></div><div id="child3"></div></div>`
+		require.Equal(t, content, buf.String())
 	})
 }
 

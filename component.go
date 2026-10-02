@@ -230,11 +230,14 @@ func (c Component) Render(w io.Writer) error {
 // newComponent creates a new component with the class attribute set and given options.
 // The default kind is Element. Other kinds require manual Component instantiation.
 func newComponent(cls string, opts ...Option) Component {
+	attrs := map[string]string{}
+	if cls != "" {
+		attrs["class"] = cls
+	}
+
 	c := Component{
-		attrs: map[string]string{
-			"class": cls,
-		},
-		kind: KindElement,
+		attrs: attrs,
+		kind:  KindElement,
 	}
 	for _, o := range opts {
 		o(&c)
