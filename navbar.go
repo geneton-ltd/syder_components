@@ -7,7 +7,7 @@ import (
 // Navbar returns a HTML5 <div> element with simple styles
 // acting as a container for navigation elements.
 func Navbar(opts ...Option) Component {
-	n := newComponent("h-[50px] bg-gray-800 flex justify-between text-white ", opts...)
+	n := newComponent("h-[50px] bg-gray-800 flex justify-between text-white", opts...)
 	n.content = h.Div(n.manuallySetAttributes())
 	return n
 }

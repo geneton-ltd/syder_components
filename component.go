@@ -10,7 +10,7 @@ import (
 
 // ComponentKind describes what kind of [Component] it is.
 // This is useful for testing to determine the [Component] kind.
-// The [newComponent] constructor defaults to being [KindElement].
+// It defaults to being [KindElement].
 type ComponentKind string
 
 const (
@@ -23,7 +23,7 @@ const (
 	KindText ComponentKind = "text"
 
 	// KindNode is used by [Node] components wrapping gomponents.Node.
-	// No getters work for this kind (except [GetKind]).
+	// No getters work for this kind (except [Component.GetKind]).
 	KindNode ComponentKind = "node"
 
 	// KindElement is used by all HTML components.
@@ -31,8 +31,8 @@ const (
 	KindElement ComponentKind = "element"
 )
 
-// Component represents a HTML element in the UI library.
-// It stores attributes, nested children, kind and, in case of Text components, text,
+// Component represents a single node in the UI library's rendering tree.
+// Depending on its ComponentKind, it stores attributes, children, or text,
 // which are evaluated and converted into standard gomponents when Render is called.
 type Component struct {
 	children []Component
@@ -269,7 +269,7 @@ func (c Component) GetID() string {
 	return c.attrs["id"]
 }
 
-// GetChildren returns the children nodes.
+// GetChildren returns the children components.
 func (c Component) GetChildren() []Component {
 	return c.children
 }
@@ -284,7 +284,7 @@ func (c Component) GetAttrs() map[string]string {
 	return c.attrs
 }
 
-// GetText returns the content of a raw/text node.
+// GetText returns the content of a [KindText] component.
 func (c Component) GetText() string {
 	return c.text
 }
@@ -393,8 +393,8 @@ func (c Component) HasRequired() bool {
 
 // manuallySetAttributes is supposed to be called for every
 // new component. It injects all manually set attributes, such as
-// class (via the [Class] hook), ID (via the [ID] hook)
-// children (via the [Children] hook) and others.
+// class (via the [Class] option), ID (via the [ID] option),
+// children (via the [Children] option) and others.
 func (c Component) manuallySetAttributes() g.Group {
 	nodes := make([]g.Node, 0, len(c.attrs)+1)
 	for key, value := range c.attrs {

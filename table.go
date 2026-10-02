@@ -10,17 +10,26 @@ import (
 //
 // Example:
 //
-//	sc.TableContainer(
-//	  sc.Table(
-//	    sc.THead(
-//	      sc.Tr(sc.Th("Name"), sc.Th("Email"))
-//	    ),
-//	    sc.TBody(
-//	      sc.Tr(sc.Td("John"), sc.Td("john.doe@google.com")),
-//	      sc.Tr(sc.Td("Mat"), sc.Td("mat.pat@youtube.com")),
-//	    ),
-//	  )
-//	)
+//		sc.TableContainer(
+//		  sc.Table(
+//		    sc.THead(
+//		      sc.Tr(
+//	          sc.Th(sc.Children(sc.Text("Name"))),
+//	          sc.Th(sc.Children(sc.Text("Email"))),
+//	        ),
+//		    ),
+//		    sc.TBody(
+//		      sc.Tr(
+//	          sc.Td(sc.Children(sc.Text("John"))),
+//	          sc.Td(sc.Children(sc.Text("john.doe@google.com"))),
+//	        ),
+//		      sc.Tr(
+//	          sc.Td(sc.Children(sc.Text("Mat"))),
+//	          sc.Td(sc.Children(sc.Text("mat.pat@youtube.com"))),
+//	        ),
+//		    ),
+//		  )
+//		)
 func TableContainer(opts ...Option) Component {
 	n := newComponent("overflow-x-auto rounded border border-gray-300 shadow-sm", opts...)
 	n.content = h.Div(n.manuallySetAttributes())

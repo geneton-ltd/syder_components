@@ -5,6 +5,7 @@ import (
 )
 
 // Text creates a text Component that renders the escaped string t.
+// For unescaped text, see [Raw].
 func Text(t string) Component {
 	return Component{
 		content: g.Text(t),
