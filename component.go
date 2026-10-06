@@ -24,12 +24,9 @@ func voidElements() []string {
 	return []string{"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 }
 
-func (e element) Kind() Kind { return KindElement }
-
-func (e element) Name() string { return e.name }
-
-func (e element) Value() string { return e.value }
-
+func (e element) Kind() Kind       { return KindElement }
+func (e element) Name() string     { return e.name }
+func (e element) Value() string    { return e.value }
 func (e element) Children() []Node { return e.children }
 
 func (e element) Attr(name string) (string, bool) {
