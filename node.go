@@ -1,14 +1,35 @@
 package sydercomponents
 
-import g "maragu.dev/gomponents"
+import "io"
 
-// Node allows injecting gomponents.Node into the tree.
-// It cannot be inspected using the [Component.GetClass] or [Component.GetChildren].
-// It is meant for foreign nodes that are not present in this library,
-// not for gomponents' own html package helpers.
-func Node(node g.Node) Component {
-	return Component{
-		content: node,
-		kind:    KindNode,
-	}
+// Kind describes what kind of [Component] it is.
+// This is useful for testing to determine the [Component] kind.
+// It defaults to being [KindElement].
+type Kind string
+
+const (
+	// KindText is used by [Text] and [Raw] text components.
+	// Its content is readable with [Component.GetText].
+	KindText Kind = "text"
+
+	// KindAttr is used by .
+	// No getters work for this kind (except [Component.GetKind]).
+	KindAttr Kind = "attr"
+
+	// KindElement is used by all HTML components.
+	// Its attributes can be accessed with Get* methods.
+	KindElement Kind = "element"
+
+	// KindGroup
+	KindGroup Kind = "group"
+)
+
+// Node interface defines
+type Node interface {
+	Kind() Kind
+	Name() string
+	Value() string
+	Children() []Node
+	Attr(name string) (string, bool)
+	Render(w io.Writer) error
 }

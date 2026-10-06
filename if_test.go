@@ -23,7 +23,7 @@ func TestIff(t *testing.T) {
 	// true
 	comp := sc.Div(sc.ID("id"))
 	called := false
-	f := func() sc.Component {
+	f := func() sc.Node {
 		called = true
 		return comp
 	}

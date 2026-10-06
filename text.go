@@ -1,24 +1,32 @@
 package sydercomponents
 
 import (
-	g "maragu.dev/gomponents"
+	"fmt"
+	"html/template"
+	"io"
 )
 
-// Text creates a text Component that renders the escaped string t.
-// For unescaped text, see [Raw].
-func Text(t string) Component {
-	return Component{
-		content: g.Text(t),
-		text:    t,
-		kind:    KindText,
-	}
+type text struct {
+	value string
 }
 
-// Raw creates a text Component that renders the unescaped string t.
-func Raw(t string) Component {
-	return Component{
-		content: g.Raw(t),
-		text:    t,
-		kind:    KindText,
-	}
+func (t text) Kind() Kind                  { return KindText }
+func (t text) Name() string                { return "" }
+func (t text) Value() string               { return t.value }
+func (t text) Children() []Node            { return []Node{} }
+func (t text) Attributes() map[string]Node { return map[string]Node{} }
+func (t text) Render(w io.Writer) error {
+	_, err := fmt.Fprint(w, t.value)
+	return err
+}
+
+// Text creates a text [Node] that renders the escaped string t.
+// For unescaped text, see [Raw].
+func Text(t string) Node {
+	return text{value: template.HTMLEscapeString(t)}
+}
+
+// Raw creates a text [Node] that renders the unescaped string t.
+func Raw(t string) Node {
+	return text{value: t}
 }
