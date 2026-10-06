@@ -2,7 +2,9 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"log"
+	"log/slog"
 	"net/http"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -178,6 +180,19 @@ func main() {
 		p.Render(w)
 	})
 
+	mux.HandleFunc("/c2ing", func(w http.ResponseWriter, r *http.Request) {
+		c2 := sc.TestC2InGNode()
+		fmt.Printf("%+v\n", c2)
+		c2.Render(w)
+	})
+
+	mux.HandleFunc("/c2", func(w http.ResponseWriter, r *http.Request) {
+		c2 := sc.TestC2()
+		fmt.Printf("%+v\n", c2)
+		c2.Render(w)
+	})
+
+	slog.Info("Starting server")
 	err := http.ListenAndServe(":8000", mux)
 	if err != nil {
 		log.Fatal(err)
