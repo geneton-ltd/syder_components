@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
+	tu "github.com/geneton-ltd/syder_components/internal/testutil"
 	"github.com/stretchr/testify/require"
 )
 
@@ -12,11 +13,11 @@ func TestIf(t *testing.T) {
 	comp := sc.Div(sc.ID("id"))
 
 	cond := sc.If(true, comp)
-	assertElementWithIDExists(t, cond, "div", "id")
+	tu.AssertElementWithIDExists(t, cond, "div", "id")
 
 	// false
 	cond = sc.If(false, comp)
-	require.Equal(t, sc.Empty(), cond)
+	require.Nil(t, cond)
 }
 
 func TestIff(t *testing.T) {
@@ -29,12 +30,12 @@ func TestIff(t *testing.T) {
 	}
 
 	cond := sc.Iff(true, f)
-	assertElementWithIDExists(t, cond, "div", "id")
+	tu.AssertElementWithIDExists(t, cond, "div", "id")
 	require.True(t, called)
 
 	// false
 	called = false
 	cond = sc.Iff(false, f)
-	require.Equal(t, sc.Empty(), cond)
+	require.Nil(t, cond)
 	require.False(t, called)
 }

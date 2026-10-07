@@ -10,11 +10,11 @@ type text struct {
 	value string
 }
 
-func (t text) Kind() Kind                  { return KindText }
-func (t text) Name() string                { return "" }
-func (t text) Value() string               { return t.value }
-func (t text) Children() []Node            { return []Node{} }
-func (t text) Attributes() map[string]Node { return map[string]Node{} }
+func (t text) Kind() Kind                      { return KindText }
+func (t text) Name() string                    { return "" }
+func (t text) Value() string                   { return t.value }
+func (t text) Children() []Node                { return []Node{} }
+func (t text) Attr(name string) (string, bool) { return "", false }
 func (t text) Render(w io.Writer) error {
 	_, err := fmt.Fprint(w, t.value)
 	return err

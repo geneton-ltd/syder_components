@@ -1,491 +1,566 @@
 package sydercomponents
 
-// A returns a HTML5 <a> element with no default style.
-func A(opts ...Option) Component {
-	return Any("a", opts...)
+// A returns an HTML5 <a> element with no default style.
+func A(children ...Node) Node {
+	return Any("a", children...)
 }
 
-// Abbr returns a HTML5 <abbr> element with no default style.
-func Abbr(opts ...Option) Component {
-	return Any("abbr", opts...)
+// Abbr returns an HTML5 <abbr> element with no default style.
+func Abbr(children ...Node) Node {
+	return Any("abbr", children...)
 }
 
-// Address returns a HTML5 <address> element with no default style.
-func Address(opts ...Option) Component {
-	return Any("address", opts...)
+// Address returns an HTML5 <address> element with no default style.
+func Address(children ...Node) Node {
+	return Any("address", children...)
 }
 
-// Area returns a HTML5 <area> element with no default style.
-func Area(opts ...Option) Component {
-	return Any("area", opts...)
+// Area returns an HTML5 <area> element with no default style.
+func Area(children ...Node) Node {
+	return Any("area", children...)
 }
 
-// Article returns a HTML5 <article> element with no default style.
-func Article(opts ...Option) Component {
-	return Any("article", opts...)
+// Article returns an HTML5 <article> element with no default style.
+func Article(children ...Node) Node {
+	return Any("article", children...)
 }
 
-// Aside returns a HTML5 <aside> element with no default style.
-func Aside(opts ...Option) Component {
-	return Any("aside", opts...)
+// Aside returns an HTML5 <aside> element with no default style.
+func Aside(children ...Node) Node {
+	return Any("aside", children...)
 }
 
-// Audio returns a HTML5 <audio> element with no default style.
-func Audio(opts ...Option) Component {
-	return Any("audio", opts...)
+// Audio returns an HTML5 <audio> element with no default style.
+func Audio(children ...Node) Node {
+	return Any("audio", children...)
 }
 
-// B returns a HTML5 <b> element with no default style.
-func B(opts ...Option) Component {
-	return Any("b", opts...)
+// B returns an HTML5 <b> element with no default style.
+func B(children ...Node) Node {
+	return Any("b", children...)
 }
 
-// Base returns a HTML5 <base> element with no default style.
-func Base(opts ...Option) Component {
-	return Any("base", opts...)
+// Base returns an HTML5 <base> element with no default style.
+func Base(children ...Node) Node {
+	return Any("base", children...)
 }
 
-// Bdi returns a HTML5 <bdi> element with no default style.
-func Bdi(opts ...Option) Component {
-	return Any("bdi", opts...)
+// Bdi returns an HTML5 <bdi> element with no default style.
+func Bdi(children ...Node) Node {
+	return Any("bdi", children...)
 }
 
-// Bdo returns a HTML5 <bdo> element with no default style.
-func Bdo(opts ...Option) Component {
-	return Any("bdo", opts...)
+// Bdo returns an HTML5 <bdo> element with no default style.
+func Bdo(children ...Node) Node {
+	return Any("bdo", children...)
 }
 
-// Blockquote returns a HTML5 <blockquote> element with no default style.
-func Blockquote(opts ...Option) Component {
-	return Any("blockquote", opts...)
+// Blockquote returns an HTML5 <blockquote> element with no default style.
+func Blockquote(children ...Node) Node {
+	return Any("blockquote", children...)
 }
 
-// Body returns a HTML5 <body> element with no default style.
-func Body(opts ...Option) Component {
-	return Any("body", opts...)
+// Body returns an HTML5 <body> element with no default style.
+func Body(children ...Node) Node {
+	return Any("body", children...)
 }
 
-// Br returns a HTML5 <br> element with no default style.
-func Br(opts ...Option) Component {
-	return Any("br", opts...)
+// Br returns an HTML5 <br> element with no default style.
+func Br(children ...Node) Node {
+	return Any("br", children...)
 }
 
-// Canvas returns a HTML5 <canvas> element with no default style.
-func Canvas(opts ...Option) Component {
-	return Any("canvas", opts...)
+// Button returns an HTML5 <button> element with no default style.
+func Button(children ...Node) Node {
+	return Any("button", children...)
 }
 
-// Cite returns a HTML5 <cite> element with no default style.
-func Cite(opts ...Option) Component {
-	return Any("cite", opts...)
+// Canvas returns an HTML5 <canvas> element with no default style.
+func Canvas(children ...Node) Node {
+	return Any("canvas", children...)
 }
 
-// Code returns a HTML5 <code> element with no default style.
-func Code(opts ...Option) Component {
-	return Any("code", opts...)
+// Caption returns an HTML5 <caption> element with no default style.
+func Caption(children ...Node) Node {
+	return Any("caption", children...)
 }
 
-// Datalist returns a HTML5 <datalist> element with no default style.
-func Datalist(opts ...Option) Component {
-	return Any("datalist", opts...)
+// Cite returns an HTML5 <cite> element with no default style.
+func Cite(children ...Node) Node {
+	return Any("cite", children...)
 }
 
-// Dd returns a HTML5 <dd> element with no default style.
-func Dd(opts ...Option) Component {
-	return Any("dd", opts...)
+// Code returns an HTML5 <code> element with no default style.
+func Code(children ...Node) Node {
+	return Any("code", children...)
 }
 
-// Del returns a HTML5 <del> element with no default style.
-func Del(opts ...Option) Component {
-	return Any("del", opts...)
+// Col returns an HTML5 <col> element with no default style.
+func Col(children ...Node) Node {
+	return Any("col", children...)
 }
 
-// Details returns a HTML5 <details> element with no default style.
-func Details(opts ...Option) Component {
-	return Any("details", opts...)
+// Colgroup returns an HTML5 <colgroup> element with no default style.
+func Colgroup(children ...Node) Node {
+	return Any("colgroup", children...)
 }
 
-// Dfn returns a HTML5 <dfn> element with no default style.
-func Dfn(opts ...Option) Component {
-	return Any("dfn", opts...)
+// DataEl returns an HTML5 <data> element with no default style.
+func DataEl(children ...Node) Node {
+	return Any("data", children...)
 }
 
-// Div returns a HTML5 <div> element with no default style.
-func Div(opts ...Option) Component {
-	return Any("div", opts...)
+// Datalist returns an HTML5 <datalist> element with no default style.
+func Datalist(children ...Node) Node {
+	return Any("datalist", children...)
 }
 
-// Dl returns a HTML5 <dl> element with no default style.
-func Dl(opts ...Option) Component {
-	return Any("dl", opts...)
+// Dd returns an HTML5 <dd> element with no default style.
+func Dd(children ...Node) Node {
+	return Any("dd", children...)
 }
 
-// Dt returns a HTML5 <dt> element with no default style.
-func Dt(opts ...Option) Component {
-	return Any("dt", opts...)
+// Del returns an HTML5 <del> element with no default style.
+func Del(children ...Node) Node {
+	return Any("del", children...)
 }
 
-// Em returns a HTML5 <em> element with no default style.
-func Em(opts ...Option) Component {
-	return Any("em", opts...)
+// Details returns an HTML5 <details> element with no default style.
+func Details(children ...Node) Node {
+	return Any("details", children...)
 }
 
-// Embed returns a HTML5 <embed> element with no default style.
-func Embed(opts ...Option) Component {
-	return Any("embed", opts...)
+// Dfn returns an HTML5 <dfn> element with no default style.
+func Dfn(children ...Node) Node {
+	return Any("dfn", children...)
 }
 
-// Fieldset returns a HTML5 <fieldset> element with no default style.
-func Fieldset(opts ...Option) Component {
-	return Any("fieldset", opts...)
+// Dialog returns an HTML5 <dialog> element with no default style.
+func Dialog(children ...Node) Node {
+	return Any("dialog", children...)
 }
 
-// Figcaption returns a HTML5 <figcaption> element with no default style.
-func Figcaption(opts ...Option) Component {
-	return Any("figcaption", opts...)
+// Div returns an HTML5 <div> element with no default style.
+func Div(children ...Node) Node {
+	return Any("div", children...)
 }
 
-// Figure returns a HTML5 <figure> element with no default style.
-func Figure(opts ...Option) Component {
-	return Any("figure", opts...)
+// Dl returns an HTML5 <dl> element with no default style.
+func Dl(children ...Node) Node {
+	return Any("dl", children...)
 }
 
-// Footer returns a HTML5 <footer> element with no default style.
-func Footer(opts ...Option) Component {
-	return Any("footer", opts...)
+// Dt returns an HTML5 <dt> element with no default style.
+func Dt(children ...Node) Node {
+	return Any("dt", children...)
 }
 
-// Form returns a HTML5 <form> element with no default style.
-func Form(opts ...Option) Component {
-	return Any("form", opts...)
+// Em returns an HTML5 <em> element with no default style.
+func Em(children ...Node) Node {
+	return Any("em", children...)
 }
 
-// H1 returns a HTML5 <h1> element with no default style.
-func H1(opts ...Option) Component {
-	return Any("h1", opts...)
+// Embed returns an HTML5 <embed> element with no default style.
+func Embed(children ...Node) Node {
+	return Any("embed", children...)
 }
 
-// H2 returns a HTML5 <h2> element with no default style.
-func H2(opts ...Option) Component {
-	return Any("h2", opts...)
+// Fieldset returns an HTML5 <fieldset> element with no default style.
+func Fieldset(children ...Node) Node {
+	return Any("fieldset", children...)
 }
 
-// H3 returns a HTML5 <h3> element with no default style.
-func H3(opts ...Option) Component {
-	return Any("h3", opts...)
+// Figcaption returns an HTML5 <figcaption> element with no default style.
+func Figcaption(children ...Node) Node {
+	return Any("figcaption", children...)
 }
 
-// H4 returns a HTML5 <h4> element with no default style.
-func H4(opts ...Option) Component {
-	return Any("h4", opts...)
+// Figure returns an HTML5 <figure> element with no default style.
+func Figure(children ...Node) Node {
+	return Any("figure", children...)
 }
 
-// H5 returns a HTML5 <h5> element with no default style.
-func H5(opts ...Option) Component {
-	return Any("h5", opts...)
+// Footer returns an HTML5 <footer> element with no default style.
+func Footer(children ...Node) Node {
+	return Any("footer", children...)
 }
 
-// H6 returns a HTML5 <h6> element with no default style.
-func H6(opts ...Option) Component {
-	return Any("h6", opts...)
+// Form returns an HTML5 <form> element with no default style.
+func Form(children ...Node) Node {
+	return Any("form", children...)
 }
 
-// Head returns a HTML5 <head> element with no default style.
-func Head(opts ...Option) Component {
-	return Any("head", opts...)
+// H1 returns an HTML5 <h1> element with no default style.
+func H1(children ...Node) Node {
+	return Any("h1", children...)
 }
 
-// Header returns a HTML5 <header> element with no default style.
-func Header(opts ...Option) Component {
-	return Any("header", opts...)
+// H2 returns an HTML5 <h2> element with no default style.
+func H2(children ...Node) Node {
+	return Any("h2", children...)
 }
 
-// Hgroup returns a HTML5 <hgroup> element with no default style.
-func Hgroup(opts ...Option) Component {
-	return Any("hgroup", opts...)
+// H3 returns an HTML5 <h3> element with no default style.
+func H3(children ...Node) Node {
+	return Any("h3", children...)
 }
 
-// Hr returns a HTML5 <hr> element with no default style.
-func Hr(opts ...Option) Component {
-	return Any("hr", opts...)
+// H4 returns an HTML5 <h4> element with no default style.
+func H4(children ...Node) Node {
+	return Any("h4", children...)
 }
 
-// Html returns a HTML5 <html> element with no default style.
-func Html(opts ...Option) Component {
-	return Any("html", opts...)
+// H5 returns an HTML5 <h5> element with no default style.
+func H5(children ...Node) Node {
+	return Any("h5", children...)
 }
 
-// I returns a HTML5 <i> element with no default style.
-func I(opts ...Option) Component {
-	return Any("i", opts...)
+// H6 returns an HTML5 <h6> element with no default style.
+func H6(children ...Node) Node {
+	return Any("h6", children...)
 }
 
-// Iframe returns a HTML5 <iframe> element with no default style.
-func Iframe(opts ...Option) Component {
-	return Any("iframe", opts...)
+// Head returns an HTML5 <head> element with no default style.
+func Head(children ...Node) Node {
+	return Any("head", children...)
 }
 
-// Img returns a HTML5 <img> element with no default style.
-func Img(opts ...Option) Component {
-	return Any("img", opts...)
+// Header returns an HTML5 <header> element with no default style.
+func Header(children ...Node) Node {
+	return Any("header", children...)
 }
 
-// Input returns a HTML5 <input> element with no default style.
-func Input(opts ...Option) Component {
-	return Any("input", opts...)
+// Hgroup returns an HTML5 <hgroup> element with no default style.
+func Hgroup(children ...Node) Node {
+	return Any("hgroup", children...)
 }
 
-// Ins returns a HTML5 <ins> element with no default style.
-func Ins(opts ...Option) Component {
-	return Any("ins", opts...)
+// Hr returns an HTML5 <hr> element with no default style.
+func Hr(children ...Node) Node {
+	return Any("hr", children...)
 }
 
-// Kbd returns a HTML5 <kbd> element with no default style.
-func Kbd(opts ...Option) Component {
-	return Any("kbd", opts...)
+// Html returns an HTML5 <html> element with no default style.
+func Html(children ...Node) Node {
+	return Any("html", children...)
 }
 
-// Label returns a HTML5 <label> element with no default style.
-func Label(opts ...Option) Component {
-	return Any("label", opts...)
+// I returns an HTML5 <i> element with no default style.
+func I(children ...Node) Node {
+	return Any("i", children...)
 }
 
-// Legend returns a HTML5 <legend> element with no default style.
-func Legend(opts ...Option) Component {
-	return Any("legend", opts...)
+// Iframe returns an HTML5 <iframe> element with no default style.
+func Iframe(children ...Node) Node {
+	return Any("iframe", children...)
 }
 
-// Li returns a HTML5 <li> element with no default style.
-func Li(opts ...Option) Component {
-	return Any("li", opts...)
+// Img returns an HTML5 <img> element with no default style.
+func Img(children ...Node) Node {
+	return Any("img", children...)
 }
 
-// Link returns a HTML5 <link> element with no default style.
-func Link(opts ...Option) Component {
-	return Any("link", opts...)
+// Input returns an HTML5 <input> element with no default style.
+func Input(children ...Node) Node {
+	return Any("input", children...)
 }
 
-// Main returns a HTML5 <main> element with no default style.
-func Main(opts ...Option) Component {
-	return Any("main", opts...)
+// Ins returns an HTML5 <ins> element with no default style.
+func Ins(children ...Node) Node {
+	return Any("ins", children...)
 }
 
-// Map returns a HTML5 <map> element with no default style.
-func Map(opts ...Option) Component {
-	return Any("map", opts...)
+// Kbd returns an HTML5 <kbd> element with no default style.
+func Kbd(children ...Node) Node {
+	return Any("kbd", children...)
 }
 
-// Mark returns a HTML5 <mark> element with no default style.
-func Mark(opts ...Option) Component {
-	return Any("mark", opts...)
+// Label returns an HTML5 <label> element with no default style.
+func Label(children ...Node) Node {
+	return Any("label", children...)
 }
 
-// Menu returns a HTML5 <menu> element with no default style.
-func Menu(opts ...Option) Component {
-	return Any("menu", opts...)
+// Legend returns an HTML5 <legend> element with no default style.
+func Legend(children ...Node) Node {
+	return Any("legend", children...)
 }
 
-// Meta returns a HTML5 <meta> element with no default style.
-func Meta(opts ...Option) Component {
-	return Any("meta", opts...)
+// Li returns an HTML5 <li> element with no default style.
+func Li(children ...Node) Node {
+	return Any("li", children...)
 }
 
-// Meter returns a HTML5 <meter> element with no default style.
-func Meter(opts ...Option) Component {
-	return Any("meter", opts...)
+// Link returns an HTML5 <link> element with no default style.
+func Link(children ...Node) Node {
+	return Any("link", children...)
 }
 
-// Nav returns a HTML5 <nav> element with no default style.
-func Nav(opts ...Option) Component {
-	return Any("nav", opts...)
+// Main returns an HTML5 <main> element with no default style.
+func Main(children ...Node) Node {
+	return Any("main", children...)
 }
 
-// Noscript returns a HTML5 <noscript> element with no default style.
-func Noscript(opts ...Option) Component {
-	return Any("noscript", opts...)
+// Map returns an HTML5 <map> element with no default style.
+func Map(children ...Node) Node {
+	return Any("map", children...)
 }
 
-// Object returns a HTML5 <object> element with no default style.
-func Object(opts ...Option) Component {
-	return Any("object", opts...)
+// Mark returns an HTML5 <mark> element with no default style.
+func Mark(children ...Node) Node {
+	return Any("mark", children...)
 }
 
-// Ol returns a HTML5 <ol> element with no default style.
-func Ol(opts ...Option) Component {
-	return Any("ol", opts...)
+// Menu returns an HTML5 <menu> element with no default style.
+func Menu(children ...Node) Node {
+	return Any("menu", children...)
 }
 
-// Optgroup returns a HTML5 <optgroup> element with no default style.
-func Optgroup(opts ...Option) Component {
-	return Any("optgroup", opts...)
+// Meta returns an HTML5 <meta> element with no default style.
+func Meta(children ...Node) Node {
+	return Any("meta", children...)
 }
 
-// Output returns a HTML5 <output> element with no default style.
-func Output(opts ...Option) Component {
-	return Any("output", opts...)
+// Meter returns an HTML5 <meter> element with no default style.
+func Meter(children ...Node) Node {
+	return Any("meter", children...)
 }
 
-// P returns a HTML5 <p> element with no default style.
-func P(opts ...Option) Component {
-	return Any("p", opts...)
+// Nav returns an HTML5 <nav> element with no default style.
+func Nav(children ...Node) Node {
+	return Any("nav", children...)
 }
 
-// Picture returns a HTML5 <picture> element with no default style.
-func Picture(opts ...Option) Component {
-	return Any("picture", opts...)
+// Noscript returns an HTML5 <noscript> element with no default style.
+func Noscript(children ...Node) Node {
+	return Any("noscript", children...)
 }
 
-// Pre returns a HTML5 <pre> element with no default style.
-func Pre(opts ...Option) Component {
-	return Any("pre", opts...)
+// Object returns an HTML5 <object> element with no default style.
+func Object(children ...Node) Node {
+	return Any("object", children...)
 }
 
-// Progress returns a HTML5 <progress> element with no default style.
-func Progress(opts ...Option) Component {
-	return Any("progress", opts...)
+// Ol returns an HTML5 <ol> element with no default style.
+func Ol(children ...Node) Node {
+	return Any("ol", children...)
 }
 
-// Q returns a HTML5 <q> element with no default style.
-func Q(opts ...Option) Component {
-	return Any("q", opts...)
+// Optgroup returns an HTML5 <optgroup> element with no default style.
+func Optgroup(children ...Node) Node {
+	return Any("optgroup", children...)
 }
 
-// Rp returns a HTML5 <rp> element with no default style.
-func Rp(opts ...Option) Component {
-	return Any("rp", opts...)
+// Option returns an HTML5 <option> element with no default style.
+func Option(children ...Node) Node {
+	return Any("option", children...)
 }
 
-// Rt returns a HTML5 <rt> element with no default style.
-func Rt(opts ...Option) Component {
-	return Any("rt", opts...)
+// Output returns an HTML5 <output> element with no default style.
+func Output(children ...Node) Node {
+	return Any("output", children...)
 }
 
-// Ruby returns a HTML5 <ruby> element with no default style.
-func Ruby(opts ...Option) Component {
-	return Any("ruby", opts...)
+// P returns an HTML5 <p> element with no default style.
+func P(children ...Node) Node {
+	return Any("p", children...)
 }
 
-// S returns a HTML5 <s> element with no default style.
-func S(opts ...Option) Component {
-	return Any("s", opts...)
+// Picture returns an HTML5 <picture> element with no default style.
+func Picture(children ...Node) Node {
+	return Any("picture", children...)
 }
 
-// Samp returns a HTML5 <samp> element with no default style.
-func Samp(opts ...Option) Component {
-	return Any("samp", opts...)
+// Pre returns an HTML5 <pre> element with no default style.
+func Pre(children ...Node) Node {
+	return Any("pre", children...)
 }
 
-// Script returns a HTML5 <script> element with no default style.
-func Script(opts ...Option) Component {
-	return Any("script", opts...)
+// Progress returns an HTML5 <progress> element with no default style.
+func Progress(children ...Node) Node {
+	return Any("progress", children...)
 }
 
-// Search returns a HTML5 <search> element with no default style.
-func Search(opts ...Option) Component {
-	return Any("search", opts...)
+// Q returns an HTML5 <q> element with no default style.
+func Q(children ...Node) Node {
+	return Any("q", children...)
 }
 
-// Section returns a HTML5 <section> element with no default style.
-func Section(opts ...Option) Component {
-	return Any("section", opts...)
+// Rp returns an HTML5 <rp> element with no default style.
+func Rp(children ...Node) Node {
+	return Any("rp", children...)
 }
 
-// Select returns a HTML5 <select> element with no default style.
-func Select(opts ...Option) Component {
-	return Any("select", opts...)
+// Rt returns an HTML5 <rt> element with no default style.
+func Rt(children ...Node) Node {
+	return Any("rt", children...)
 }
 
-// Selectedcontent returns a HTML5 <selectedcontent> element with no default style.
-func Selectedcontent(opts ...Option) Component {
-	return Any("selectedcontent", opts...)
+// Ruby returns an HTML5 <ruby> element with no default style.
+func Ruby(children ...Node) Node {
+	return Any("ruby", children...)
 }
 
-// Slot returns a HTML5 <slot> element with no default style.
-func Slot(opts ...Option) Component {
-	return Any("slot", opts...)
+// S returns an HTML5 <s> element with no default style.
+func S(children ...Node) Node {
+	return Any("s", children...)
 }
 
-// Small returns a HTML5 <small> element with no default style.
-func Small(opts ...Option) Component {
-	return Any("small", opts...)
+// Samp returns an HTML5 <samp> element with no default style.
+func Samp(children ...Node) Node {
+	return Any("samp", children...)
 }
 
-// Source returns a HTML5 <source> element with no default style.
-func Source(opts ...Option) Component {
-	return Any("source", opts...)
+// Script returns an HTML5 <script> element with no default style.
+func Script(children ...Node) Node {
+	return Any("script", children...)
 }
 
-// Span returns a HTML5 <span> element with no default style.
-func Span(opts ...Option) Component {
-	return Any("span", opts...)
+// Search returns an HTML5 <search> element with no default style.
+func Search(children ...Node) Node {
+	return Any("search", children...)
 }
 
-// Strong returns a HTML5 <strong> element with no default style.
-func Strong(opts ...Option) Component {
-	return Any("strong", opts...)
+// Section returns an HTML5 <section> element with no default style.
+func Section(children ...Node) Node {
+	return Any("section", children...)
 }
 
-// Sub returns a HTML5 <sub> element with no default style.
-func Sub(opts ...Option) Component {
-	return Any("sub", opts...)
+// Select returns an HTML5 <select> element with no default style.
+func Select(children ...Node) Node {
+	return Any("select", children...)
 }
 
-// Summary returns a HTML5 <summary> element with no default style.
-func Summary(opts ...Option) Component {
-	return Any("summary", opts...)
+// Selectedcontent returns an HTML5 <selectedcontent> element with no default style.
+func Selectedcontent(children ...Node) Node {
+	return Any("selectedcontent", children...)
 }
 
-// Sup returns a HTML5 <sup> element with no default style.
-func Sup(opts ...Option) Component {
-	return Any("sup", opts...)
+// Slot returns an HTML5 <slot> element with no default style.
+func Slot(children ...Node) Node {
+	return Any("slot", children...)
 }
 
-// Template returns a HTML5 <template> element with no default style.
-func Template(opts ...Option) Component {
-	return Any("template", opts...)
+// Small returns an HTML5 <small> element with no default style.
+func Small(children ...Node) Node {
+	return Any("small", children...)
 }
 
-// Textarea returns a HTML5 <textarea> element with no default style.
-func Textarea(opts ...Option) Component {
-	return Any("textarea", opts...)
+// Source returns an HTML5 <source> element with no default style.
+func Source(children ...Node) Node {
+	return Any("source", children...)
 }
 
-// Time returns a HTML5 <time> element with no default style.
-func Time(opts ...Option) Component {
-	return Any("time", opts...)
+// Span returns an HTML5 <span> element with no default style.
+func Span(children ...Node) Node {
+	return Any("span", children...)
 }
 
-// Title returns a HTML5 <title> element with no default style.
-func Title(opts ...Option) Component {
-	return Any("title", opts...)
+// Strong returns an HTML5 <strong> element with no default style.
+func Strong(children ...Node) Node {
+	return Any("strong", children...)
 }
 
-// Track returns a HTML5 <track> element with no default style.
-func Track(opts ...Option) Component {
-	return Any("track", opts...)
+// StyleEl returns an HTML5 <style> element with no default style.
+func StyleEl(children ...Node) Node {
+	return Any("style", children...)
 }
 
-// U returns a HTML5 <u> element with no default style.
-func U(opts ...Option) Component {
-	return Any("u", opts...)
+// Sub returns an HTML5 <sub> element with no default style.
+func Sub(children ...Node) Node {
+	return Any("sub", children...)
 }
 
-// Ul returns a HTML5 <ul> element with no default style.
-func Ul(opts ...Option) Component {
-	return Any("ul", opts...)
+// Summary returns an HTML5 <summary> element with no default style.
+func Summary(children ...Node) Node {
+	return Any("summary", children...)
 }
 
-// Var returns a HTML5 <var> element with no default style.
-func Var(opts ...Option) Component {
-	return Any("var", opts...)
+// Sup returns an HTML5 <sup> element with no default style.
+func Sup(children ...Node) Node {
+	return Any("sup", children...)
 }
 
-// Video returns a HTML5 <video> element with no default style.
-func Video(opts ...Option) Component {
-	return Any("video", opts...)
+// Table returns an HTML5 <table> element with no default style.
+func Table(children ...Node) Node {
+	return Any("table", children...)
 }
 
-// Wbr returns a HTML5 <wbr> element with no default style.
-func Wbr(opts ...Option) Component {
-	return Any("wbr", opts...)
+// TBody returns an HTML5 <tbody> element with no default style.
+func TBody(children ...Node) Node {
+	return Any("tbody", children...)
+}
+
+// Td returns an HTML5 <td> element with no default style.
+func Td(children ...Node) Node {
+	return Any("td", children...)
+}
+
+// Template returns an HTML5 <template> element with no default style.
+func Template(children ...Node) Node {
+	return Any("template", children...)
+}
+
+// Textarea returns an HTML5 <textarea> element with no default style.
+func Textarea(children ...Node) Node {
+	return Any("textarea", children...)
+}
+
+// Tfoot returns an HTML5 <tfoot> element with no default style.
+func Tfoot(children ...Node) Node {
+	return Any("tfoot", children...)
+}
+
+// Th returns an HTML5 <th> element with no default style.
+func Th(children ...Node) Node {
+	return Any("th", children...)
+}
+
+// THead returns an HTML5 <thead> element with no default style.
+func THead(children ...Node) Node {
+	return Any("thead", children...)
+}
+
+// Time returns an HTML5 <time> element with no default style.
+func Time(children ...Node) Node {
+	return Any("time", children...)
+}
+
+// Title returns an HTML5 <title> element with no default style.
+func Title(children ...Node) Node {
+	return Any("title", children...)
+}
+
+// Tr returns an HTML5 <tr> element with no default style.
+func Tr(children ...Node) Node {
+	return Any("tr", children...)
+}
+
+// Track returns an HTML5 <track> element with no default style.
+func Track(children ...Node) Node {
+	return Any("track", children...)
+}
+
+// U returns an HTML5 <u> element with no default style.
+func U(children ...Node) Node {
+	return Any("u", children...)
+}
+
+// Ul returns an HTML5 <ul> element with no default style.
+func Ul(children ...Node) Node {
+	return Any("ul", children...)
+}
+
+// Var returns an HTML5 <var> element with no default style.
+func Var(children ...Node) Node {
+	return Any("var", children...)
+}
+
+// Video returns an HTML5 <video> element with no default style.
+func Video(children ...Node) Node {
+	return Any("video", children...)
+}
+
+// Wbr returns an HTML5 <wbr> element with no default style.
+func Wbr(children ...Node) Node {
+	return Any("wbr", children...)
 }

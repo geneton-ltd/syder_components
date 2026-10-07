@@ -15,8 +15,10 @@ func TestText(t *testing.T) {
 	comp := sc.Text(text)
 
 	// properties
-	require.Equal(t, text, comp.GetText())
-	require.Equal(t, sc.KindText, comp.GetKind())
+	require.Equal(t, sc.KindText, comp.Kind())
+	require.Empty(t, comp.Name())
+	require.Empty(t, comp.Value())
+	require.Empty(t, comp.Children())
 
 	// content
 	var buf bytes.Buffer
@@ -30,8 +32,10 @@ func TestRaw(t *testing.T) {
 	comp := sc.Raw(text)
 
 	// properties
-	require.Equal(t, text, comp.GetText())
-	require.Equal(t, sc.KindText, comp.GetKind())
+	require.Equal(t, sc.KindText, comp.Kind())
+	require.Empty(t, comp.Name())
+	require.Empty(t, comp.Value())
+	require.Empty(t, comp.Children())
 
 	// content
 	var buf bytes.Buffer

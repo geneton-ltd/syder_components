@@ -67,7 +67,8 @@ func main() {
 ```
 
 ## 3. Components Overview
-The following is the list of all available components:
+We provide a number of styled components available in the `syder_components/components` package. They are listed below:
+
 | Component | Description |
 | --------- | ----------- |
 | Any | Renders given HTML5 tag. It does not apply any styles. |
@@ -78,10 +79,8 @@ The following is the list of all available components:
 | Dialog | HTML5 `<dialog>` element. For attachment to happen, pass `ID` option and then `DialogTrigger` with the same id to the trigger element (e.g. a button). Attachment is performed automatically. |
 | DialogFixedCentered | `Dialog` fixed at the center of the screen (horizontally and vertically). |
 | DialogRelative | `Dialog` that is relative to its parent. The parent must have the "relative" class. |
-| Empty | Component that renders absolutely nothing. It is useful for conditional rendering. |
 | Navbar | HTML5 `<div>` element with simple styles acting as a container for navigation elements. |
 | NavLink | HTML5 `<a>` element, which is supposed to be put into `Navbar`. |
-| Node | Node allows injecting `gomponents.Node` into the tree. It cannot be inspected using the `GetClass` or `GetChildren`. It is meant for foreign nodes that are not present in this library, not for gomponents' own html package helpers. |
 | Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass `ID` option and then `PopoverTrigger` with the same id to the trigger element (e.g. a button). |
 | Raw | Raw creates a text Component that renders the unescaped string t. |
 | SubCard | A `Card` designed for grouping nested content. It applies a dashed border to visually separate it from primary cards. |
@@ -94,7 +93,7 @@ The following is the list of all available components:
 | Th | HTML5 `<th>` element with bold font and default spacing. |
 | Td | HTML5 `<td>` element with default spacing. |
 
-Almost all other non-deprecated HTML5 elements (except `<caption>`, `<col>`, `<colgroup>`, `<data>`, `<option>`, `<style>` and `<tfoot>`, which are either virtual elements or have naming conflicts) are available with no default style. Components for the missing elements can still be created with `sc.Any("tag", ...)`.
+All HTML5 elements are also available with no default style in the `syder_components` package.
 
 ## 4. Development
 To start example code on port 8000 with live-reloading install [air](https://github.com/air-verse/air) and run:

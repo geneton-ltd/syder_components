@@ -1,4 +1,4 @@
-package sydercomponents_test
+package testutil
 
 import (
 	"bytes"
@@ -10,7 +10,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-func assertElementWithIDExists(t *testing.T, comp sc.Component, elementTag string, id string) {
+func AssertElementWithIDExists(t *testing.T, comp sc.Node, elementTag string, id string) {
 	var buf bytes.Buffer
 	err := comp.Render(&buf)
 	require.NoError(t, err)

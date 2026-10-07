@@ -6,22 +6,41 @@ import (
 	"strconv"
 )
 
+// attribute is an internal [Node] of [KindAttr] kind.
+// The name of the attribute can be accessed with the [attribute.Name] method.
+// The value of the attribute can be accessed with the [attribute.Value] and [attribute.Attr] methods.
+// Boolean attributes have an empty value and are rendered without the '="value"' suffix.
+// It has no children.
 type attribute struct {
 	name  string
 	value string
 }
 
-func (a attribute) Kind() Kind                  { return KindAttr }
-func (a attribute) Name() string                { return a.name }
-func (a attribute) Value() string               { return a.value }
-func (a attribute) Children() []Node            { return []Node{} }
-func (a attribute) Attributes() map[string]Node { return map[string]Node{} }
+func (a attribute) Kind() Kind       { return KindAttr }
+func (a attribute) Name() string     { return a.name }
+func (a attribute) Value() string    { return a.value }
+func (a attribute) Children() []Node { return []Node{} }
+
+// Attr returns the underlying attribute's value and true if the name is matches.
+// Otherwise, it returns an empty string and false.
+func (a attribute) Attr(name string) (string, bool) {
+	if a.name == name {
+		return a.value, true
+	}
+
+	return "", false
+}
+
+// Render writes 'name="value"' into the provided [io.Writer] instance.
+// In case of boolean attributes, just 'name' is written into the writer.
 func (a attribute) Render(w io.Writer) error {
 	var err error
+
+	// boolean attributes
 	if a.value == "" {
 		_, err = fmt.Fprint(w, a.name)
 	} else {
-		_, err = fmt.Fprintf(w, "%s=%s", a.name, a.value)
+		_, err = fmt.Fprintf(w, "%s=\"%s\"", a.name, a.value)
 	}
 
 	return err

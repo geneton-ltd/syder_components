@@ -3,6 +3,7 @@ package sydercomponents
 import (
 	"fmt"
 	"io"
+	"maps"
 	"slices"
 	"strings"
 )
@@ -42,8 +43,13 @@ func (e element) Render(w io.Writer) error {
 		return err
 	}
 
-	for name, node := range e.attrs {
-		if _, err := fmt.Fprintf(w, " %s=\"%s\"", name, node.Value()); err != nil {
+	attrNames := slices.Sorted(maps.Keys(e.attrs))
+	for _, attrName := range attrNames {
+		if _, err := fmt.Fprint(w, " "); err != nil {
+			return err
+		}
+
+		if err := e.attrs[attrName].Render(w); err != nil {
 			return err
 		}
 	}
@@ -73,31 +79,38 @@ func (e element) Render(w io.Writer) error {
 	return nil
 }
 
+func (e *element) unpackChild(child Node) {
+	switch child.Kind() {
+	case KindAttr:
+		name := child.Name()
+		if name != "class" {
+			e.attrs[name] = child
+		} else {
+			var cls string
+			if n, ok := e.attrs["class"]; ok {
+				cls = n.Value()
+			}
+			e.attrs["class"] = Attr(name, cls+" "+strings.TrimSpace(child.Value()))
+		}
+	case KindGroup:
+		for _, groupMember := range child.Children() {
+			e.unpackChild(groupMember)
+		}
+	default:
+		e.children = append(e.children, child)
+	}
+}
+
 func newElement(name string, children ...Node) Node {
-	el := element{
+	e := &element{
 		name:     name,
 		attrs:    map[string]Node{},
 		children: []Node{},
 	}
 
 	for _, child := range children {
-		if child.Kind() == KindAttr {
-			name := child.Name()
-			if name != "class" {
-				el.attrs[name] = child
-			} else {
-				var cls string
-				if n, ok := el.attrs["class"]; ok {
-					cls = n.Value()
-				}
-				el.attrs["class"] = Attr(name, cls+" "+strings.TrimSpace(child.Value()))
-			}
-		} else if child.Kind() == KindGroup {
-			// TODO
-		} else {
-			el.children = append(el.children, child)
-		}
+		e.unpackChild(child)
 	}
 
-	return el
+	return *e
 }
