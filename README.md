@@ -1,8 +1,8 @@
 # Syder Components
 
-[![CI](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg)
+[![CI](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/geneton-ltd/syder_components/actions/workflows/test.yaml)
 
-Reusable, composable and testable frontend components to be used alongside the [gomponents](https://github.com/maragudk/gomponents) library.
+Reusable, composable and testable frontend components compatible with the [gomponents](https://github.com/maragudk/gomponents) library.
 
 ## 1. Installation
 
@@ -14,15 +14,11 @@ GOPRIVATE=github.com/geneton-ltd/* go get github.com/geneton-ltd/syder_component
 Copy the library's `static/output.css` file into your project's `static/css/syder_components.css`.
 
 > [!WARNING]
-> If you use SSH login for Github (you can check with `ssh -T git@github.com`), you need to tell git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
-
-> [!NOTE] 
-> This library is supposed to be used alongside gomponents. If you do not have them installed, you can do so with:
-> `go get maragu.dev/gomponents`
+> If you use SSH login for Github (you can check with `ssh -T git@github.com`), configure git to use SSH instead of HTTPS with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
 
 ## 2. Quickstart
 
-You can get started with this simple `main.go` file (most of it is just boilerplate to get you started):
+Get started with this simple `main.go` file:
 ```go
 package main
 
@@ -31,9 +27,7 @@ import (
 	"net/http"
 
 	sc "github.com/geneton-ltd/syder_components"
-	g "maragu.dev/gomponents"
-	co "maragu.dev/gomponents/components"
-	h "maragu.dev/gomponents/html"
+	co "github.com/geneton-ltd/syder_components/components"
 )
 
 //go:embed static/*
@@ -45,86 +39,135 @@ func main() {
 	mux.Handle("/static/", http.FileServer(http.FS(static)))
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		btn := sc.Button(
-			sc.ID("helloWorldBtnID"),
-			sc.Nodes(g.Text("Hello, world!")),
-		)
+        // pre-styled button from the components package
+        btn := co.Button(sc.ID("helloWorldBtnID"), sc.Text("Hello, world!"))
 
-		page := co.HTML5(
-			co.HTML5Props{
-				Title:    "Syder Components - Example",
-				Language: "en",
-				Head: []g.Node{
-					h.Link(h.Rel("stylesheet"), h.Href("/static/css/output.css")),
-				},
-				Body: []g.Node{btn},
-			},
-		)
-		page.Render(w)
-	})
+        page := co.Page(
+            co.PageProps{
+                Title:    "Syder Components - Example",
+                Language: "en",
+                Head: []sc.Node{
+                    sc.Link(sc.Rel("stylesheet"), sc.Href("/static/css/syder_components.css")),
+                },
+                Body: []sc.Node{btn},
+            },
+        )
+        page.Render(w)
+    })
 
-	http.ListenAndServe(":8000", mux)
+    http.ListenAndServe(":8000", mux)
 }
 ```
 
-## 3. Components overview
-The following is the list of all available components:
+## 3. Package Structure & Components 
+The library is organized into two packages: 
+
+### 1. `syder_components` (`sc`)
+Contains base HTML primitives, attributes, text helpers, and control structures.
+- **Attributes:** `Class`, `ID`, `Attr`, `Href`, `Src`, `Type`, `Disabled`, `Required`, `Data`, `Aria`, etc.
+- **Text:** `Text(string)` (escaped HTML) and `Raw(string)` (raw unescaped HTML).
+- **Control & Grouping:** `If`, `Iff`, `Group`, `GNode` (wrapper for `gomponents.Node` instances).
+- **Unstyled HTML Elements:** Every standard non-deprecated HTML5 tag is available as an unstyled element (e.g., `sc.Div()`, `sc.Span()`, `sc.H1()`, `sc.Img()`). Obscure tags can be created with `sc.Any("tag", ...)`.
+
+### 2. `syder_components/components` (`co`)
+Contains pre-styled Tailwind CSS components:
+
 | Component | Description |
 | --------- | ----------- |
-| Any | Renders given HTML5 tag. It does not apply any styles. |
-| Button | HTML5 `<button>` element with default style without colors. | 
-| IconButton | HTML5 `<button>` element containing an icon wrapped in a `<span>` element. | 
-| IconOnlyButton | *IconButton* with special styles to make sure the icon placement is accurate. |
-| Card | A styled `<div>` for grouping content. |
-| SubCard | A *Card* designed for grouping nested content. It applies a dashed border to visually separate it from primary cards. |
-| Dialog | HTML5 `<dialog>` element. For attachment to happen, pass `ID` option and then `DialogTrigger` with the same id to the trigger element (e.g. a button). Attachment is performed automatically. |
-| DialogRelative | *Dialog* that is relative to its parent. The parent must have the "relative" class. |
-| DialogFixedCentered | *Dialog* fixed at the center of the screen (horizontally and vertically). |
-| Empty | Component that renders absolutely nothing. It is useful for conditional rendering. |
-| Navbar | HTML5 `<div>` element with simple styles acting as a container for navigation elements. |
-| NavLink | HTML5 `<a>` element, which is supposed to be put into *Navbar*. |
-| Popover | HTML5 `<div>` element that floats natively using the Popover API. For attachment to happen, pass `ID` option and then `PopoverTrigger` with the same id to the trigger element (e.g. a button). |
-| TableContainer | HTML5 `<div>` element meant to function as a container for the *Table* component, while adding horizontal scroll. |
-| Table | HTML5 `<table>` element with head and body separator. |
-| THead | HTML5 `<thead>` element with no default style. |
-| TBody | HTML5 `<tbody>` element with a thin row separator. |
-| Tr | HTML5 `<tr>` element with simple hover style. |
-| Th | HTML5 `<th>` element with bold font and default spacing. |
-| Td | HTML5 `<td>` element with default spacing. |
+| Button | HTML5 `<button>` with pre-configured padding, round corners and hover states. |
+| IconButton | `<button>` containing an icon wrapped in a fixed-size `<span>`. |
+| IconOnlyButton | `IconButton` configured for standalone icon buttons. |
+| Card | Styled `<div>` container with border, round corners and shadow. |
+| SubCard | `Card` with a dashed border for nesting sub-content. |
+| Dialog | Native HTML5 `<dialog>` modal with backdrop and shadow. |
+| DialogRelative | `Dialog` positioned relative to its parent container. |
+| DialogFixedCentered | `Dialog` fixed at the center of the viewport. |
+| Navbar | Top navigation container `<div>`. |
+| NavLink | Navigation element `<a>` designed for use inside `Navbar`. |
+| Popover | Floating non-modal container using the native HTML5 Popover API. |
+| TableContainer | Wrapper `<div>` adding horizontal scroll and borders for data tables. |
+| Table | `<table>` element with pre-configured width and borders. |
+| THead/TBody | Pre-styled table section containers. |
+| Tr/Th/Td | Pre-styled table rows, header cells and standard cells. |
 
-Almost all other non-deprecated HTML5 elements (except `<caption>`, `<col>`, `<colgroup>`, `<data>`, `<option>`, `<style>` and `<tfoot>`) are available with no default style. Components for the missing elements can still be created with `sc.Any("tag", ...)`.
+All HTML5 elements are also available with no default style in the `syder_components` package.
 
-## 4. Development
-To start example code on port 8000 with live-reloading install [air](https://github.com/air-verse/air) and run:
+## 4. Core Concepts
+
+### Everything is a `Node`
+Every element, attribute, text fragment and group implements the `sc.Node` interface. Children and attributes are passed directly as variadic arguments:
+```go
+sc.Div(
+    sc.ID("main"),
+    sc.Class("p-4 bg-white"),
+    sc.H1(sc.Text("Title")),
+)
+```
+
+### Automatic Class Merging
+You do not need a special `ClassAppend` option. Passing `sc.Class` multiple times automatically joins the class names with a space:
+```go
+// Renders class="p-4 bg-red-500 text-white"
+sc.Div(
+    sc.Class("p-4"),
+    sc.Class("bg-red-500 text-white"),
+)
+```
+For non-class attributes (like `id` or `type`), the last passed attribute overwrites previous ones.
+
+### Groups and Unpacking
+Multi-attributes or sibling elements can be bundled using `sc.Group(...)`. When passed to an element, groups are recursively unpacked:
+```go
+// DialogTrigger automatically unpacks into commandfor and command attributes
+co.Button(
+    sc.DialogTrigger("my-modal"),
+    sc.Text("Open Modal"),
+)
+```
+
+### Conditional Rendering (`If` and `Iff`)
+- `sc.If(condition bool, node Node)` returns the node if `true` or `nil` if `false` (nil nodes are safely omitted during rendering).
+- `sc.Iff(condition bool, fn func() Node)` lazily evaluates the function only if the condition is `true`, preventing nil-pointer panics when referencing nullable data.
+
+### Testing without HTML Parsers
+All `sc.Node` instances provide inspection methods for unit testing without parsing HTML strings:
+- `node.Kind()`: returns `KindElement`, `KindText`, `KindAttr`, `KindGroup` or `KindGNode`.
+- `node.Name()`: returns the HTML tag name (e.g. `"div"`) or attribute name.
+- `node.Value()`: returns text nodes content or attribute value.
+- `node.Attr("class")`: retrieves an attribute value by name.
+- `node.Children()`: returns the slice of child elements.
+
+## 5. Tailwind CSS Setup
+Each component internally uses Tailwind CSS classes. To actually apply these styles in your project:
+
+1. Copy `static/output.css` into your project directory (e.g., `static/css/syder_components.css`).
+2. Import the stylesheet in your website's `<head>`.
+
+## 6. Edge Cases & Native APIs
+
+- `DialogRelative` requires parent container to have the `relative` CSS class.
+- `Dialog` and `Popover` trigger options (`DialogTrigger`, `PopoverTrigger`, `DialogClose`, `PopoverClose`) use [native browser APIs](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) (`commandfor`, `command`, `popovertarget`) and therefore require zero Javascript in modern browsers.
+
+## 7. Development
+Run the example server with live-reloading (requires [air](https://github.com/air-verse/air)):
 ```shell
 make dev
 ```
 
-Run all tests with:
+Run test suite:
 ```shell
 make test
 ```
 
-Finally, to rebuild Tailwind CSS install the [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli) and start the watcher with:
+Start Tailwind CSS rebuild watcher for the library (requires [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli)):
 ```shell
 make tw
 ```
 
-## 5. Core concepts
-The main concept of the library is the functional-options pattern (every component takes variadic options). We provide numerous attribute options to set various HTML attributes. If some attribute is missing, simply use the `Attribute` option. Child content can be added with `Nodes` (for *gomponents* nodes) or with `Children` (for our `Component` nodes). Both of those options together with the `Class` option overwrite the nodes/children/class of the component. This can cause problems with nested default components or default components with predefined styles. For this the `NodeAppend`, `ChildrenAppend` and `ClassAppend` options are provided. Finally, one can track attributes of raw HTML5 by creating a `Any(tag)` `Component`. 
-
-The advantage of this library is that one can access the attributes of a component (with the `Get*` methods), which allows easier testing without bloating the testing code with the HTML parsing library.
-
-## 6. Customizing styles
-Each component internally uses Tailwind CSS classes. Therefore, to actually apply these styles, copy `static/output.css` into your project directory and import the stylesheet in your website's `<head>`.
-
-## 7. Edge cases
-Here is the list of some things to have in mind when using some of the components:
-
-- `DialogRelative` requires using `relative` class on its parent element.
-- `Dialog` (and `Popover` component for closing) requires passing the element id to the trigger element with the `DialogTrigger` (or `PopoverTrigger`) options.
-- `Dialog` and `Popover` elements rely on the `DialogTrigger/PopoverTrigger/DialogClose/PopoverClose` options, which add the `command/commandfor/popovertarget/popovertargetaction` attributes, which rely on the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API). This API is supported in all modern browsers, but it is quite new and therefore might not be supported in all old browsers.
-- `Empty` is supposed to be used as a replacement for `gomponents.If`, if you want to achieve 100% testability.
+Start Tailwind CSS rebuild watcher for the example server (requires [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli)):
+```shell
+make tw-cmd
+```
 
 ## License
-Syder Components is available under the MIT license. See the LICENSE file for more info.
+Syder Components is available under the MIT license. See the LICENSE file for details.

@@ -1,26 +1,32 @@
-package sydercomponents_test
+package components_test
 
 import (
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
+	co "github.com/geneton-ltd/syder_components/components"
+	tu "github.com/geneton-ltd/syder_components/internal/testutil"
 	"github.com/stretchr/testify/require"
 )
 
 func TestNavbar_Options(t *testing.T) {
 	// create navbar component with options
-	comp := sc.Navbar(sc.ID("id"), sc.Data("name", "john"))
+	comp := co.Navbar(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
-	require.Equal(t, "id", comp.GetID())
-	v, has := comp.GetData("name")
-	require.Equal(t, "john", v)
+	v, has := comp.Attr("id")
 	require.True(t, has)
+	require.Equal(t, "id", v)
+
+	v, has = comp.Attr("data-name")
+	require.True(t, has)
+	require.Equal(t, "john", v)
 }
 
 func TestNavbar_DefaultStyle(t *testing.T) {
-	comp := sc.Navbar()
-	class := comp.GetClass()
+	comp := co.Navbar()
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
 	require.Contains(t, class, "h-[50px]")
 	require.Contains(t, class, "bg-gray-800")
 	require.Contains(t, class, "flex")
@@ -30,24 +36,28 @@ func TestNavbar_DefaultStyle(t *testing.T) {
 
 func TestNavbar_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Navbar(sc.ID(id))
-	assertElementWithIDExists(t, comp, "div", id)
+	comp := co.Navbar(sc.ID(id))
+	tu.AssertElementWithIDExists(t, comp, "div", id)
 }
 
 func TestNavLink_Options(t *testing.T) {
 	// create navlink component with options
-	comp := sc.NavLink(sc.ID("id"), sc.Data("name", "john"))
+	comp := co.NavLink(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
-	require.Equal(t, "id", comp.GetID())
-	v, has := comp.GetData("name")
-	require.Equal(t, "john", v)
+	v, has := comp.Attr("id")
 	require.True(t, has)
+	require.Equal(t, "id", v)
+
+	v, has = comp.Attr("data-name")
+	require.True(t, has)
+	require.Equal(t, "john", v)
 }
 
 func TestNavLink_DefaultStyle(t *testing.T) {
-	comp := sc.NavLink()
-	class := comp.GetClass()
+	comp := co.NavLink()
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
 	require.Contains(t, class, "hover:bg-gray-600")
 	require.Contains(t, class, "flex")
 	require.Contains(t, class, "items-center")
@@ -56,6 +66,6 @@ func TestNavLink_DefaultStyle(t *testing.T) {
 
 func TestNavLink_Output(t *testing.T) {
 	id := "id"
-	comp := sc.NavLink(sc.ID(id))
-	assertElementWithIDExists(t, comp, "a", id)
+	comp := co.NavLink(sc.ID(id))
+	tu.AssertElementWithIDExists(t, comp, "a", id)
 }

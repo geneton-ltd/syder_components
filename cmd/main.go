@@ -6,9 +6,7 @@ import (
 	"net/http"
 
 	sc "github.com/geneton-ltd/syder_components"
-	g "maragu.dev/gomponents"
-	c "maragu.dev/gomponents/components"
-	h "maragu.dev/gomponents/html"
+	co "github.com/geneton-ltd/syder_components/components"
 )
 
 //go:embed static/*
@@ -20,47 +18,37 @@ func main() {
 	mux.Handle("/static/", http.FileServer(http.FS(static)))
 
 	settingsModalID := "settingsMenu"
-	settingsModal := sc.Popover(
+	settingsModal := co.Popover(
 		sc.ID(settingsModalID),
-		sc.ClassAppend("!p-0 top-[50px] left-[150px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
-		sc.Children(
-			sc.Div(
-				sc.Class("flex flex-col h-full"),
-				sc.Children(
-					sc.NavLink(
-						sc.ClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
-						sc.Href("/settings/general"),
-						sc.Nodes(g.Text("General")),
-					),
-					sc.NavLink(
-						sc.ClassAppend("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
-						sc.Href("/settings/passwords"),
-						sc.Nodes(g.Text("Passwords")),
-					),
-				),
+		sc.Class("!p-0 top-[50px] left-[110px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
+		sc.Div(
+			sc.Class("flex flex-col h-full"),
+			co.NavLink(
+				sc.Class("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
+				sc.Href("/settings/general"),
+				sc.Text("General"),
+			),
+			co.NavLink(
+				sc.Class("h-full no-underline transition-colors p-2 hover:!bg-gray-300"),
+				sc.Href("/settings/passwords"),
+				sc.Text("Passwords"),
 			),
 		),
 	)
 
-	navbar := sc.Navbar(
+	navbar := co.Navbar(
 		sc.ID("main-nav"),
-		sc.Children(
-			sc.Div(
-				sc.Class("flex h-full"),
-				sc.Children(
-					sc.NavLink(
-						sc.ClassAppend("h-full no-underline transition-colors px-4"),
-						sc.Href("/"),
-						sc.Nodes(
-							g.Text("Dashboard"),
-						),
-					),
-					sc.Button(
-						sc.ClassAppend("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
-						sc.Nodes(g.Text("Settings")),
-						sc.PopoverTrigger(settingsModalID),
-					),
-				),
+		sc.Div(
+			sc.Class("flex h-full"),
+			co.NavLink(
+				sc.Class("h-full no-underline transition-colors px-4"),
+				sc.Href("/"),
+				sc.Text("Dashboard"),
+			),
+			sc.Button(
+				sc.Class("h-full hover:bg-gray-600 !rounded-none transition-colors px-4"),
+				sc.Text("Settings"),
+				sc.PopoverTrigger(settingsModalID),
 			),
 		),
 	)
@@ -83,93 +71,79 @@ func main() {
 		},
 	}
 
-	var rows []sc.Component
+	var rows []sc.Node
 	for _, u := range users {
-		rows = append(rows, sc.Tr(sc.Children(
-			sc.Td(sc.Nodes(g.Text(u.name))),
-			sc.Td(sc.Nodes(g.Text(u.role))),
-			sc.Td(sc.ClassAppend("text-right"), sc.Children(
-				sc.Button(
-					sc.ClassAppend("bg-green-600 text-white hover:bg-green-700 px-2"),
-					sc.Nodes(g.Text("Edit")),
+		rows = append(rows, sc.Tr(
+			sc.Td(sc.Class("p-1 px-2"), sc.Text(u.name)),
+			sc.Td(sc.Class("p-1 px-2"), sc.Text(u.role)),
+			sc.Td(sc.Class("text-right p-1 px-2"),
+				co.Button(
+					sc.Class("bg-green-600 text-white hover:bg-green-700 px-2"),
+					sc.Text("Edit"),
 				),
 			),
-			))))
+		))
 	}
 
 	modalID := "modal-id"
-	dashboardCard := sc.Card(
-		sc.ClassAppend("bg-white p-3"),
-		sc.Children(
-			sc.Div(
-				sc.Class("flex justify-between items-center mb-4"),
-				sc.Nodes(
-					h.H2(h.Class("text-xl font-bold"), g.Text("Team Members")),
-				),
-				sc.Children(
-					sc.Button(
-						sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
-						sc.DialogTrigger(modalID),
-						sc.Nodes(g.Text("+ Add User")),
+	dashboardCard := co.Card(
+		sc.Class("bg-white p-3"),
+		sc.Div(
+			sc.Class("flex justify-between items-center mb-4"),
+			sc.H2(sc.Class("text-xl font-bold"), sc.Text("Team Members")),
+			co.Button(
+				sc.Class("bg-blue-600 text-white hover:bg-blue-700 px-2"),
+				sc.DialogTrigger(modalID),
+				sc.Text("+ Add User"),
+			),
+		),
+		co.SubCard(
+			co.TableContainer(
+				co.Table(
+					co.THead(
+						co.Tr(
+							co.Th(sc.Text("Name")),
+							co.Th(sc.Text("Role")),
+							co.Th(sc.Class("text-right"), sc.Text("Actions")),
+						),
 					),
+					co.TBody(rows...),
 				),
 			),
-			sc.SubCard(sc.Children(
-				sc.TableContainer(sc.Children(
-					sc.Table(sc.Children(
-						sc.THead(sc.Children(
-							sc.Tr(sc.Children(
-								sc.Th(sc.Nodes(g.Text("Name"))),
-								sc.Th(sc.Nodes(g.Text("Role"))),
-								sc.Th(sc.ClassAppend("text-right"), sc.Nodes(g.Text("Actions"))),
-							)),
-						)),
-						sc.TBody(sc.Children(rows...)),
-					)),
-				)),
-			)),
 		),
 	)
 
-	addUserModal := sc.DialogFixedCentered(
+	addUserModal := co.DialogFixedCentered(
 		sc.ID(modalID),
-		sc.ClassAppend("w-full max-w-md p-6"),
-		sc.Children(
-			sc.Div(
-				sc.Class("flex flex-col gap-4"),
-				sc.Nodes(
-					h.H3(h.Class("text-lg font-bold border-b pb-2"), g.Text("Create New User")),
-					h.P(h.Class("text-gray-600"), g.Text("Lorem ipsum does not actually mean anything...")),
-				),
-				sc.Children(sc.Button(
-					sc.ClassAppend("bg-blue-600 text-white hover:bg-blue-700 px-2"),
-					sc.Nodes(g.Text("Close")),
-					sc.DialogClose(modalID),
-					sc.Type("button"),
-				)),
+		sc.Class("w-full max-w-md p-6"),
+		sc.Div(
+			sc.Class("flex flex-col gap-4"),
+			sc.H3(sc.Class("text-lg font-bold border-b pb-2"), sc.Text("Create New User")),
+			sc.P(sc.Class("text-gray-600"), sc.Text("Lorem ipsum does not actually mean anything...")),
+			co.Button(
+				sc.Class("bg-blue-600 text-white hover:bg-blue-700 px-2"),
+				sc.Text("Close"),
+				sc.DialogClose(modalID),
+				sc.Type("button"),
 			),
 		),
 	)
 
 	content := sc.Div(
 		sc.Class("w-full flex justify-center p-8 bg-gray-50 min-h-screen"),
-		sc.Children(
-			sc.Div(
-				sc.Class("w-full max-w-5xl flex flex-col gap-4"),
-				sc.Children(
-					dashboardCard,
-					addUserModal,
-				),
-			),
+		sc.Div(
+			sc.Class("w-full max-w-5xl flex flex-col gap-4"),
+			dashboardCard,
+			addUserModal,
 		),
 	)
 
-	p := c.HTML5(c.HTML5Props{
+	p := co.Page(co.PageProps{
 		Title: "Syder Components - Example",
-		Head: []g.Node{
-			h.Link(h.Href("/static/output.css"), h.Rel("stylesheet")),
+		Head: []sc.Node{
+			sc.Link(sc.Href("/static/output.css"), sc.Rel("stylesheet")),
 		},
-		Body: []g.Node{
+		Body: []sc.Node{
 			navbar,
 			settingsModal,
 			content,

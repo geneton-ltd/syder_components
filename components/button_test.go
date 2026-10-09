@@ -1,21 +1,26 @@
-package sydercomponents_test
+package components_test
 
 import (
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
+	co "github.com/geneton-ltd/syder_components/components"
+	tu "github.com/geneton-ltd/syder_components/internal/testutil"
 	"github.com/stretchr/testify/require"
 )
 
 func TestButton_Options(t *testing.T) {
 	// create button component with options
-	comp := sc.Button(sc.ID("id"), sc.Data("name", "john"))
+	comp := co.Button(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
-	require.Equal(t, "id", comp.GetID())
-	v, has := comp.GetData("name")
-	require.Equal(t, "john", v)
+	v, has := comp.Attr("id")
 	require.True(t, has)
+	require.Equal(t, "id", v)
+
+	v, has = comp.Attr("data-name")
+	require.True(t, has)
+	require.Equal(t, "john", v)
 }
 
 func hasButtonClasses(t *testing.T, class string) {
@@ -29,14 +34,16 @@ func hasButtonClasses(t *testing.T, class string) {
 }
 
 func TestButton_DefaultStyle(t *testing.T) {
-	comp := sc.Button()
-	hasButtonClasses(t, comp.GetClass())
+	comp := co.Button()
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
+	hasButtonClasses(t, class)
 }
 
 func TestButton_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Button(sc.ID(id))
-	assertElementWithIDExists(t, comp, "button", id)
+	comp := co.Button(sc.ID(id))
+	tu.AssertElementWithIDExists(t, comp, "button", id)
 }
 
 func hasIconButtonClasses(t *testing.T, class string) {
@@ -47,8 +54,9 @@ func hasIconButtonClasses(t *testing.T, class string) {
 }
 
 func TestIconButton_Merging(t *testing.T) {
-	comp := sc.IconButton(sc.Div(), sc.ClassAppend("custom-class"))
-	class := comp.GetClass()
+	comp := co.IconButton(sc.Div(), sc.Class("custom-class"))
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
 
 	// has the default Button style
 	hasButtonClasses(t, class)
@@ -60,16 +68,19 @@ func TestIconButton_Merging(t *testing.T) {
 	require.Contains(t, class, "custom-class")
 
 	// has one child - <span>
-	children := comp.GetChildren()
+	children := comp.Children()
 	require.Len(t, children, 1)
 
 	iconComp := children[0]
-	require.Equal(t, "h-4 w-4 shrink-0", iconComp.GetClass())
+	class, hasClass = iconComp.Attr("class")
+	require.True(t, hasClass)
+	require.Equal(t, "h-4 w-4 shrink-0", class)
 }
 
 func TestIconOnlyButton_Merging(t *testing.T) {
-	comp := sc.IconOnlyButton(sc.Div(), sc.ClassAppend("custom-class"))
-	class := comp.GetClass()
+	comp := co.IconOnlyButton(sc.Div(), sc.Class("custom-class"))
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
 
 	// has the default Button style
 	hasButtonClasses(t, class)
@@ -85,7 +96,7 @@ func TestIconOnlyButton_Merging(t *testing.T) {
 	require.Contains(t, class, "custom-class")
 
 	// is type="button"
-	compType, hasType := comp.GetType()
+	compType, hasType := comp.Attr("type")
 	require.True(t, hasType)
 	require.Equal(t, "button", compType)
 }

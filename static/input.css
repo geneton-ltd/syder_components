@@ -1,1 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+@source "../**/*.go";
+@source not "../cmd/**/*.go";
+@source not "../**/*_test.go";

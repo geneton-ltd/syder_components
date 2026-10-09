@@ -1,21 +1,26 @@
-package sydercomponents_test
+package components_test
 
 import (
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
+	co "github.com/geneton-ltd/syder_components/components"
+	tu "github.com/geneton-ltd/syder_components/internal/testutil"
 	"github.com/stretchr/testify/require"
 )
 
 func TestDialog_Options(t *testing.T) {
 	// create dialog component with options
-	comp := sc.Dialog(sc.ID("id"), sc.Data("name", "john"))
+	comp := co.Dialog(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
-	require.Equal(t, "id", comp.GetID())
-	v, has := comp.GetData("name")
-	require.Equal(t, "john", v)
+	v, has := comp.Attr("id")
 	require.True(t, has)
+	require.Equal(t, "id", v)
+
+	v, has = comp.Attr("data-name")
+	require.True(t, has)
+	require.Equal(t, "john", v)
 }
 
 func hasDialogClasses(t *testing.T, class string) {
@@ -26,20 +31,22 @@ func hasDialogClasses(t *testing.T, class string) {
 }
 
 func TestDialog_DefaultStyle(t *testing.T) {
-	comp := sc.Dialog()
-
-	hasDialogClasses(t, comp.GetClass())
+	comp := co.Dialog()
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
+	hasDialogClasses(t, class)
 }
 
 func TestDialog_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dialog(sc.ID(id))
-	assertElementWithIDExists(t, comp, "dialog", id)
+	comp := co.Dialog(sc.ID(id))
+	tu.AssertElementWithIDExists(t, comp, "dialog", id)
 }
 
 func TestDialogRelative_Merging(t *testing.T) {
-	comp := sc.DialogRelative(sc.ClassAppend("custom-class"))
-	class := comp.GetClass()
+	comp := co.DialogRelative(sc.Class("custom-class"))
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
 
 	// has the default Dialog style
 	hasDialogClasses(t, class)
@@ -53,8 +60,9 @@ func TestDialogRelative_Merging(t *testing.T) {
 }
 
 func TestDialogFixedCentered_Merging(t *testing.T) {
-	comp := sc.DialogFixedCentered(sc.ClassAppend("custom-class"))
-	class := comp.GetClass()
+	comp := co.DialogFixedCentered(sc.Class("custom-class"))
+	class, hasClass := comp.Attr("class")
+	require.True(t, hasClass)
 
 	// has the default Dialog style
 	hasDialogClasses(t, class)
