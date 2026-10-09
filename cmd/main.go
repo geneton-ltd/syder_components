@@ -23,7 +23,7 @@ func main() {
 	settingsModalID := "settingsMenu"
 	settingsModal := co.Popover(
 		sc.ID(settingsModalID),
-		sc.Class("!p-0 top-[50px] left-[150px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
+		sc.Class("!p-0 top-[50px] left-[110px] w-[150px] bg-white z-50 m-0 border border-gray-300"),
 		sc.Div(
 			sc.Class("flex flex-col h-full"),
 			co.NavLink(
@@ -77,10 +77,10 @@ func main() {
 	var rows []sc.Node
 	for _, u := range users {
 		rows = append(rows, sc.Tr(
-			sc.Td(sc.Text(u.name)),
-			sc.Td(sc.Text(u.role)),
-			sc.Td(sc.Class("text-right"),
-				sc.Button(
+			sc.Td(sc.Class("p-1 px-2"), sc.Text(u.name)),
+			sc.Td(sc.Class("p-1 px-2"), sc.Text(u.role)),
+			sc.Td(sc.Class("text-right p-1 px-2"),
+				co.Button(
 					sc.Class("bg-green-600 text-white hover:bg-green-700 px-2"),
 					sc.Text("Edit"),
 				),
@@ -94,7 +94,7 @@ func main() {
 		sc.Div(
 			sc.Class("flex justify-between items-center mb-4"),
 			sc.H2(sc.Class("text-xl font-bold"), sc.Text("Team Members")),
-			sc.Button(
+			co.Button(
 				sc.Class("bg-blue-600 text-white hover:bg-blue-700 px-2"),
 				sc.DialogTrigger(modalID),
 				sc.Text("+ Add User"),
@@ -102,15 +102,15 @@ func main() {
 		),
 		co.SubCard(
 			co.TableContainer(
-				sc.Table(
-					sc.THead(
-						sc.Tr(
-							sc.Th(sc.Text("Name")),
-							sc.Th(sc.Text("Role")),
-							sc.Th(sc.Class("text-right"), sc.Text("Actions")),
+				co.Table(
+					co.THead(
+						co.Tr(
+							co.Th(sc.Text("Name")),
+							co.Th(sc.Text("Role")),
+							co.Th(sc.Class("text-right"), sc.Text("Actions")),
 						),
 					),
-					sc.TBody(rows...),
+					co.TBody(rows...),
 				),
 			),
 		),
@@ -123,7 +123,7 @@ func main() {
 			sc.Class("flex flex-col gap-4"),
 			sc.H3(sc.Class("text-lg font-bold border-b pb-2"), sc.Text("Create New User")),
 			sc.P(sc.Class("text-gray-600"), sc.Text("Lorem ipsum does not actually mean anything...")),
-			sc.Button(
+			co.Button(
 				sc.Class("bg-blue-600 text-white hover:bg-blue-700 px-2"),
 				sc.Text("Close"),
 				sc.DialogClose(modalID),
