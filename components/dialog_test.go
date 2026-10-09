@@ -11,7 +11,7 @@ import (
 
 func TestDialog_Options(t *testing.T) {
 	// create dialog component with options
-	comp := sc.Dialog(sc.ID("id"), sc.Data("name", "john"))
+	comp := co.Dialog(sc.ID("id"), sc.Data("name", "john"))
 
 	// test options passthrough with getters
 	v, has := comp.Attr("id")
@@ -31,7 +31,7 @@ func hasDialogClasses(t *testing.T, class string) {
 }
 
 func TestDialog_DefaultStyle(t *testing.T) {
-	comp := sc.Dialog()
+	comp := co.Dialog()
 	class, hasClass := comp.Attr("class")
 	require.True(t, hasClass)
 	hasDialogClasses(t, class)
@@ -39,7 +39,7 @@ func TestDialog_DefaultStyle(t *testing.T) {
 
 func TestDialog_Output(t *testing.T) {
 	id := "id"
-	comp := sc.Dialog(sc.ID(id))
+	comp := co.Dialog(sc.ID(id))
 	tu.AssertElementWithIDExists(t, comp, "dialog", id)
 }
 

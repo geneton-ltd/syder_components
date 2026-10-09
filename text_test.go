@@ -17,7 +17,7 @@ func TestText(t *testing.T) {
 	// properties
 	require.Equal(t, sc.KindText, comp.Kind())
 	require.Empty(t, comp.Name())
-	require.Empty(t, comp.Value())
+	require.Equal(t, escapedText, comp.Value())
 	require.Empty(t, comp.Children())
 
 	// content
@@ -34,7 +34,7 @@ func TestRaw(t *testing.T) {
 	// properties
 	require.Equal(t, sc.KindText, comp.Kind())
 	require.Empty(t, comp.Name())
-	require.Empty(t, comp.Value())
+	require.Equal(t, text, comp.Value())
 	require.Empty(t, comp.Children())
 
 	// content

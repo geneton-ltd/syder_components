@@ -18,7 +18,7 @@ func TestPopover_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }

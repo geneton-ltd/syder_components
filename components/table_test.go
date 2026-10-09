@@ -18,7 +18,7 @@ func TestTableContainer_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }
@@ -53,7 +53,7 @@ func TestTable_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }
@@ -86,7 +86,7 @@ func TestTHead_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }
@@ -94,7 +94,7 @@ func TestTHead_Options(t *testing.T) {
 func TestTHead_DefaultStyle(t *testing.T) {
 	comp := co.THead()
 	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
+	require.False(t, hasClass)
 	// THead currently has no default classes
 	require.Empty(t, class)
 }
@@ -115,7 +115,7 @@ func TestTBody_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }
@@ -148,7 +148,7 @@ func TestTr_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }
@@ -181,7 +181,7 @@ func TestTh_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }
@@ -217,7 +217,7 @@ func TestTd_Options(t *testing.T) {
 	require.True(t, has)
 	require.Equal(t, "id", v)
 
-	v, has = comp.Attr("name")
+	v, has = comp.Attr("data-name")
 	require.True(t, has)
 	require.Equal(t, "john", v)
 }

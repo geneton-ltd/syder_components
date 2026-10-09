@@ -1,6 +1,8 @@
 package sydercomponents_test
 
 import (
+	"bytes"
+	"fmt"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -8,7 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestBasicHTMLComponents(t *testing.T) {
+func TestHTMLElements_Basic(t *testing.T) {
 	testcases := []struct {
 		tag  string
 		comp func(children ...sc.Node) sc.Node
@@ -32,11 +34,8 @@ func TestBasicHTMLComponents(t *testing.T) {
 		{tag: "br", comp: sc.Br},
 		{tag: "button", comp: sc.Button},
 		{tag: "canvas", comp: sc.Canvas},
-		{tag: "caption", comp: sc.Caption},
 		{tag: "cite", comp: sc.Cite},
 		{tag: "code", comp: sc.Code},
-		{tag: "col", comp: sc.Col},
-		{tag: "colgroup", comp: sc.Colgroup},
 		{tag: "data", comp: sc.DataEl},
 		{tag: "datalist", comp: sc.Datalist},
 		{tag: "dd", comp: sc.Dd},
@@ -114,15 +113,9 @@ func TestBasicHTMLComponents(t *testing.T) {
 		{tag: "sup", comp: sc.Sup},
 		{tag: "style", comp: sc.StyleEl},
 		{tag: "table", comp: sc.Table},
-		{tag: "tbody", comp: sc.TBody},
-		{tag: "td", comp: sc.Td},
 		{tag: "textarea", comp: sc.Textarea},
-		{tag: "tfoot", comp: sc.Tfoot},
-		{tag: "th", comp: sc.Th},
-		{tag: "thead", comp: sc.THead},
 		{tag: "time", comp: sc.Time},
 		{tag: "title", comp: sc.Title},
-		{tag: "tr", comp: sc.Tr},
 		{tag: "track", comp: sc.Track},
 		{tag: "u", comp: sc.U},
 		{tag: "ul", comp: sc.Ul},
@@ -148,5 +141,36 @@ func TestBasicHTMLComponents(t *testing.T) {
 			comp := tt.comp(sc.ID(id))
 			tu.AssertElementWithIDExists(t, comp, tt.tag, id)
 		})
+	}
+}
+
+func TestHTMLElements_Table(t *testing.T) {
+	testcases := []struct {
+		tag         string
+		comp        func(children ...sc.Node) sc.Node
+		selfClosing bool
+	}{
+		{tag: "caption", comp: sc.Caption},
+		{tag: "col", comp: sc.Col, selfClosing: true},
+		{tag: "colgroup", comp: sc.Colgroup},
+		{tag: "tbody", comp: sc.TBody},
+		{tag: "td", comp: sc.Td},
+		{tag: "tfoot", comp: sc.Tfoot},
+		{tag: "th", comp: sc.Th},
+		{tag: "thead", comp: sc.THead},
+		{tag: "tr", comp: sc.Tr},
+	}
+
+	for _, tt := range testcases {
+		comp := sc.Table(tt.comp())
+		tagContent := fmt.Sprintf("<%s></%s>", tt.tag, tt.tag)
+		if tt.selfClosing {
+			tagContent = fmt.Sprintf("<%s/>", tt.tag)
+		}
+
+		var buf bytes.Buffer
+		err := comp.Render(&buf)
+		require.NoError(t, err)
+		require.Equal(t, fmt.Sprintf("<table>%s</table>", tagContent), buf.String())
 	}
 }

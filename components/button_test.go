@@ -74,7 +74,7 @@ func TestIconButton_Merging(t *testing.T) {
 	iconComp := children[0]
 	class, hasClass = iconComp.Attr("class")
 	require.True(t, hasClass)
-	require.Equal(t, "h-4 w-4 shrink-0", hasClass)
+	require.Equal(t, "h-4 w-4 shrink-0", class)
 }
 
 func TestIconOnlyButton_Merging(t *testing.T) {

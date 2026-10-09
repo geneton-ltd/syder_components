@@ -12,7 +12,7 @@ import sc "github.com/geneton-ltd/syder_components"
 //	components.Button(sc.DialogTrigger("id"))
 func Dialog(children ...sc.Node) sc.Node {
 	children = append([]sc.Node{sc.Class("shadow-xl bg-white backdrop:bg-black/40 rounded-md")}, children...)
-	return Dialog(children...)
+	return sc.Dialog(children...)
 }
 
 // DialogRelative returns [Dialog] that is relative to its parent. The parent

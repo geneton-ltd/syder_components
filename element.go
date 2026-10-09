@@ -8,9 +8,14 @@ import (
 	"strings"
 )
 
-// Component represents a single node in the UI library's rendering tree.
-// Depending on its [Kind], it stores attributes, children, or text,
-// which are evaluated and converted into standard gomponents when Render is called.
+// element is an internal [Node] of [KindElement] kind representing an HTML element.
+// Its tag name can be accessed with the [element.Name] method.
+//
+// Creating a new element with [newElement] recursively unpacks [KindGroup] nodes,
+// saves [KindAttr] nodes into an internal attrs map, and saves all other nodes as children.
+//
+// Attributes are rendered in alphabetical order by their name.
+// Void (self-closing) elements are rendered without children or a closing tag.
 type element struct {
 	name     string
 	value    string
@@ -30,6 +35,8 @@ func (e element) Name() string     { return e.name }
 func (e element) Value() string    { return e.value }
 func (e element) Children() []Node { return e.children }
 
+// Attr returns the value of an attribute by name and true if it exists.
+// Otherwise, it returns an empty string and false.
 func (e element) Attr(name string) (string, bool) {
 	if n, ok := e.attrs[name]; ok {
 		return n.Value(), true
@@ -88,9 +95,9 @@ func (e *element) unpackChild(child Node) {
 		} else {
 			var cls string
 			if n, ok := e.attrs["class"]; ok {
-				cls = n.Value()
+				cls = n.Value() + " "
 			}
-			e.attrs["class"] = Attr(name, cls+" "+strings.TrimSpace(child.Value()))
+			e.attrs["class"] = Attr(name, cls+strings.TrimSpace(child.Value()))
 		}
 	case KindGroup:
 		for _, groupMember := range child.Children() {
@@ -101,6 +108,8 @@ func (e *element) unpackChild(child Node) {
 	}
 }
 
+// newElement creates a new HTML [element] node, automatically categorizing
+// passed items into attributes and children while unpacking any groups recursively.
 func newElement(name string, children ...Node) Node {
 	e := &element{
 		name:     name,
