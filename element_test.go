@@ -30,11 +30,15 @@ func TestElement_AttributeOverwriting(t *testing.T) {
 }
 
 func TestElement_ClassMerging(t *testing.T) {
-	comp := sc.P(sc.Class("font-bold"), sc.Class("flex justify-center"))
-
+	comp := sc.P(sc.Class("font-bold"), sc.Class("flex justify-center"), sc.Class(""), sc.Class("btn"))
 	v, has := comp.Attr("class")
 	require.True(t, has)
-	require.Equal(t, "font-bold flex justify-center", v)
+	require.Equal(t, "font-bold flex justify-center btn", v)
+
+	comp = sc.P(sc.Class(""), sc.Class("btn"))
+	v, has = comp.Attr("class")
+	require.True(t, has)
+	require.Equal(t, "btn", v)
 }
 
 func TestElement_Children(t *testing.T) {

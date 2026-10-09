@@ -95,9 +95,14 @@ func (e *element) unpackChild(child Node) {
 		} else {
 			var cls string
 			if n, ok := e.attrs["class"]; ok {
-				cls = n.Value() + " "
+				cls = n.Value()
 			}
-			e.attrs["class"] = Attr(name, cls+strings.TrimSpace(child.Value()))
+
+			newCls := strings.TrimSpace(child.Value())
+			if cls != "" && newCls != "" {
+				cls += " "
+			}
+			e.attrs["class"] = Attr(name, cls+newCls)
 		}
 	case KindGroup:
 		for _, groupMember := range child.Children() {
