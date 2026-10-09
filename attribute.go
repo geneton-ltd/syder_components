@@ -2,6 +2,7 @@ package sydercomponents
 
 import (
 	"fmt"
+	"html/template"
 	"io"
 	"strconv"
 )
@@ -40,7 +41,7 @@ func (a attribute) Render(w io.Writer) error {
 	if a.value == "" {
 		_, err = fmt.Fprint(w, a.name)
 	} else {
-		_, err = fmt.Fprintf(w, "%s=\"%s\"", a.name, a.value)
+		_, err = fmt.Fprintf(w, "%s=\"%s\"", a.name, template.HTMLEscapeString(a.value))
 	}
 
 	return err

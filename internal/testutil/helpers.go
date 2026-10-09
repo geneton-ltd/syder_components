@@ -2,7 +2,6 @@ package testutil
 
 import (
 	"bytes"
-	"fmt"
 	"slices"
 	"testing"
 
@@ -15,8 +14,6 @@ func AssertElementWithIDExists(t *testing.T, comp sc.Node, elementTag string, id
 	var buf bytes.Buffer
 	err := comp.Render(&buf)
 	require.NoError(t, err)
-
-	fmt.Println(buf.String())
 
 	var processNode func(*html.Node) bool
 	processNode = func(n *html.Node) bool {

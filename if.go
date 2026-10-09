@@ -1,8 +1,8 @@
 package sydercomponents
 
-// If returns the given [Component] if condition is true. Otherwise, returns nil.
+// If returns the given [Node] if condition is true. Otherwise, returns nil.
 // This helper function is good for inlining elements conditionally.
-// If it's important that the given [Component] is only evaluated if condition is true
+// If it's important that the given [Node] is only evaluated if condition is true
 // (for example, when using nilable variables), use [Iff] instead.
 func If(condition bool, n Node) Node {
 	if condition {

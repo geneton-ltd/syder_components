@@ -5,7 +5,7 @@ import (
 )
 
 // group is an internal [Node] of [KindGroup] kind.
-// Its content is accesible with the [group.Children] method.
+// Its content is accessible with the [group.Children] method.
 // Each child is rendered using its own [Node.Render] method.
 // It has no name, value or attributes.
 type group struct {

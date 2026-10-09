@@ -7,9 +7,6 @@ import (
 
 	sc "github.com/geneton-ltd/syder_components"
 	co "github.com/geneton-ltd/syder_components/components"
-	g "maragu.dev/gomponents"
-	c "maragu.dev/gomponents/components"
-	h "maragu.dev/gomponents/html"
 )
 
 //go:embed static/*
@@ -141,12 +138,12 @@ func main() {
 		),
 	)
 
-	p := c.HTML5(c.HTML5Props{
+	p := co.Page(co.PageProps{
 		Title: "Syder Components - Example",
-		Head: []g.Node{
-			h.Link(h.Href("/static/output.css"), h.Rel("stylesheet")),
+		Head: []sc.Node{
+			sc.Link(sc.Href("/static/output.css"), sc.Rel("stylesheet")),
 		},
-		Body: []g.Node{
+		Body: []sc.Node{
 			navbar,
 			settingsModal,
 			content,

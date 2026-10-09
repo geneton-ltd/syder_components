@@ -164,7 +164,7 @@ Start Tailwind CSS rebuild watcher for the library (requires [Tailwind CLI](http
 make tw
 ```
 
-Start Tailwind CSS rebuild watched for the example server (requires [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli)):
+Start Tailwind CSS rebuild watcher for the example server (requires [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli)):
 ```shell
 make tw-dev
 ```

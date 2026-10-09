@@ -2,9 +2,9 @@ package components
 
 import sc "github.com/geneton-ltd/syder_components"
 
-// Dialog returns a HTML5 <dialog> element. For attachment to happen, pass
-// [sc.ID] and then [sc.DialogTrigger] with the same id to the trigger
-// element (e.g. a button). Attachment is performed automatically.
+// Dialog returns a HTML5 <dialog> element. For attachment
+// to happen, pass [sc.ID] and then [sc.DialogTrigger] with
+// the same id to the trigger element (e.g. a button).
 //
 // Example:
 //

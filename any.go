@@ -7,7 +7,7 @@ package sydercomponents
 //
 //	sc.Any(
 //		"div",
-//		sc.ClassAppend("flex flex-col gap-2")
+//		sc.Class("flex flex-col gap-2")
 //	)
 func Any(tag string, children ...Node) Node {
 	return newElement(tag, children...)
