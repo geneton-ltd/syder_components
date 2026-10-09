@@ -14,7 +14,7 @@ func Button(children ...sc.Node) sc.Node {
 // Example:
 //
 //	components.IconButton(
-//		solid.ArrowLeft(),
+//		sc.GNode(solid.ArrowLeft()),
 //		sc.Children(sc.Text("Previous")),
 //	)
 func IconButton(icon sc.Node, children ...sc.Node) sc.Node {
@@ -34,7 +34,7 @@ func IconButton(icon sc.Node, children ...sc.Node) sc.Node {
 // Example:
 //
 //	components.IconOnlyButton(
-//		solid.Trash(),
+//		sc.GNode(solid.Trash())
 //	)
 func IconOnlyButton(icon sc.Node, children ...sc.Node) sc.Node {
 	children = append([]sc.Node{sc.Class("w-fit self-center"), sc.Type("button")}, children...)

@@ -4,7 +4,10 @@ go 1.26.5
 
 require maragu.dev/gomponents v1.3.0
 
-require golang.org/x/net v0.57.0 // indirect
+require (
+	golang.org/x/net v0.57.0 // indirect
+	maragu.dev/gomponents-heroicons/v3 v3.0.0 // indirect
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

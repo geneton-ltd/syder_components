@@ -90,7 +90,7 @@ func TestElement_Render(t *testing.T) {
 	})
 }
 
-func TestElement_UnpackingInElement(t *testing.T) {
+func TestElement_Unpacking(t *testing.T) {
 	group := sc.Group(
 		sc.Class("items-center justify-center"),
 		sc.ID("id123"),

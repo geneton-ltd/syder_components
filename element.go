@@ -87,6 +87,10 @@ func (e element) Render(w io.Writer) error {
 }
 
 func (e *element) unpackChild(child Node) {
+	if child == nil {
+		return
+	}
+
 	switch child.Kind() {
 	case KindAttr:
 		name := child.Name()
