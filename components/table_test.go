@@ -9,236 +9,97 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// TableContainer
-func TestTableContainer_Options(t *testing.T) {
-	comp := co.TableContainer(sc.ID("id"), sc.Data("name", "john"))
+func TestTableComponents(t *testing.T) {
+	testcases := []struct {
+		name            string
+		tag             string
+		comp            func(children ...sc.Node) sc.Node
+		cls             string
+		shouldBeInTable bool
+	}{
+		{
+			name: "table container",
+			tag:  "div",
+			comp: co.TableContainer,
+			cls:  "overflow-x-auto rounded border border-gray-300 shadow-sm",
+		},
+		{
+			name: "table",
+			tag:  "table",
+			comp: co.Table,
+			cls:  "min-w-full divide-y-2 divide-gray-200",
+		},
+		{
+			name:            "thead",
+			tag:             "thead",
+			comp:            co.THead,
+			cls:             "",
+			shouldBeInTable: true,
+		},
+		{
+			name:            "tbody",
+			tag:             "tbody",
+			comp:            co.TBody,
+			cls:             "divide-y divide-gray-200",
+			shouldBeInTable: true,
+		},
+		{
+			name:            "tr",
+			tag:             "tr",
+			comp:            co.Tr,
+			cls:             "hover:bg-gray-100",
+			shouldBeInTable: true,
+		},
+		{
+			name:            "th",
+			tag:             "th",
+			comp:            co.Th,
+			cls:             "px-3 py-2 whitespace-nowrap font-medium text-gray-900",
+			shouldBeInTable: true,
+		},
+		{
+			name:            "td",
+			tag:             "td",
+			comp:            co.Td,
+			cls:             "px-3 py-2 whitespace-nowrap text-gray-900",
+			shouldBeInTable: true,
+		},
+	}
 
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
+	for _, tt := range testcases {
+		// test options passthrough with getter
+		t.Run(tt.name+" options", func(t *testing.T) {
+			comp := tt.comp(sc.ID("id"), sc.Data("name", "john"))
 
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
+			v, has := comp.Attr("id")
+			require.True(t, has)
+			require.Equal(t, "id", v)
 
-func hasTableContainerClasses(t *testing.T, class string) {
-	require.Contains(t, class, "overflow-x-auto")
-	require.Contains(t, class, "rounded")
-	require.Contains(t, class, "border")
-	require.Contains(t, class, "border-gray-300")
-	require.Contains(t, class, "shadow-sm")
-}
+			v, has = comp.Attr("data-name")
+			require.True(t, has)
+			require.Equal(t, "john", v)
+		})
 
-func TestTableContainer_DefaultStyle(t *testing.T) {
-	comp := co.TableContainer()
-	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
-	hasTableContainerClasses(t, class)
-}
+		t.Run(tt.name+" default style", func(t *testing.T) {
+			comp := tt.comp()
+			cls, hasCls := comp.Attr("class")
+			if tt.cls != "" {
+				require.True(t, hasCls)
+			} else {
+				require.False(t, hasCls)
+			}
+			require.Equal(t, tt.cls, cls)
+		})
 
-func TestTableContainer_Output(t *testing.T) {
-	id := "id"
-	comp := co.TableContainer(sc.ID(id))
-	tu.AssertElementWithIDExists(t, comp, "div", id)
-}
+		t.Run(tt.name+" output", func(t *testing.T) {
+			id := "id"
+			comp := tt.comp(sc.ID(id))
 
-// Table
-func TestTable_Options(t *testing.T) {
-	comp := co.Table(sc.ID("id"), sc.Data("name", "john"))
+			if tt.shouldBeInTable {
+				comp = co.Table(comp)
+			}
 
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
-
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
-
-func hasTableClasses(t *testing.T, class string) {
-	require.Contains(t, class, "min-w-full")
-	require.Contains(t, class, "divide-y-2")
-	require.Contains(t, class, "divide-gray-200")
-}
-
-func TestTable_DefaultStyle(t *testing.T) {
-	comp := co.Table()
-	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
-	hasTableClasses(t, class)
-}
-
-func TestTable_Output(t *testing.T) {
-	id := "id"
-	comp := co.Table(sc.ID(id))
-	tu.AssertElementWithIDExists(t, comp, "table", id)
-}
-
-// THead
-func TestTHead_Options(t *testing.T) {
-	comp := co.THead(sc.ID("id"), sc.Data("name", "john"))
-
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
-
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
-
-func TestTHead_DefaultStyle(t *testing.T) {
-	comp := co.THead()
-	class, hasClass := comp.Attr("class")
-	require.False(t, hasClass)
-	// THead currently has no default classes
-	require.Empty(t, class)
-}
-
-func TestTHead_Output(t *testing.T) {
-	id := "id"
-	comp := co.THead(sc.ID(id))
-	wrapper := co.Table(comp)
-	tu.AssertElementWithIDExists(t, wrapper, "thead", id)
-}
-
-// TBody
-func TestTBody_Options(t *testing.T) {
-	comp := co.TBody(sc.ID("id"), sc.Data("name", "john"))
-
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
-
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
-
-func hasTBodyClasses(t *testing.T, class string) {
-	require.Contains(t, class, "divide-y")
-	require.Contains(t, class, "divide-gray-200")
-}
-
-func TestTBody_DefaultStyle(t *testing.T) {
-	comp := co.TBody()
-	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
-	hasTBodyClasses(t, class)
-}
-
-func TestTBody_Output(t *testing.T) {
-	id := "id"
-	comp := co.TBody(sc.ID(id))
-	wrapper := co.Table(comp)
-	tu.AssertElementWithIDExists(t, wrapper, "tbody", id)
-}
-
-// Tr
-func TestTr_Options(t *testing.T) {
-	comp := co.Tr(sc.ID("id"), sc.Data("name", "john"))
-
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
-
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
-
-func hasTrClasses(t *testing.T, class string) {
-	require.Contains(t, class, "hover:bg-gray-100")
-}
-
-func TestTr_DefaultStyle(t *testing.T) {
-	comp := co.Tr()
-
-	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
-	hasTrClasses(t, class)
-}
-
-func TestTr_Output(t *testing.T) {
-	id := "id"
-	comp := co.Tr(sc.ID(id))
-	wrapper := co.Table(comp)
-	tu.AssertElementWithIDExists(t, wrapper, "tr", id)
-}
-
-// Th
-func TestTh_Options(t *testing.T) {
-	comp := co.Th(sc.ID("id"), sc.Data("name", "john"))
-
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
-
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
-
-func hasThClasses(t *testing.T, class string) {
-	require.Contains(t, class, "px-3")
-	require.Contains(t, class, "py-2")
-	require.Contains(t, class, "whitespace-nowrap")
-	require.Contains(t, class, "font-medium")
-	require.Contains(t, class, "text-gray-900")
-}
-
-func TestTh_DefaultStyle(t *testing.T) {
-	comp := co.Th()
-	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
-	hasThClasses(t, class)
-}
-
-func TestTh_Output(t *testing.T) {
-	id := "id"
-	comp := co.Th(sc.ID(id))
-	wrapper := co.Table(comp)
-	tu.AssertElementWithIDExists(t, wrapper, "th", id)
-}
-
-// Td
-func TestTd_Options(t *testing.T) {
-	comp := co.Td(sc.ID("id"), sc.Data("name", "john"))
-
-	// test options passthrough with getters
-	v, has := comp.Attr("id")
-	require.True(t, has)
-	require.Equal(t, "id", v)
-
-	v, has = comp.Attr("data-name")
-	require.True(t, has)
-	require.Equal(t, "john", v)
-}
-
-func hasTdClasses(t *testing.T, class string) {
-	require.Contains(t, class, "px-3")
-	require.Contains(t, class, "py-2")
-	require.Contains(t, class, "whitespace-nowrap")
-	require.Contains(t, class, "text-gray-900")
-}
-
-func TestTd_DefaultStyle(t *testing.T) {
-	comp := co.Td()
-	class, hasClass := comp.Attr("class")
-	require.True(t, hasClass)
-	hasTdClasses(t, class)
-}
-
-func TestTd_Output(t *testing.T) {
-	id := "id"
-	comp := co.Td(sc.ID(id))
-	wrapper := co.Table(comp)
-	tu.AssertElementWithIDExists(t, wrapper, "td", id)
+			tu.AssertElementWithIDExists(t, comp, tt.tag, id)
+		})
+	}
 }
