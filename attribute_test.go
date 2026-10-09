@@ -3,7 +3,6 @@ package sydercomponents_test
 import (
 	"bytes"
 	"fmt"
-	"html"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -161,12 +160,11 @@ func TestMultiAttributes(t *testing.T) {
 	}
 }
 
-func TestAttribute_ValueEscaping(t *testing.T) {
-	value := `"value"`
-	attr := sc.Attr("key", value)
+func TestAttribute_NameAndValueEscaping(t *testing.T) {
+	attr := sc.Attr(`"key"`, `"value"`)
 
 	var buf bytes.Buffer
 	err := attr.Render(&buf)
 	require.NoError(t, err)
-	require.Equal(t, fmt.Sprintf("key=\"%s\"", html.EscapeString(value)), buf.String())
+	require.Equal(t, `&#34;key&#34;="&#34;value&#34;"`, buf.String())
 }
