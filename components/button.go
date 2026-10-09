@@ -2,7 +2,7 @@ package components
 
 import sc "github.com/geneton-ltd/syder_components"
 
-// Button returns an HTML5 <button> element with default style without colors.
+// Button returns an HTML5 <button> element with pre-configured padding, round corners and hover states.
 func Button(children ...sc.Node) sc.Node {
 	children = append([]sc.Node{sc.Class("rounded rounded-sm shadow-xs p-1 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed")}, children...)
 	return sc.Button(children...)
@@ -15,7 +15,7 @@ func Button(children ...sc.Node) sc.Node {
 //
 //	components.IconButton(
 //		sc.GNode(solid.ArrowLeft()),
-//		sc.Children(sc.Text("Previous")),
+//		sc.Text("Previous"),
 //	)
 func IconButton(icon sc.Node, children ...sc.Node) sc.Node {
 	children = append(
@@ -34,7 +34,7 @@ func IconButton(icon sc.Node, children ...sc.Node) sc.Node {
 // Example:
 //
 //	components.IconOnlyButton(
-//		sc.GNode(solid.Trash())
+//		sc.GNode(solid.Trash()),
 //	)
 func IconOnlyButton(icon sc.Node, children ...sc.Node) sc.Node {
 	children = append([]sc.Node{sc.Class("w-fit self-center"), sc.Type("button")}, children...)

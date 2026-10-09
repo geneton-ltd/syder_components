@@ -34,6 +34,10 @@ func TestAttribute(t *testing.T) {
 		{name: "alt", comp: sc.Alt},
 		{name: "href", comp: sc.Href},
 		{name: "target", comp: sc.Target},
+		{name: "lang", comp: sc.Lang},
+		{name: "charset", comp: sc.Charset},
+		{name: "rel", comp: sc.Rel},
+		{name: "content", comp: sc.Content},
 		{name: "popovertarget", comp: sc.PopoverTrigger},
 	}
 	simpleAttributeTestcases := []testcase{}

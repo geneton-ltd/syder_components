@@ -21,7 +21,7 @@ func (a attribute) Name() string     { return a.name }
 func (a attribute) Value() string    { return a.value }
 func (a attribute) Children() []Node { return []Node{} }
 
-// Attr returns the underlying attribute's value and true if the name is matches.
+// Attr returns the underlying attribute's value and true if the name matches.
 // Otherwise, it returns an empty string and false.
 func (a attribute) Attr(name string) (string, bool) {
 	if a.name == name {
@@ -129,6 +129,26 @@ func Href(value string) Node {
 // Target sets the HTML target attribute.
 func Target(value string) Node {
 	return Attr("target", value)
+}
+
+// Lang sets the HTML lang attribute.
+func Lang(value string) Node {
+	return Attr("lang", value)
+}
+
+// Charset sets the HTML charset attribute.
+func Charset(value string) Node {
+	return Attr("charset", value)
+}
+
+// Rel sets the HTML rel attribute.
+func Rel(value string) Node {
+	return Attr("rel", value)
+}
+
+// Content sets the HTML content attribute.
+func Content(value string) Node {
+	return Attr("content", value)
 }
 
 // TabIndex sets the HTML tabindex attribute.
