@@ -86,7 +86,7 @@ func TestElement_Render(t *testing.T) {
 		var buf bytes.Buffer
 		err := comp.Render(&buf)
 		require.NoError(t, err)
-		require.Equal(t, `<img alt="apple" src="https://images.google.com/apple"/>`, buf.String())
+		require.Equal(t, `<img alt="apple" src="https://images.google.com/apple">`, buf.String())
 	})
 }
 

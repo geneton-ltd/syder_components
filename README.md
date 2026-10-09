@@ -40,22 +40,22 @@ func main() {
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         // pre-styled button from the components package
-		btn := co.Button(sc.ID("helloWorldBtnID"), sc.Text("Hello, world!"))
+        btn := co.Button(sc.ID("helloWorldBtnID"), sc.Text("Hello, world!"))
 
-		page := co.Page(
+        page := co.Page(
             co.PageProps{
-				Title:    "Syder Components - Example",
-				Language: "en",
-				Head: []sc.Node{
-					sc.Link(sc.Rel("stylesheet"), sc.Href("/static/css/syder_components.css")),
-				},
-				Body: []sc.Node{btn},
-			},
-		)
-		page.Render(w)
-	})
+                Title:    "Syder Components - Example",
+                Language: "en",
+                Head: []sc.Node{
+                    sc.Link(sc.Rel("stylesheet"), sc.Href("/static/css/syder_components.css")),
+                },
+                Body: []sc.Node{btn},
+            },
+        )
+        page.Render(w)
+    })
 
-	http.ListenAndServe(":8000", mux)
+    http.ListenAndServe(":8000", mux)
 }
 ```
 
@@ -166,7 +166,7 @@ make tw
 
 Start Tailwind CSS rebuild watcher for the example server (requires [Tailwind CLI](https://tailwindcss.com/docs/installation/tailwind-cli)):
 ```shell
-make tw-dev
+make tw-cmd
 ```
 
 ## License

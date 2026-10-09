@@ -161,7 +161,7 @@ func TestHTMLElements_Table(t *testing.T) {
 		comp := sc.Table(tt.comp())
 		tagContent := fmt.Sprintf("<%s></%s>", tt.tag, tt.tag)
 		if tt.selfClosing {
-			tagContent = fmt.Sprintf("<%s/>", tt.tag)
+			tagContent = fmt.Sprintf("<%s>", tt.tag)
 		}
 
 		var buf bytes.Buffer

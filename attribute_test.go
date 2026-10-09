@@ -3,7 +3,7 @@ package sydercomponents_test
 import (
 	"bytes"
 	"fmt"
-	"html/template"
+	"html"
 	"testing"
 
 	sc "github.com/geneton-ltd/syder_components"
@@ -15,8 +15,6 @@ func TestAttribute(t *testing.T) {
 		name      string
 		attrName  string
 		attrValue string
-		content   string
-		boolean   bool
 		comp      func() sc.Node
 	}
 
@@ -64,7 +62,6 @@ func TestAttribute(t *testing.T) {
 		booleanAttributeTestcases = append(booleanAttributeTestcases, testcase{
 			name:     attr.name + " attribute",
 			attrName: attr.name,
-			boolean:  true,
 			comp:     attr.comp,
 		})
 	}
@@ -80,7 +77,6 @@ func TestAttribute(t *testing.T) {
 			name:      "render boolean attribute",
 			attrName:  "id",
 			attrValue: "",
-			boolean:   true,
 			comp:      func() sc.Node { return sc.Attr("id", "") },
 		},
 		{
@@ -123,11 +119,7 @@ func TestAttribute(t *testing.T) {
 			require.NoError(t, err)
 
 			content := buf.String()
-			if tt.boolean {
-				require.Equal(t, tt.attrName, content)
-			} else {
-				require.Equal(t, fmt.Sprintf("%s=\"%s\"", tt.attrName, tt.attrValue), content)
-			}
+			require.Equal(t, fmt.Sprintf("%s=\"%s\"", tt.attrName, tt.attrValue), content)
 		})
 	}
 }
@@ -176,5 +168,5 @@ func TestAttribute_ValueEscaping(t *testing.T) {
 	var buf bytes.Buffer
 	err := attr.Render(&buf)
 	require.NoError(t, err)
-	require.Equal(t, fmt.Sprintf("key=\"%s\"", template.HTMLEscapeString(value)), buf.String())
+	require.Equal(t, fmt.Sprintf("key=\"%s\"", html.EscapeString(value)), buf.String())
 }

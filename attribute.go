@@ -2,7 +2,7 @@ package sydercomponents
 
 import (
 	"fmt"
-	"html/template"
+	"html"
 	"io"
 	"strconv"
 )
@@ -10,7 +10,7 @@ import (
 // attribute is an internal [Node] of [KindAttr] kind.
 // The name of the attribute can be accessed with the [attribute.Name] method.
 // The value of the attribute can be accessed with the [attribute.Value] and [attribute.Attr] methods.
-// Boolean attributes have an empty value and are rendered without the '="value"' suffix.
+// Boolean attributes have an empty value and are rendered as 'key=""'.
 // It has no children.
 type attribute struct {
 	name  string
@@ -33,17 +33,9 @@ func (a attribute) Attr(name string) (string, bool) {
 }
 
 // Render writes 'name="value"' into the provided [io.Writer] instance.
-// In case of boolean attributes, just 'name' is written into the writer.
+// In case of boolean attributes, 'name=""' is written into the writer.
 func (a attribute) Render(w io.Writer) error {
-	var err error
-
-	// boolean attributes
-	if a.value == "" {
-		_, err = fmt.Fprint(w, a.name)
-	} else {
-		_, err = fmt.Fprintf(w, "%s=\"%s\"", a.name, template.HTMLEscapeString(a.value))
-	}
-
+	_, err := fmt.Fprintf(w, "%s=\"%s\"", html.EscapeString(a.name), html.EscapeString(a.value))
 	return err
 }
 

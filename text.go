@@ -2,7 +2,7 @@ package sydercomponents
 
 import (
 	"fmt"
-	"html/template"
+	"html"
 	"io"
 )
 
@@ -23,7 +23,7 @@ func (t text) Render(w io.Writer) error {
 // Text creates a text [Node] that renders the escaped string t.
 // For unescaped text, see [Raw].
 func Text(t string) Node {
-	return text{value: template.HTMLEscapeString(t)}
+	return text{value: html.EscapeString(t)}
 }
 
 // Raw creates a text [Node] that renders the unescaped string t.

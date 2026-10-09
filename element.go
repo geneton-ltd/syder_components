@@ -18,21 +18,24 @@ import (
 // Void (self-closing) elements are rendered without children or a closing tag.
 type element struct {
 	name     string
-	value    string
 	children []Node
 	attrs    map[string]Node
 }
 
-// voidElements returns list of elements that should not render any child content.
-// It is a function to ensure immutability.
+// voidElement checks whether the element is a void (self-closing) element
+// that cannot have child content or a closing tag.
 // Source: https://developer.mozilla.org/en-US/docs/Glossary/Void_element
-func voidElements() []string {
-	return []string{"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+func voidElement(name string) bool {
+	switch name {
+	case "area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr":
+		return true
+	}
+	return false
 }
 
 func (e element) Kind() Kind       { return KindElement }
 func (e element) Name() string     { return e.name }
-func (e element) Value() string    { return e.value }
+func (e element) Value() string    { return "" }
 func (e element) Children() []Node { return e.children }
 
 // Attr returns the value of an attribute by name and true if it exists.
@@ -61,16 +64,12 @@ func (e element) Render(w io.Writer) error {
 		}
 	}
 
-	if slices.Contains(voidElements(), e.name) {
-		if _, err := fmt.Fprintf(w, "/>"); err != nil {
-			return err
-		}
-
-		return nil
-	}
-
 	if _, err := fmt.Fprintf(w, ">"); err != nil {
 		return err
+	}
+
+	if voidElement(e.name) {
+		return nil
 	}
 
 	for _, child := range e.children {
