@@ -72,7 +72,7 @@ func TestHTMLElements_Basic(t *testing.T) {
 		{tag: "li", comp: sc.Li},
 		{tag: "link", comp: sc.Link},
 		{tag: "main", comp: sc.Main},
-		{tag: "map", comp: sc.Map},
+		{tag: "map", comp: sc.MapEl},
 		{tag: "mark", comp: sc.Mark},
 		{tag: "menu", comp: sc.Menu},
 		{tag: "meta", comp: sc.Meta},

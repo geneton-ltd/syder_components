@@ -66,7 +66,7 @@ The library is organized into two packages:
 Contains base HTML primitives, attributes, text helpers, and control structures.
 - **Attributes:** `Class`, `ID`, `Attr`, `Href`, `Src`, `Type`, `Disabled`, `Required`, `Data`, `Aria`, etc.
 - **Text:** `Text(string)` (escaped HTML) and `Raw(string)` (raw unescaped HTML).
-- **Control & Grouping:** `If`, `Iff`, `Group`, `GNode` (wrapper for `gomponents.Node` instances).
+- **Control & Grouping:** `Map`, `If`, `Iff`, `Group`, `GNode` (wrapper for `gomponents.Node` instances).
 - **Unstyled HTML Elements:** Every standard non-deprecated HTML5 tag is available as an unstyled element (e.g., `sc.Div()`, `sc.Span()`, `sc.H1()`, `sc.Img()`). Obscure tags can be created with `sc.Any("tag", ...)`.
 
 ### 2. `syder_components/components` (`co`)
@@ -122,6 +122,16 @@ Multi-attributes or sibling elements can be bundled using `sc.Group(...)`. When 
 co.Button(
     sc.DialogTrigger("my-modal"),
     sc.Text("Open Modal"),
+)
+```
+
+### Mapping Slices (`Map`)
+Transform a slice of any type into a `Group` node using `sc.Map`:
+```go
+sc.Select(
+    sc.Map(options, func(opt string) sc.Node {
+        return sc.Option(sc.Value(opt), sc.Text(opt))
+    })
 )
 ```
 

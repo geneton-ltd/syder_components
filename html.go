@@ -300,8 +300,8 @@ func Main(children ...Node) Node {
 	return Any("main", children...)
 }
 
-// Map returns an HTML5 <map> element with no default style.
-func Map(children ...Node) Node {
+// MapEl returns an HTML5 <map> element with no default style.
+func MapEl(children ...Node) Node {
 	return Any("map", children...)
 }
 
